@@ -1,5 +1,5 @@
 
-// inicio
+#include <stdio.h>
 
 int main() {
 	// imprime "Hello, World!"

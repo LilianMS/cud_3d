@@ -1,2 +1,5 @@
 *.o
 *.a
+notas*
+rascunho*
+*.out
