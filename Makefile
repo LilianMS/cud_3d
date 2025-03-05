@@ -15,6 +15,7 @@ FLAGSMLX = -ldl -lglfw -pthread -lm
 SRC_FILE =  \
 	main \
 	mlx_utils \
+	map \
 
 SRC = $(addsuffix .c, $(addprefix ./src/, $(SRC_FILE)))
 

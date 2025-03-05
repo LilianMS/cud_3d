@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_cub3d	*mapdata;
 
@@ -16,7 +16,5 @@ int main(int argc, char **argv)
 	// verificar população de mapa
 	initialize_mlx(mapdata);
 	//liberação de memória
-
 	return (0);
 }
-
