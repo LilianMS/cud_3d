@@ -22,12 +22,16 @@ typedef struct s_cub3d {
 }	t_cub3d;
 
 //mlx_utils.c
-void	deal_key(struct mlx_key_data keydata, void *param);
+
 void	initialize_mlx(t_cub3d *mapdata);
 void	ft_error(void);
 
 //map.c
 void	init_map(t_cub3d *mapdata);
 void	draw_minimap (t_cub3d *mapdata);
+
+//movement.c
+void	deal_key(struct mlx_key_data keydata, void *param);
+int		is_wall(t_cub3d *mapdata, float x, float y);
 
 #endif

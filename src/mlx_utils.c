@@ -1,28 +1,6 @@
 #include "cub3d.h"
 #include <stdint.h> //para uint32_t
 
-void	deal_key(struct mlx_key_data keydata, void *param)
-{
-	t_cub3d	*mapdata;
-	float	move_speed;
-
-	move_speed = 5.0f; //ajustar velocidade do movimento
-	mapdata = (t_cub3d *)param;
-	if (keydata.action == MLX_PRESS && keydata.key == MLX_KEY_ESCAPE)
-		mlx_close_window(mapdata->mlx);
-	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
-	{
-		if (keydata.key == MLX_KEY_W)
-			mapdata->player_y -= move_speed; // “W” move pra cima (diminuindo Y)
-		if (keydata.key == MLX_KEY_S)
-			mapdata->player_y += move_speed; // “S” move pra baixo
-		if (keydata.key == MLX_KEY_A)
-			mapdata->player_x -= move_speed; // “A” move à esquerda
-		if (keydata.key == MLX_KEY_D)
-			mapdata->player_x += move_speed; // “D” move à direita
-	}
-}
-
 static void	fill_gray(mlx_image_t *img) //função temporária
 {
 	int			x;
