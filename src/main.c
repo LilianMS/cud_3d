@@ -1,5 +1,11 @@
 #include "cub3d.h"
 
+void	ft_error(void)
+{
+	fprintf(stderr, "%s\n", mlx_strerror(mlx_errno));
+	exit(EXIT_FAILURE);
+}
+
 int	main(int argc, char **argv)
 {
 	t_cub3d	*mapdata;

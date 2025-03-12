@@ -19,19 +19,20 @@ typedef struct s_cub3d {
 	mlx_image_t	*img;
 	float		player_x;
 	float		player_y;
+	float		player_angle;
 }	t_cub3d;
 
 //mlx_utils.c
-
 void	initialize_mlx(t_cub3d *mapdata);
-void	ft_error(void);
 
 //map.c
 void	init_map(t_cub3d *mapdata);
 void	draw_minimap (t_cub3d *mapdata);
 
+//main.c
+void	ft_error(void);
+
 //movement.c
 void	deal_key(struct mlx_key_data keydata, void *param);
-int		is_wall(t_cub3d *mapdata, float x, float y);
 
 #endif
