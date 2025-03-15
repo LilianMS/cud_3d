@@ -13,7 +13,6 @@ int	main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 	// verificar argumentos
-	// alocar memória para matriz de mapa (aqui está só placeholder)
 	mapdata = malloc(sizeof(t_cub3d));
 	if (!mapdata)
 		return (1);

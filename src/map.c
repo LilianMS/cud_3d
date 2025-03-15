@@ -2,6 +2,13 @@
 
 void	init_map(t_cub3d *mapdata) //função mapa placeholder
 {
+/*responsabilidade futura dessa função
+	- parsear mapa e preencher *map na struct do cub3d;
+			(pode ser necessário trocar a variável na struct, que é um array de ints)
+	- alocar memória para o mapa;
+	- preencher map_width;
+	- preencher map_height;
+	- preencher tile_size;*/
 	static int	local_map[64] = {
 		1, 1, 1, 1, 1, 1, 1, 1,
 		1, 0, 1, 0, 0, 0, 0, 1,
