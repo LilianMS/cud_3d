@@ -21,10 +21,10 @@ static void	fill_gray(mlx_image_t *img) //função temporária para pintar o bac
 	}
 }
 
-static void render_player(t_cub3d *mapdata)
+static void	render_player(t_cub3d *mapdata)
 {
-	int dx;
-	int dy;
+	int	dx;
+	int	dy;
 
 	dy = -3;
 	while (dy <= 3)
@@ -42,7 +42,7 @@ static void render_player(t_cub3d *mapdata)
 	}
 }
 
-static void render_direction(t_cub3d *mapdata)
+static void	render_direction(t_cub3d *mapdata)
 {
 	float	dir_x;
 	float	dir_y;
@@ -62,9 +62,9 @@ static void render_direction(t_cub3d *mapdata)
 	}
 }
 
-static void render(void *param)
+static void	render(void *param)
 {
-	t_cub3d *mapdata;
+	t_cub3d	*mapdata;
 
 	mapdata = (t_cub3d *)param;
 	handle_movement(mapdata);
@@ -74,9 +74,9 @@ static void render(void *param)
 	render_direction(mapdata);
 }
 
-void initialize_mlx(t_cub3d *mapdata)
+void	initialize_mlx(t_cub3d *mapdata)
 {
-	mlx_image_t *img;
+	mlx_image_t	*img;
 
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	mapdata->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", true);

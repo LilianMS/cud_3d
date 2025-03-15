@@ -22,5 +22,6 @@ int	main(int argc, char **argv)
 	// verificar população de mapa
 	initialize_mlx(mapdata);
 	//liberação de memória
+	free(mapdata);
 	return (0);
 }

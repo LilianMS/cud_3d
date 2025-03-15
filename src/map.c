@@ -1,8 +1,8 @@
 #include "cub3d.h"
 
-void	init_map (t_cub3d *mapdata) //função mapa placeholder
+void	init_map(t_cub3d *mapdata) //função mapa placeholder
 {
-	static int local_map[64] = {
+	static int	local_map[64] = {
 		1, 1, 1, 1, 1, 1, 1, 1,
 		1, 0, 1, 0, 0, 0, 0, 1,
 		1, 0, 1, 0, 0, 0, 0, 1,
@@ -17,7 +17,6 @@ void	init_map (t_cub3d *mapdata) //função mapa placeholder
 	mapdata->tile_size = 64;
 	mapdata->map = local_map;
 } // fim do mapa placeholder
-
 
 static void	draw_helper(t_cub3d *mapdata, int x_start, int y_start)
 {
@@ -41,7 +40,7 @@ static void	draw_helper(t_cub3d *mapdata, int x_start, int y_start)
 	}
 }
 
-static void	draw_tile (t_cub3d *mapdata, int row, int column)
+static void	draw_tile(t_cub3d *mapdata, int row, int column)
 {
 	int	y_start;
 	int	x_start;
@@ -51,7 +50,7 @@ static void	draw_tile (t_cub3d *mapdata, int row, int column)
 	draw_helper(mapdata, x_start, y_start);
 }
 
-void	draw_minimap (t_cub3d *mapdata)
+void	draw_minimap(t_cub3d *mapdata)
 {
 	int	row;
 	int	column;

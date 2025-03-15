@@ -24,18 +24,22 @@ typedef struct s_cub3d {
 	bool		keys[512];
 }	t_cub3d;
 
-//mlx_utils.c
+//mlx_utils.c - inicialização de mlx e chamada de outras funções de renderização
 void	initialize_mlx(t_cub3d *mapdata);
 
-//map.c
+//map.c - inicialização de renderização do mapa (futuro minimapa)
 void	init_map(t_cub3d *mapdata);
-void	draw_minimap (t_cub3d *mapdata);
+void	draw_minimap(t_cub3d *mapdata);
 
 //main.c
 void	ft_error(void);
 
-//movement.c
+//movement.c - funções de movimento e rotação
 void	deal_key(struct mlx_key_data keydata, void *param);
 void	handle_movement(t_cub3d *mapdata);
+
+//wall.c - funções de colisão e movimentação junto à parede
+int		is_wall(t_cub3d *mapdata, float x, float y);
+void	wall_sliding(t_cub3d *mapdata, float dx, float dy);
 
 #endif
