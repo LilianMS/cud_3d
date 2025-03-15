@@ -67,6 +67,7 @@ static void render(void *param)
 	t_cub3d *mapdata;
 
 	mapdata = (t_cub3d *)param;
+	handle_movement(mapdata);
 	fill_gray(mapdata->img);
 	draw_minimap(mapdata);
 	render_player(mapdata);
