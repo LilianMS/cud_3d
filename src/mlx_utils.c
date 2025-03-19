@@ -42,7 +42,7 @@ static void	render_player(t_cub3d *mapdata)
 	}
 }
 
-static void	render_direction(t_cub3d *mapdata)
+static void	render_direction(t_cub3d *mapdata) //atualização a direção e renderiza seu vetor
 {
 	float	dir_x;
 	float	dir_y;
@@ -56,7 +56,7 @@ static void	render_direction(t_cub3d *mapdata)
 	while (i < 20)
 	{
 		px = (int)(mapdata->player_x + dir_x * i);
-		py = (int)(mapdata->player_y + dir_y * i);
+		py = (int)(mapdata->player_y - dir_y * i);
 		mlx_put_pixel(mapdata->img, px, py, 0xFFA500FF);
 		i++;
 	}
@@ -87,9 +87,6 @@ void	initialize_mlx(t_cub3d *mapdata)
 		ft_error();
 	mapdata->img = img;
 	init_map(mapdata); // função que seta o mapa
-	mapdata->player_x = WIDTH / 4.0f;
-	mapdata->player_y = HEIGHT / 2.0f;
-	mapdata->player_angle = 0.0f; // Ângulo inicial
 	mlx_key_hook(mapdata->mlx, deal_key, mapdata);
 	mlx_loop_hook(mapdata->mlx, &render, mapdata);
 	mlx_loop(mapdata->mlx);

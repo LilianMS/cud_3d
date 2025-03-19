@@ -9,21 +9,62 @@ void	init_map(t_cub3d *mapdata) //função mapa placeholder
 	- preencher map_width;
 	- preencher map_height;
 	- preencher tile_size;*/
-	static int	local_map[64] = {
-		1, 1, 1, 1, 1, 1, 1, 1,
-		1, 0, 1, 0, 0, 0, 0, 1,
-		1, 0, 1, 0, 0, 0, 0, 1,
-		1, 0, 1, 0, 0, 0, 0, 1,
-		1, 0, 0, 0, 0, 0, 0, 1,
-		1, 0, 0, 0, 0, 1, 0, 1,
-		1, 0, 0, 0, 0, 0, 0, 1,
-		1, 1, 1, 1, 1, 1, 1, 1
+	static char *local_map[] = {
+		"11111111",
+		"10101001",
+		"10101001",
+		"10100001",
+		"1000S001",
+		"10000101",
+		"10000001",
+		"11111111"
 	};
 	mapdata->map_width = 8;
 	mapdata->map_height = 8;
 	mapdata->tile_size = 64;
 	mapdata->map = local_map;
+	find_player_start(mapdata);
 } // fim do mapa placeholder
+
+static	void set_player_start(t_cub3d *mapdata, int row, int col, char start)
+{
+	mapdata->player_x = (col + 0.5f) * mapdata->tile_size;
+	mapdata->player_y = (row + 0.5f) * mapdata->tile_size;
+	if (start == 'N')
+		mapdata->player_angle = M_PI / 2; // 90°
+	else if (start == 'S')
+		mapdata->player_angle = 3 * M_PI / 2; // 270°
+	else if (start == 'E')
+		mapdata->player_angle = 0;
+	else if (start == 'W')
+		mapdata->player_angle = M_PI;
+	return;
+}
+
+void	find_player_start(t_cub3d *mapdata)
+{
+	int	row;
+	int	col;
+	char	start;
+
+	row = 0;
+	while (row < mapdata->map_height)
+	{
+		col = 0;
+		while (col < mapdata->map_width)
+		{
+			start = mapdata->map[row][col];
+			if (start == 'N' || start == 'S' || start == 'E' || start == 'W')
+				{
+					set_player_start(mapdata, row, col, start);
+					return ;
+				}
+			col++;
+		}
+		row++;
+	}
+}
+
 
 static void	draw_helper(t_cub3d *mapdata, int x_start, int y_start)
 {
@@ -68,7 +109,7 @@ void	draw_minimap(t_cub3d *mapdata)
 		column = 0;
 		while (column < mapdata->map_width)
 		{
-			if (mapdata->map[row * mapdata->map_width + column] == 1)
+			if (mapdata->map[row][column] == '1')
 				draw_tile(mapdata, row, column);
 			column++;
 		}

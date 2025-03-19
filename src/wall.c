@@ -13,7 +13,7 @@ int	is_wall(t_cub3d *mapdata, float x, float y)
 		|| col < 0 || col >= mapdata->map_width)
 		return (1);
 	// Se a célula do mapa for 1
-	if (mapdata->map[row * mapdata->map_width + col] == 1)
+	if (mapdata->map[row][col] == '1')
 		return (1);
 	else
 		return (0);

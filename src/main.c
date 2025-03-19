@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 	mapdata = malloc(sizeof(t_cub3d));
 	if (!mapdata)
 		return (1);
-	// verificar requisitos de mapa (mapa fechado)
+	// verificar requisitos de mapa (mapa fechado, precisa ter uma psoição inicial de player)
 	// popular matriz de mapa
 	// verificar população de mapa
 	initialize_mlx(mapdata);
