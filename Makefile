@@ -16,6 +16,8 @@ SRC_FILE =  \
 	main \
 	mlx_utils \
 	map \
+	movement \
+	wall \
 
 SRC = $(addsuffix .c, $(addprefix ./src/, $(SRC_FILE)))
 

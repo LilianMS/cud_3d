@@ -1,5 +1,11 @@
 #include "cub3d.h"
 
+void	ft_error(void)
+{
+	fprintf(stderr, "%s\n", mlx_strerror(mlx_errno));
+	exit(EXIT_FAILURE);
+}
+
 int	main(int argc, char **argv)
 {
 	t_cub3d	*mapdata;
@@ -7,14 +13,14 @@ int	main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 	// verificar argumentos
-	// alocar memória para matriz de mapa (aqui está só placeholder)
 	mapdata = malloc(sizeof(t_cub3d));
 	if (!mapdata)
 		return (1);
-	// verificar requisitos de mapa (mapa fechado)
+	// verificar requisitos de mapa (mapa fechado, precisa ter uma psoição inicial de player)
 	// popular matriz de mapa
 	// verificar população de mapa
 	initialize_mlx(mapdata);
 	//liberação de memória
+	free(mapdata);
 	return (0);
 }
