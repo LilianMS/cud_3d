@@ -1,6 +1,7 @@
 #include "cub3d.h"
 
-void	init_map(t_cub3d *mapdata) //função mapa placeholder
+//função mapa placeholder
+void	init_map(t_cub3d *mapdata)
 {
 /*responsabilidade futura dessa função
 	- parsear mapa e preencher *map na struct do cub3d;
@@ -9,7 +10,7 @@ void	init_map(t_cub3d *mapdata) //função mapa placeholder
 	- preencher map_width;
 	- preencher map_height;
 	- preencher tile_size;*/
-	static char *local_map[] = {
+	static char	*local_map[] = {
 		"11111111",
 		"10101001",
 		"10101001",
@@ -24,9 +25,10 @@ void	init_map(t_cub3d *mapdata) //função mapa placeholder
 	mapdata->tile_size = 64;
 	mapdata->map = local_map;
 	find_player_start(mapdata);
-} // fim do mapa placeholder
+}
+//fim mapa placeholder
 
-static	void set_player_start(t_cub3d *mapdata, int row, int col, char start)
+static void	set_player_start(t_cub3d *mapdata, int row, int col, char start)
 {
 	mapdata->player_x = (col + 0.5f) * mapdata->tile_size;
 	mapdata->player_y = (row + 0.5f) * mapdata->tile_size;
@@ -38,14 +40,14 @@ static	void set_player_start(t_cub3d *mapdata, int row, int col, char start)
 		mapdata->player_angle = 0;
 	else if (start == 'W')
 		mapdata->player_angle = M_PI;
-	return;
+	return ;
 }
 
 void	find_player_start(t_cub3d *mapdata)
 {
-	int	row;
-	int	col;
 	char	start;
+	int		row;
+	int		col;
 
 	row = 0;
 	while (row < mapdata->map_height)
@@ -64,7 +66,6 @@ void	find_player_start(t_cub3d *mapdata)
 		row++;
 	}
 }
-
 
 static void	draw_helper(t_cub3d *mapdata, int x_start, int y_start)
 {

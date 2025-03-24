@@ -18,6 +18,8 @@ SRC_FILE =  \
 	map \
 	movement \
 	wall \
+	utils \
+	validations \
 
 SRC = $(addsuffix .c, $(addprefix ./src/, $(SRC_FILE)))
 
