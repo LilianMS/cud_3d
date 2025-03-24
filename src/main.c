@@ -26,6 +26,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		cub_error("Argument with 'file.cub' is required!");
 	mapdata = malloc(sizeof(t_cub3d));
+	ft_memset(mapdata, 0, sizeof(t_cub3d)); //inicializar a struct
 	if (!mapdata)
 		return (1);
 	mapdata->cub = av[1];
@@ -33,3 +34,6 @@ int	main(int ac, char **av)
 		ax_main(mapdata);
 	return (0);
 }
+
+// para rodar com valgrind e supressions:
+// valgrind --suppressions=mlx42.supp  ./cub3
