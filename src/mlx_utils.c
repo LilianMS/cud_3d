@@ -1,7 +1,8 @@
 #include "cub3d.h"
 #include <stdint.h> //para uint32_t
 
-static void	fill_gray(mlx_image_t *img) //função temporária para pintar o background do minimapa de cinza
+//função temporária para pintar o background do minimapa de cinza
+static void	fill_gray(mlx_image_t *img)
 {
 	int			x;
 	int			y;
@@ -42,7 +43,8 @@ static void	render_player(t_cub3d *mapdata)
 	}
 }
 
-static void	render_direction(t_cub3d *mapdata) //atualização a direção e renderiza seu vetor
+//atualização a direção e renderiza seu vetor
+static void	render_direction(t_cub3d *mapdata)
 {
 	float	dir_x;
 	float	dir_y;
@@ -81,10 +83,12 @@ void	initialize_mlx(t_cub3d *mapdata)
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	mapdata->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", true);
 	if (!mapdata->mlx)
-		ft_error();
+		cub_error(mlx_strerror(mlx_errno), mapdata);
+		// ft_error();
 	img = mlx_new_image(mapdata->mlx, WIDTH, HEIGHT);
 	if (!img || (mlx_image_to_window(mapdata->mlx, img, 0, 0) < 0))
-		ft_error();
+		cub_error(mlx_strerror(mlx_errno), mapdata);
+		// ft_error();
 	mapdata->img = img;
 	init_map(mapdata); // função que seta o mapa
 	mlx_key_hook(mapdata->mlx, deal_key, mapdata);

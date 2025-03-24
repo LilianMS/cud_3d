@@ -19,7 +19,7 @@ SRC_FILE =  \
 	movement \
 	wall \
 	utils \
-	validation \
+	validations \
 
 SRC = $(addsuffix .c, $(addprefix ./src/, $(SRC_FILE)))
 

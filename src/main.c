@@ -1,21 +1,21 @@
 #include "cub3d.h"
 
-void	ft_error(void)
-{
-	fprintf(stderr, "%s\n", mlx_strerror(mlx_errno));
-	exit(EXIT_FAILURE);
-}
+// void	ft_error(void)
+// {
+// 	fprintf(stderr, "%s\n", mlx_strerror(mlx_errno));
+// 	exit(EXIT_FAILURE);
+// }
 
-int	ax_main(t_cub3d *mapdata)
+int	cub_starts(char **av, t_cub3d *mapdata)
 {
-	// verificar argumentos
-	
+	if (!mapdata)
+		cub_error("Memory allocation error.", NULL);
+	ft_memset(mapdata, 0, sizeof(t_cub3d)); //inicializar a struct
+	mapdata->cub = av[1];
+	cub_valid(mapdata);
 	// verificar requisitos de mapa (mapa fechado, precisa ter uma psoição inicial de player)
 	// popular matriz de mapa
 	// verificar população de mapa
-	initialize_mlx(mapdata);
-	//liberação de memória
-	free(mapdata);
 	return (0);
 }
 
@@ -24,16 +24,13 @@ int	main(int ac, char **av)
 	t_cub3d	*mapdata;
 
 	if (ac != 2)
-		cub_error("Argument with 'file.cub' is required!");
+		cub_error("Argument with 'file.cub' is required!", NULL);
 	mapdata = malloc(sizeof(t_cub3d));
-	ft_memset(mapdata, 0, sizeof(t_cub3d)); //inicializar a struct
-	if (!mapdata)
-		return (1);
-	mapdata->cub = av[1];
-	if (cub_valid(mapdata))
-		ax_main(mapdata);
+	cub_starts(av, mapdata);
+	initialize_mlx(mapdata);
+	free(mapdata);
 	return (0);
 }
 
 // para rodar com valgrind e supressions:
-// valgrind --suppressions=mlx42.supp  ./cub3
+// valgrind --suppressions=mlx42.supp  ./cub3D assets/map/simple_map.cub

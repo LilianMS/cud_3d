@@ -20,9 +20,8 @@ static int	cub_file(char *str)
 int	cub_valid(t_cub3d *mapdata)
 {
 	if (!mapdata->cub)
-        cub_error("Argument with 'file.cub' is required!");
+		cub_error("Argument with 'file.cub' is required!", mapdata);
 	if (!cub_file(mapdata->cub))
-        cub_error("Incorrect file type. It's not '*.cub'!");
-
+		cub_error("Incorrect file type. It's not '*.cub'!", mapdata);
 	return (1);
 }

@@ -28,7 +28,7 @@ typedef struct s_cub3d
 }	t_cub3d;
 
 // utils.c - funções de erro
-void	cub_error(char *str);
+void	cub_error(const char *str, t_cub3d *mapdata);
 // void	free_map(t_cub3d *mapdata);
 
 //validation.c - funções de validação de arquivo .cub
