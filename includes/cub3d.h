@@ -1,11 +1,12 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <stdio.h> //printf
+// # include <stdio.h> //printf
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-# include <stdbool.h>
+# include <fcntl.h> //open
+// # include <stdbool.h> 
 # include "../lib/libft/includes/libft.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # define WIDTH 1024 // tamanho da tela
@@ -43,7 +44,7 @@ void	draw_minimap(t_cub3d *mapdata);
 void	find_player_start(t_cub3d *mapdata);
 
 //main.c
-void	ft_error(void);
+// void	ft_error(void);
 
 //movement.c - funções de movimento e rotação
 void	deal_key(struct mlx_key_data keydata, void *param);
