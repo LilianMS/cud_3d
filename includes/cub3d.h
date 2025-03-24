@@ -6,11 +6,14 @@
 # include <unistd.h>
 # include <math.h>
 # include <stdbool.h>
+# include "../lib/libft/includes/libft.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # define WIDTH 1024 // tamanho da tela
 # define HEIGHT 512
 
-typedef struct s_cub3d {
+typedef struct s_cub3d
+{
+	char		*cub;
 	char		**map;
 	int			map_width;
 	int			map_height;
@@ -23,6 +26,13 @@ typedef struct s_cub3d {
 	float		player_angle;
 	bool		keys[512];
 }	t_cub3d;
+
+// utils.c - funções de erro
+void	cub_error(char *str);
+// void	free_map(t_cub3d *mapdata);
+
+//validation.c - funções de validação de arquivo .cub
+int		cub_valid(t_cub3d *mapdata);
 
 //mlx_utils.c - inicialização de mlx e chamada de outras funções de renderização
 void	initialize_mlx(t_cub3d *mapdata);
