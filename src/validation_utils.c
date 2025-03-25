@@ -44,7 +44,7 @@ int	check_forb_chars(char **area, int *table)
 int	search_elements(t_cub3d *mapdata, const char *elements)
 {
 	int	table[256];
-	
+
 	ft_hash_table(table, 256);
 	ft_fill_valid_characters(elements, table);
 	if (!check_all_chars(mapdata->mapping.area, elements))

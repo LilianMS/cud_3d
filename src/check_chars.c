@@ -43,7 +43,7 @@ int	check_all_chars(char **area, const char *valid_chars)
 	return (1);
 }
 
-char *handle_textures(int dir, char *str)
+char	*handle_textures(int dir, char *str)
 {
 	char	*texture;
 	char	*tmp_str;
@@ -53,7 +53,7 @@ char *handle_textures(int dir, char *str)
 	tmp_str = ft_strchr(str, dir);
 	if (!tmp_str)
 		return (NULL);
-	tmp_str+=2;
+	tmp_str += 2;
 	texture = malloc(sizeof(char) * (ft_strlen(tmp_str) + 1));
 	if (!texture)
 		return (NULL);
@@ -74,7 +74,7 @@ char *handle_textures(int dir, char *str)
 int	cub_textures(t_cub3d *mapdata)
 {
 	char	**area;
-	int	i;
+	int		i;
 
 	area = mapdata->mapping.area;
 	i = 0;

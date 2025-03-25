@@ -14,12 +14,10 @@ void	print_area(char **area)
 	ft_putstr_fd("\n", 1);
 }
 
-void print_textures(t_cub3d *mapdata)
+void	print_textures(t_cub3d *mapdata)
 {
 	ft_putendl_fd(mapdata->texture.no, 1);
 	ft_putendl_fd(mapdata->texture.so, 1);
 	ft_putendl_fd(mapdata->texture.we, 1);
 	ft_putendl_fd(mapdata->texture.ea, 1);
 }
-
-
