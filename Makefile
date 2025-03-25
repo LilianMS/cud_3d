@@ -20,6 +20,10 @@ SRC_FILE =  \
 	wall \
 	utils \
 	validations \
+	validation_utils \
+	check_chars \
+	clean \
+	debug \
 
 SRC = $(addsuffix .c, $(addprefix ./src/, $(SRC_FILE)))
 

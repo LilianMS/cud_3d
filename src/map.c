@@ -57,10 +57,10 @@ void	find_player_start(t_cub3d *mapdata)
 		{
 			start = mapdata->map[row][col];
 			if (start == 'N' || start == 'S' || start == 'E' || start == 'W')
-				{
-					set_player_start(mapdata, row, col, start);
-					return ;
-				}
+			{
+				set_player_start(mapdata, row, col, start);
+				return ;
+			}
 			col++;
 		}
 		row++;
