@@ -62,7 +62,7 @@ int	cub_valid(t_cub3d *mapdata)
 		cub_error("Incorrect file type. It's not '*.cub'!", mapdata);
 	cub_read_file(mapdata);
 	// debug
-	print_area(mapdata->mapping.area);
+	// print_area(mapdata->mapping.area);
 	// debug
 	cub_read_area(mapdata);
 	return (1);

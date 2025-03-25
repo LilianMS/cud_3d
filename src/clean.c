@@ -1,5 +1,18 @@
 #include "cub3d.h"
 
+void	free_area(char **area)
+{
+	int	i;
+
+	i = 0;
+	while (area[i])
+	{
+		free(area[i]);
+		i++;
+	}
+	free(area);
+}
+
 void	free_textures(t_cub3d *mapdata)
 {
 	if (mapdata->texture.no)

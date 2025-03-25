@@ -51,7 +51,7 @@ int	search_elements(t_cub3d *mapdata, const char *elements)
 		return (0);
 	cub_textures(mapdata);
 	//debug
-	print_textures(mapdata);
+	// print_textures(mapdata);
 	// debug
 	return (1);
 }

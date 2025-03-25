@@ -56,13 +56,15 @@ typedef struct s_cub3d
 
 // utils.c 
 void	cub_error(const char *str, t_cub3d *mapdata);
-void	free_area(char **area);
-// void	free_map(t_cub3d *mapdata);
 
-//validation
+//validations.c
 int		cub_valid(t_cub3d *mapdata);
-int		check_all_chars(char **area, const char *valid_chars);
+
+// validation_utils.c
 int		search_elements(t_cub3d *mapdata, const char *elements);
+
+// check_chars.c
+int		check_all_chars(char **area, const char *valid_chars);
 int		cub_textures(t_cub3d *mapdata);
 
 //mlx_utils.c - inicialização de mlx e chamada de outras funções de renderização
@@ -84,14 +86,12 @@ void	handle_movement(t_cub3d *mapdata);
 int		is_wall(t_cub3d *mapdata, float x, float y);
 void	wall_sliding(t_cub3d *mapdata, float dx, float dy);
 
-
-// clean
+// clean.c
 void	cub_clean(t_cub3d *mapdata);
 
 //debug --- retirar funções de debug ao finalizar projeto
 //   não esquecer de remover todos os comentários em português
 void	print_area(char **area);
 void	print_textures(t_cub3d *mapdata);
-
 
 #endif

@@ -9,15 +9,3 @@ void	cub_error(const char *str, t_cub3d *mapdata)
 	exit(EXIT_FAILURE);
 }
 
-void	free_area(char **area)
-{
-	int	i;
-
-	i = 0;
-	while (area[i])
-	{
-		free(area[i]);
-		i++;
-	}
-	free(area);
-}
