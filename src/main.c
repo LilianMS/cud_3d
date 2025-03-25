@@ -1,17 +1,11 @@
 #include "cub3d.h"
 
-// void	ft_error(void)
-// {
-// 	fprintf(stderr, "%s\n", mlx_strerror(mlx_errno));
-// 	exit(EXIT_FAILURE);
-// }
-
 int	cub_starts(char **av, t_cub3d *mapdata)
 {
 	if (!mapdata)
 		cub_error("Memory allocation error.", NULL);
 	ft_memset(mapdata, 0, sizeof(t_cub3d)); //inicializar a struct
-	mapdata->cub = av[1];
+	mapdata->mapping.file = av[1];
 	cub_valid(mapdata);
 	// verificar requisitos de mapa (mapa fechado, precisa ter uma psoição inicial de player)
 	// popular matriz de mapa
@@ -28,7 +22,7 @@ int	main(int ac, char **av)
 	mapdata = malloc(sizeof(t_cub3d));
 	cub_starts(av, mapdata);
 	initialize_mlx(mapdata);
-	free(mapdata);
+	cub_clean(mapdata);
 	return (0);
 }
 
