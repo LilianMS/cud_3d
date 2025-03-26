@@ -82,7 +82,8 @@ static void	draw_helper(t_cub3d *mapdata, int x_start, int y_start)
 		x = x_start;
 		while (x < x_end)
 		{
-			mlx_put_pixel(mapdata->img, x, y, 0x000000FF);
+			if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+				mlx_put_pixel(mapdata->img, x, y, 0x000000FF);
 			x++;
 		}
 		y++;

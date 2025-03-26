@@ -70,6 +70,11 @@ int		cub_textures(t_cub3d *mapdata);
 //mlx_utils.c - inicialização de mlx e chamada de outras funções de renderização
 void	initialize_mlx(t_cub3d *mapdata);
 
+//map_utils.c - funções adicionais para o mapa
+void	extract_map_from_area(t_cub3d *mapdata);
+int		is_map_line(char *line);
+int		calculate_tile_size(int screen_width, int screen_height, int map_width, int map_height);
+
 //map.c - inicialização de renderização do mapa (futuro minimapa)
 void	init_map(t_cub3d *mapdata);
 void	draw_minimap(t_cub3d *mapdata);
