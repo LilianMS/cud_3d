@@ -15,7 +15,8 @@ static void	fill_gray(mlx_image_t *img)
 		x = 0;
 		while (x < (int)img->width)
 		{
-			mlx_put_pixel(img, x, y, gray_color);
+			if (x >= 0 && x < (int)img->width && y >= 0 && y < (int)img->height)
+				mlx_put_pixel(img, x, y, gray_color);
 			x++;
 		}
 		y++;
@@ -26,17 +27,21 @@ static void	render_player(t_cub3d *mapdata)
 {
 	int	dx;
 	int	dy;
+	int	px;
+	int	py;
+	int	player_size;
 
-	dy = -3;
-	while (dy <= 3)
+	player_size = mapdata->tile_size / 8;
+	dy = -player_size;
+	while (dy <= player_size)
 	{
-		dx = -3;
-		while (dx <= 3)
+		dx = -player_size;
+		while (dx <= player_size)
 		{
-			mlx_put_pixel(mapdata->img,
-				(int)(mapdata->player_x + dx),
-				(int)(mapdata->player_y + dy),
-				0xFFFF00FF);
+			px = (int)(mapdata->player_x + dx);
+			py = (int)(mapdata->player_y + dy);
+			if (px >= 0 && px < WIDTH && py >= 0 && py < HEIGHT)
+				mlx_put_pixel(mapdata->img, px, py, 0xFFFF00FF);
 			dx++;
 		}
 		dy++;
@@ -59,7 +64,8 @@ static void	render_direction(t_cub3d *mapdata)
 	{
 		px = (int)(mapdata->player_x + dir_x * i);
 		py = (int)(mapdata->player_y - dir_y * i);
-		mlx_put_pixel(mapdata->img, px, py, 0xFFA500FF);
+		if (px >= 0 && px < WIDTH && py >= 0 && py < HEIGHT)
+			mlx_put_pixel(mapdata->img, px, py, 0xFFA500FF);
 		i++;
 	}
 }
@@ -90,7 +96,7 @@ void	initialize_mlx(t_cub3d *mapdata)
 		cub_error(mlx_strerror(mlx_errno), mapdata);
 		// ft_error();
 	mapdata->img = img;
-	init_map(mapdata); // função que seta o mapa
+	//init_map(mapdata); // função que seta o mapa
 	mlx_key_hook(mapdata->mlx, deal_key, mapdata);
 	mlx_loop_hook(mapdata->mlx, &render, mapdata);
 	mlx_loop(mapdata->mlx);

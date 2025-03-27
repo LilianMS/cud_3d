@@ -4,27 +4,29 @@ static void	movement_vector(t_cub3d *mapdata, float move_speed, float *dx, float
 {
 	*dx = 0.0f;
 	*dy = 0.0f;
+
 	if (mapdata->keys[MLX_KEY_W])
 	{
-		*dx += -move_speed * cos(mapdata->player_angle);
-		*dy += -move_speed * sin(mapdata->player_angle);
+		*dx -= -move_speed * cos(mapdata->player_angle);
+		*dy -= -move_speed * -sin(mapdata->player_angle);
 	}
 	if (mapdata->keys[MLX_KEY_S])
 	{
-		*dx -= -move_speed * cos(mapdata->player_angle);
-		*dy -= -move_speed * sin(mapdata->player_angle);
+		*dx -= move_speed * cos(mapdata->player_angle);
+		*dy -= move_speed * -sin(mapdata->player_angle);
 	}
 	if (mapdata->keys[MLX_KEY_A])
 	{
-		*dx += move_speed * cos(mapdata->player_angle + M_PI_2);
-		*dy += move_speed * sin(mapdata->player_angle + M_PI_2);
+		*dx -= move_speed * cos(mapdata->player_angle - M_PI_2);
+		*dy -= move_speed * -sin(mapdata->player_angle - M_PI_2);
 	}
 	if (mapdata->keys[MLX_KEY_D])
 	{
-		*dx += move_speed * cos(mapdata->player_angle - M_PI_2);
-		*dy += move_speed * sin(mapdata->player_angle - M_PI_2);
+		*dx -= move_speed * cos(mapdata->player_angle + M_PI_2);
+		*dy -= move_speed * -sin(mapdata->player_angle + M_PI_2);
 	}
 }
+
 
 static void	player_rotation(t_cub3d *mapdata, float rotate_speed)
 {
