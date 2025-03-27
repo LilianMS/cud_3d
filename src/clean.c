@@ -30,6 +30,8 @@ void	cub_clean(t_cub3d *mapdata)
 	free_textures(mapdata);
 	if (mapdata->mapping.area)
 		free_area(mapdata->mapping.area);
+	if (mapdata->map)
+		free_area(mapdata->map); 
 	if (mapdata)
 		free(mapdata);
 }
