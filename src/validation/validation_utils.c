@@ -20,6 +20,21 @@ void	ft_fill_valid_characters(const char *valid_chars, int *table)
 	}
 }
 
+int	check_map_position(t_cub3d *mapdata, int end)
+{
+	end++;
+	if (mapdata->mapping.area[end] \
+		&& !is_map_line(mapdata->mapping.area[end]) \
+		&& mapdata->mapping.area[end][0] != '\n' \
+		&& mapdata->mapping.area[end][0] != '\0'
+		&& mapdata->mapping.area[end][0] != ' ')
+	{
+		cub_error("The map is NOT in the last position of the file", mapdata);
+		return (0);
+	}
+	return (1);
+}
+
 int	cub_search_elements(t_cub3d *mapdata, const char *elements)
 {
 	int	table[256];

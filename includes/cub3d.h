@@ -58,7 +58,7 @@ typedef struct s_cub3d
 
 // utils.c 
 void	cub_error(const char *str, t_cub3d *mapdata);
-void	remove_newline(char ***colors);
+void	ft_remove_newline(char ***colors);
 int		ft_array_len(char **array);
 
 //validations.c
@@ -66,6 +66,7 @@ int		cub_valid(t_cub3d *mapdata);
 
 // validation_utils.c
 int		cub_search_elements(t_cub3d *mapdata, const char *elements);
+int		check_map_position(t_cub3d *mapdata, int end);
 
 // check_chars.c
 int		check_all_chars(char **area, const char *valid_chars);

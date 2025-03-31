@@ -29,7 +29,7 @@ static char	**cub_handle_colors(t_cub3d *mapdata, int i)
 	char	**colors;
 
 	colors = ft_split(mapdata->mapping.area[i] + 2, ',');
-	remove_newline(&colors);
+	ft_remove_newline(&colors);
 	if (colors)
 	{
 		if (ft_array_len(colors) != 3 || !validate_color_values(colors))

@@ -69,6 +69,7 @@ void	extract_map_from_area(t_cub3d *mapdata)
 		cub_error("Map not found in file!", mapdata);
 	end = find_map_end(mapdata->mapping.area, start);
 	map_lines = end - start;
+	check_map_position(mapdata, end); // Checa posição do mapa --->> ?! verificar se é necessário
 	allocate_and_copy_map(mapdata, start, map_lines);
 	calculate_map_dimensions(mapdata, map_lines);
 }
