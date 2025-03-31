@@ -21,9 +21,10 @@ SRC_FILE =  \
 	movement \
 	wall \
 	utils \
-	validations \
-	validation_utils \
-	check_chars \
+	validation/validations \
+	validation/validation_utils \
+	validation/check_chars \
+	validation/check_elements \
 	clean \
 	debug \
 

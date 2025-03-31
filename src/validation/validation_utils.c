@@ -20,36 +20,17 @@ void	ft_fill_valid_characters(const char *valid_chars, int *table)
 	}
 }
 
-int	check_forb_chars(char **area, int *table)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (area[i])
-	{
-		j = 0;
-		while (area[i][j])
-		{
-			if (!table[(unsigned char)area[i][j]]
-				&& area[i][j] != '0')
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	search_elements(t_cub3d *mapdata, const char *elements)
+int	cub_search_elements(t_cub3d *mapdata, const char *elements)
 {
 	int	table[256];
 
 	ft_hash_table(table, 256);
 	ft_fill_valid_characters(elements, table);
-	if (!check_all_chars(mapdata->mapping.area, elements))
-		return (0);
-	cub_textures(mapdata);
+	if (!check_all_chars(mapdata->mapping.area, elements) \
+		|| !cub_textures(mapdata) \
+		|| !cub_colors(mapdata))
+		cub_error("Invalid Map!", mapdata);
+	
 	//debug
 	// print_textures(mapdata);
 	// debug

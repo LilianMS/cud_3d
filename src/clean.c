@@ -13,7 +13,7 @@ void	free_area(char **area)
 	free(area);
 }
 
-void	free_textures(t_cub3d *mapdata)
+void	cub_free_data(t_cub3d *mapdata)
 {
 	if (mapdata->texture.no)
 		free(mapdata->texture.no);
@@ -23,11 +23,15 @@ void	free_textures(t_cub3d *mapdata)
 		free(mapdata->texture.we);
 	if (mapdata->texture.ea)
 		free(mapdata->texture.ea);
+	if (mapdata->mapping.f_color)
+		free_area(mapdata->mapping.f_color);
+	if (mapdata->mapping.c_color)
+		free_area(mapdata->mapping.c_color);
 }
 
 void	cub_clean(t_cub3d *mapdata)
 {
-	free_textures(mapdata);
+	cub_free_data(mapdata);
 	if (mapdata->mapping.area)
 		free_area(mapdata->mapping.area);
 	if (mapdata->map)

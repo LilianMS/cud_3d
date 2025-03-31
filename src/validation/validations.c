@@ -1,5 +1,26 @@
 #include "cub3d.h"
 
+int	check_forb_chars(char **area, int *table)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (area[i])
+	{
+		j = 0;
+		while (area[i][j])
+		{
+			if (!table[(unsigned char)area[i][j]]
+				&& area[i][j] != '0')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 static int	cub_file(char *str)
 {
 	char	*cub;
@@ -49,8 +70,8 @@ static void	cub_read_area(t_cub3d *mapdata)
 	// int	i;
 
 	// i = 0;
-	if (!search_elements(mapdata, "NSWEAOFC"))
-		cub_error("Invalid Map!", mapdata);
+	
+	extract_map_from_area(mapdata);
 	//
 }
 
@@ -64,12 +85,15 @@ int	cub_valid(t_cub3d *mapdata)
 	// debug
 	// print_area(mapdata->mapping.area);
 	// debug
+	cub_search_elements(mapdata, "NSWEAOFC");
 	cub_read_area(mapdata);
-	extract_map_from_area(mapdata);
+	
 	// checar se o mapa é válido
 	// verificar se o mapa é fechado
 	// verificar se o mapa tem uma posição inicial de player
-	mapdata->tile_size = calculate_tile_size(WIDTH, HEIGHT, mapdata->map_width, mapdata->map_height);
+	mapdata->tile_size = calculate_tile_size(WIDTH, HEIGHT, \
+											mapdata->map_width, \
+											mapdata->map_height);
 	find_player_start(mapdata);
 	return (1);
 }
