@@ -23,9 +23,11 @@ typedef struct s_map
 {
 	char	*file;
 	char	**area;
-	char	**map;
+	char	**f_color;
+	char	**c_color;
+	// char	**map;
 	int		lines;
-	int		cols;
+	// int		cols;
 }	t_map;
 
 typedef struct s_texture
@@ -56,16 +58,21 @@ typedef struct s_cub3d
 
 // utils.c 
 void	cub_error(const char *str, t_cub3d *mapdata);
+void	remove_newline(char ***colors);
+int		ft_array_len(char **array);
 
 //validations.c
 int		cub_valid(t_cub3d *mapdata);
 
 // validation_utils.c
-int		search_elements(t_cub3d *mapdata, const char *elements);
+int		cub_search_elements(t_cub3d *mapdata, const char *elements);
 
 // check_chars.c
 int		check_all_chars(char **area, const char *valid_chars);
 int		cub_textures(t_cub3d *mapdata);
+
+// check_elements.c
+int		cub_colors(t_cub3d *mapdata);
 
 //mlx_utils.c - inicialização de mlx e chamada de outras funções de renderização
 void	initialize_mlx(t_cub3d *mapdata);

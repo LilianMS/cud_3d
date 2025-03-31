@@ -92,6 +92,9 @@ int	cub_textures(t_cub3d *mapdata)
 	}
 	if (!mapdata->texture.no || !mapdata->texture.so
 		|| !mapdata->texture.we || !mapdata->texture.ea)
-		cub_error("Invalid textures!", mapdata);
-	return (0);
+	{
+		ft_putendl_fd("Invalid textures!", 2);
+		return (0);
+	}
+	return (1);
 }
