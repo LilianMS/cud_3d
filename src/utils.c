@@ -10,7 +10,7 @@ void	cub_error(const char *str, t_cub3d *mapdata)
 	exit(EXIT_FAILURE);
 }
 
-void	remove_newline(char ***colors)
+void	ft_remove_newline(char ***colors)
 {
 	int	i;
 
