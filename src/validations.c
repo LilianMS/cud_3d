@@ -66,6 +66,9 @@ int	cub_valid(t_cub3d *mapdata)
 	// debug
 	cub_read_area(mapdata);
 	extract_map_from_area(mapdata);
+	// checar se o mapa é válido
+	// verificar se o mapa é fechado
+	// verificar se o mapa tem uma posição inicial de player
 	mapdata->tile_size = calculate_tile_size(WIDTH, HEIGHT, mapdata->map_width, mapdata->map_height);
 	find_player_start(mapdata);
 	return (1);

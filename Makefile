@@ -17,6 +17,7 @@ SRC_FILE =  \
 	mlx_utils \
 	map \
 	map_utils \
+	map_utils_2 \
 	movement \
 	wall \
 	utils \

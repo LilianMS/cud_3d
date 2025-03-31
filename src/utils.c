@@ -9,4 +9,3 @@ void	cub_error(const char *str, t_cub3d *mapdata)
 		cub_clean(mapdata);
 	exit(EXIT_FAILURE);
 }
-

@@ -1,10 +1,10 @@
 #include "cub3d.h"
 
-static void	movement_vector(t_cub3d *mapdata, float move_speed, float *dx, float *dy)
+static void	movement_vector(t_cub3d *mapdata, float move_speed, \
+							float *dx, float *dy)
 {
 	*dx = 0.0f;
 	*dy = 0.0f;
-
 	if (mapdata->keys[MLX_KEY_W])
 	{
 		*dx -= -move_speed * cos(mapdata->player_angle);
@@ -26,7 +26,6 @@ static void	movement_vector(t_cub3d *mapdata, float move_speed, float *dx, float
 		*dy -= move_speed * -sin(mapdata->player_angle + M_PI_2);
 	}
 }
-
 
 static void	player_rotation(t_cub3d *mapdata, float rotate_speed)
 {
