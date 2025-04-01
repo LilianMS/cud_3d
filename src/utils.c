@@ -12,12 +12,13 @@ void	cub_error(const char *str, t_cub3d *mapdata)
 
 void	ft_remove_newline(char ***colors)
 {
-	int	i;
+	char	*newline;
+	int		i;
 
 	i = 0;
 	while ((*colors)[i])
 	{
-		char *newline = ft_strchr((*colors)[i], '\n');
+		newline = ft_strchr((*colors)[i], '\n');
 		if (newline)
 			*newline = '\0';
 		i++;
@@ -32,4 +33,14 @@ int	ft_array_len(char **array)
 	while (array[len])
 		len++;
 	return (len);
+}
+
+int	ft_if_surrounded_by_walls(char **area, t_pos pos, char wall)
+{
+	if (area[pos.y + 1][pos.x] == wall \
+		&& area[pos.y][pos.x + 1] == wall \
+		&& area[pos.y - 1][pos.x] == wall \
+		&& area[pos.y][pos.x - 1] == wall)
+		return (1);
+	return (0);
 }

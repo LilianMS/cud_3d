@@ -63,6 +63,7 @@ typedef struct s_cub3d
 void	cub_error(const char *str, t_cub3d *mapdata);
 void	ft_remove_newline(char ***colors);
 int		ft_array_len(char **array);
+int		ft_if_surrounded_by_walls(char **area, t_pos pos, char wall);
 
 //validations.c
 int		cub_valid(t_cub3d *mapdata);
@@ -80,6 +81,7 @@ int		cub_colors(t_cub3d *mapdata);
 
 // map_validation.c
 void	cub_player_validation(t_cub3d *mapdata, t_pos pos);
+void	cub_map_validation(t_cub3d *mapdata, t_pos pos);
 
 //mlx_utils.c - inicialização de mlx e chamada de outras funções de renderização
 void	initialize_mlx(t_cub3d *mapdata);

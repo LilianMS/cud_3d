@@ -79,6 +79,7 @@ static void	cub_read_area(t_cub3d *mapdata)
 	mapdata->tile_size = calculate_tile_size(WIDTH, HEIGHT, \
 		mapdata->map_width, \
 		mapdata->map_height);
+	cub_map_validation(mapdata, mapdata->p_pos);
 	find_player_start(mapdata); // encontrar a posição do player
 }
 
