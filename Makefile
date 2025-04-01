@@ -25,6 +25,7 @@ SRC_FILE =  \
 	validation/validation_utils \
 	validation/check_chars \
 	validation/check_elements \
+	validation/map_validation \
 	clean \
 	debug \
 
