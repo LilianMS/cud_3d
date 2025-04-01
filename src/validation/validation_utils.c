@@ -22,15 +22,26 @@ void	ft_fill_valid_characters(const char *valid_chars, int *table)
 
 int	check_map_position(t_cub3d *mapdata, int end)
 {
+	char	**area;
+	int		x;
+
+	area = mapdata->mapping.area;
 	end++;
-	if (mapdata->mapping.area[end] \
-		&& !is_map_line(mapdata->mapping.area[end]) \
-		&& mapdata->mapping.area[end][0] != '\n' \
-		&& mapdata->mapping.area[end][0] != '\0'
-		&& mapdata->mapping.area[end][0] != ' ')
+	while (area[end])
 	{
-		cub_error("The map is NOT in the last position of the file", mapdata);
-		return (0);
+		x = 0;
+		while (area[end] && (area[end][0] == '\n' || area[end][0] == '\0'))
+			end++;
+		if (area[end] == NULL)
+			break ;
+		while (area[end][x] && ft_isspace(area[end][x]))
+			x++;
+		if (area[end][x] && area[end][x] != '\n' && area[end][x] != '\0')
+		{
+			cub_error("The map is NOT in the last position of the file", mapdata);
+			return (0);
+		}
+		end++;
 	}
 	return (1);
 }
@@ -45,7 +56,7 @@ int	cub_search_elements(t_cub3d *mapdata, const char *elements)
 		|| !cub_textures(mapdata) \
 		|| !cub_colors(mapdata))
 		cub_error("Invalid Map!", mapdata);
-	
+
 	//debug
 	// print_textures(mapdata);
 	// debug
