@@ -12,6 +12,7 @@
 # define WIDTH 1024 // tamanho da tela
 # define HEIGHT 512
 # define MAX_LINES 1024
+# define MAX_COLS 1024
 
 typedef struct s_pos
 {
@@ -46,14 +47,16 @@ typedef struct s_cub3d
 	int			map_height;
 	int			tile_size;
 	int			**matrix;
+	int			player_dir;
 	float		player_x;
 	float		player_y;
 	float		player_angle;
 	bool		keys[512];
-	mlx_t		*mlx;
-	mlx_image_t	*img;
+	t_pos		p_pos;
 	t_texture	texture;
 	t_map		mapping;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
 }	t_cub3d;
 
 // utils.c 
@@ -74,6 +77,9 @@ int		cub_textures(t_cub3d *mapdata);
 
 // check_elements.c
 int		cub_colors(t_cub3d *mapdata);
+
+// map_validation.c
+void	cub_player_validation(t_cub3d *mapdata, t_pos pos);
 
 //mlx_utils.c - inicialização de mlx e chamada de outras funções de renderização
 void	initialize_mlx(t_cub3d *mapdata);

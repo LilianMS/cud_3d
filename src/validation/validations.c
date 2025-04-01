@@ -71,15 +71,15 @@ static void	cub_read_area(t_cub3d *mapdata)
 	// verificar se o mapa é fechado
 	// verificar se o mapa tem uma posição inicial UNICA do player
 	extract_map_from_area(mapdata);
-	find_player_start(mapdata); // encontrar a posição do player
-		// - is_valid_player(mapdata); // não ter mais de um player
+	cub_player_validation(mapdata, (t_pos){0, 0});
 	//is_valid_map(mapdata);
-		// - is_valid_walls(mapdata); // checar se os espaços estão cercados por 1
-		// - flood_fill(mapdata); // checar se o mapa é fechado
-		// - area_visited(mapdata); // checar se o caminho é válido
+	// - is_valid_walls(mapdata); // checar se os espaços estão cercados por 1
+	// - flood_fill(mapdata); // checar se o mapa é fechado
+	// - area_visited(mapdata); // checar se o caminho é válido
 	mapdata->tile_size = calculate_tile_size(WIDTH, HEIGHT, \
 		mapdata->map_width, \
 		mapdata->map_height);
+	find_player_start(mapdata); // encontrar a posição do player
 }
 
 int	cub_check_invalid_chars(t_cub3d *mapdata, t_pos pos)
