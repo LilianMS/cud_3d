@@ -87,13 +87,12 @@ void	cub_map_validation(t_cub3d *mapdata, t_pos pos);
 void	initialize_mlx(t_cub3d *mapdata);
 
 //map_utils.c - funções adicionais para o mapa
-void	extract_map_from_area(t_cub3d *mapdata);
+void	cub_extract_map(t_cub3d *mapdata);
 int		is_map_line(char *line);
 int		calculate_tile_size(int screen_width, int screen_height, int map_width, int map_height);
 
 // map_utils_2.c - + funções adicionais para o mapa
-void	allocate_and_copy_map(t_cub3d *mapdata, int start, int map_lines);
-void	calculate_map_dimensions(t_cub3d *mapdata, int map_lines);
+void	allocate_and_copy_map(t_cub3d *mapdata, int start, int map_lines, t_pos pos);
 
 //map.c - inicialização de renderização do mapa (futuro minimapa)
 void	init_map(t_cub3d *mapdata);

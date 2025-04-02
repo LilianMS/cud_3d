@@ -15,19 +15,19 @@ FLAGSMLX = -ldl -lglfw -pthread -lm
 SRC_FILE =  \
 	main \
 	mlx_utils \
-	map \
-	map_utils \
-	map_utils_2 \
+	map/map \
+	map/map_utils \
+	map/map_utils_2 \
 	movement \
 	wall \
-	utils \
+	tools/utils \
 	validation/validations \
 	validation/validation_utils \
 	validation/check_chars \
 	validation/check_elements \
 	validation/map_validation \
-	clean \
-	debug \
+	tools/clean \
+	tools/debug \
 
 SRC = $(addsuffix .c, $(addprefix ./src/, $(SRC_FILE)))
 

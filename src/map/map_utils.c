@@ -58,7 +58,7 @@ static int	find_map_end(char **area, int start)
 	return (end);
 }
 
-void	extract_map_from_area(t_cub3d *mapdata)
+void	cub_extract_map(t_cub3d *mapdata)
 {
 	int	start;
 	int	end;
@@ -70,6 +70,5 @@ void	extract_map_from_area(t_cub3d *mapdata)
 	end = find_map_end(mapdata->mapping.area, start);
 	map_lines = end - start;
 	check_map_position(mapdata, end); // Checa posição do mapa --->> ?! verificar se é necessário
-	allocate_and_copy_map(mapdata, start, map_lines);
-	calculate_map_dimensions(mapdata, map_lines);
+	allocate_and_copy_map(mapdata, start, map_lines, (t_pos){0, 0});
 }
