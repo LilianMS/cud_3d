@@ -1,26 +1,5 @@
 #include "cub3d.h"
 
-// int	check_forb_chars(char **area, int *table)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	while (area[i])
-// 	{
-// 		j = 0;
-// 		while (area[i][j])
-// 		{
-// 			if (!table[(unsigned char)area[i][j]]
-// 				&& area[i][j] != '0')
-// 				return (0);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	return (1);
-// }
-
 static int	cub_file(char *str)
 {
 	char	*cub;
@@ -67,19 +46,15 @@ int	cub_read_file(t_cub3d *mapdata)
 
 static void	cub_read_area(t_cub3d *mapdata)
 {
-	// checar se o mapa é válido
-	// verificar se o mapa é fechado
-	// verificar se o mapa tem uma posição inicial UNICA do player
-	extract_map_from_area(mapdata);
+	cub_extract_map(mapdata); // extrai o mapa e calcula dimensões ---- OK
 	cub_player_validation(mapdata, (t_pos){0, 0});
-	//is_valid_map(mapdata);
-	// - is_valid_walls(mapdata); // checar se os espaços estão cercados por 1
-	// - flood_fill(mapdata); // checar se o mapa é fechado
-	// - area_visited(mapdata); // checar se o caminho é válido
 	mapdata->tile_size = calculate_tile_size(WIDTH, HEIGHT, \
-		mapdata->map_width, \
-		mapdata->map_height);
+												mapdata->map_width, \
+												mapdata->map_height);
 	cub_map_validation(mapdata, mapdata->p_pos);
+		// - is_valid_walls(mapdata); // checar se os espaços estão cercados por 1 // paredes ---- OK
+		// - flood_fill(mapdata); // checar se o mapa é fechado
+		// - area_visited(mapdata); // checar se o caminho é válido
 	find_player_start(mapdata); // encontrar a posição do player
 }
 
@@ -119,9 +94,6 @@ int	cub_valid(t_cub3d *mapdata)
 	if (!cub_file(mapdata->mapping.file))
 		cub_error("Incorrect file type. It's not '*.cub'!", mapdata);
 	cub_read_file(mapdata);
-	// debug
-	// print_area(mapdata->mapping.area);
-	// debug
 	cub_search_elements(mapdata, "NSWEAOFC");
 	cub_check_invalid_chars(mapdata, (t_pos){0, 0});
 	cub_read_area(mapdata);
