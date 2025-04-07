@@ -31,16 +31,20 @@ static void	if_pos_zero(t_cub3d *mapdata, t_pos pos)
 		|| pos.y - 1 < 0 || pos.x - 1 < 0) \
 		|| (mapdata->map[pos.y + 1][pos.x] == '\0' \
 			|| mapdata->map[pos.y + 1][pos.x] == ' ' \
-			|| mapdata->map[pos.y + 1][pos.x] == '\n' ) \
+			|| mapdata->map[pos.y + 1][pos.x] == '\n' \
+			|| mapdata->map[pos.y + 1][pos.x] == '9') \
 		|| (mapdata->map[pos.y][pos.x + 1] == '\0' \
 			|| mapdata->map[pos.y][pos.x + 1] == ' ' \
-			|| mapdata->map[pos.y][pos.x + 1] == '\n') \
+			|| mapdata->map[pos.y][pos.x + 1] == '\n' \
+			|| mapdata->map[pos.y][pos.x + 1] == '9') \
 		|| (mapdata->map[pos.y - 1][pos.x] == '\0' \
 			|| mapdata->map[pos.y - 1][pos.x] == ' ' \
-			|| mapdata->map[pos.y - 1][pos.x] == '\n') \
+			|| mapdata->map[pos.y - 1][pos.x] == '\n' \
+			|| mapdata->map[pos.y - 1][pos.x] == '9') \
 		|| (mapdata->map[pos.y][pos.x - 1] == '\0' \
 			|| mapdata->map[pos.y][pos.x - 1] == ' ' \
-			|| mapdata->map[pos.y][pos.x - 1] == '\n'))
+			|| mapdata->map[pos.y][pos.x - 1] == '\n' \
+			|| mapdata->map[pos.y][pos.x - 1] == '9'))
 		cub_error("Invalid wall in map!", mapdata);
 }
 
@@ -66,10 +70,33 @@ static void	is_valid_walls(t_cub3d *mapdata, t_pos pos)
 	}
 }
 
-void	cub_map_validation(t_cub3d *mapdata, t_pos pos)
+void	cub_check_area_visited(t_cub3d *mapdata)
 {
-	(void)pos;
-	is_valid_walls(mapdata, (t_pos){0, 0});
-	// - flood_fill(mapdata); 
-	// - area_visited(mapdata); // checar se o caminho é válido
+	int	i;
+	int	j;
+
+	i = 0;
+	while (mapdata->flood_map[i])
+	{
+		j = 0;
+		while (mapdata->flood_map[i][j])
+		{
+			if (mapdata->flood_map[i][j] == '0')
+				cub_error("Invalid path!", mapdata);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	cub_map_validation(t_cub3d *mapdata, t_pos p_pos)
+{
+	(void) p_pos;
+	is_valid_walls(mapdata, (t_pos){0, 0}); // checa se o mapa está fechado
+	copy_map(mapdata);
+	cub_flood_fill(mapdata, p_pos);
+//////////////////////////////////
+	print_area(mapdata->flood_map); // debug
+/////////////////////////////////
+	cub_check_area_visited(mapdata); // checar se o caminho é válido
 }

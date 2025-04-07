@@ -43,6 +43,7 @@ typedef struct s_texture
 typedef struct s_cub3d
 {
 	char		**map;
+	char		**flood_map;
 	int			map_width;
 	int			map_height;
 	int			tile_size;
@@ -83,6 +84,10 @@ int		cub_colors(t_cub3d *mapdata);
 void	cub_player_validation(t_cub3d *mapdata, t_pos pos);
 void	cub_map_validation(t_cub3d *mapdata, t_pos pos);
 
+// map_validation_utils.c
+void	cub_flood_fill(t_cub3d *mapdata, t_pos pos);
+void	copy_map(t_cub3d *mapdata);
+
 //mlx_utils.c - inicialização de mlx e chamada de outras funções de renderização
 void	initialize_mlx(t_cub3d *mapdata);
 
@@ -112,6 +117,7 @@ void	wall_sliding(t_cub3d *mapdata, float dx, float dy);
 
 // clean.c
 void	cub_clean(t_cub3d *mapdata);
+void	free_area(char **area);
 
 //debug --- retirar funções de debug ao finalizar projeto
 //   não esquecer de remover todos os comentários em português

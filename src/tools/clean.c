@@ -32,6 +32,8 @@ void	cub_free_data(t_cub3d *mapdata)
 void	cub_clean(t_cub3d *mapdata)
 {
 	cub_free_data(mapdata);
+	if (mapdata->flood_map)
+		free_area(mapdata->flood_map);
 	if (mapdata->mapping.area)
 		free_area(mapdata->mapping.area);
 	if (mapdata->map)
