@@ -52,10 +52,7 @@ static void	cub_read_area(t_cub3d *mapdata)
 												mapdata->map_width, \
 												mapdata->map_height);
 	cub_map_validation(mapdata, mapdata->p_pos);
-		// - is_valid_walls(mapdata); // checar se os espaços estão cercados por 1 // paredes ---- OK
-		// - flood_fill(mapdata); // checar se o mapa é fechado
-		// - area_visited(mapdata); // checar se o caminho é válido
-	find_player_start(mapdata); // encontrar a posição do player
+	find_player_start(mapdata); // seta a posição do player
 }
 
 int	cub_check_invalid_chars(t_cub3d *mapdata, t_pos pos)

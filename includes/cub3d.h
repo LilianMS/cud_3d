@@ -33,28 +33,32 @@ typedef struct s_map
 
 typedef struct s_texture
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	mlx_texture_t	*north;
+    mlx_texture_t	*south;
+    mlx_texture_t	*west;
+    mlx_texture_t	*east;
 
 }	t_texture;
 
 typedef struct s_cub3d
 {
 	char		**map;
-	char		**flood_map;
+	char		**flood_map; // copia do mapa para o flood fill
 	int			map_width;
 	int			map_height;
 	int			tile_size;
 	int			**matrix;
-	int			player_dir;
+	int			player_dir; // direção
 	float		player_x;
 	float		player_y;
 	float		player_angle;
 	bool		keys[512];
-	t_pos		p_pos;
-	t_texture	texture;
+	t_pos		p_pos; // posição do jogador
+	t_texture	texture; // nome das texturas e carregamento das texturas
 	t_map		mapping;
 	mlx_t		*mlx;
 	mlx_image_t	*img;

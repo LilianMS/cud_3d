@@ -1,7 +1,7 @@
-EA ./asset/texture/east.png
-WE ./asset/texture/west.png
-SO ./asset/texture/south.png
-NO ./asset/texture/north.png
+EA ./assets/texture/east.png
+WE ./assets/texture/west.png
+SO ./assets/texture/south.png
+NO ./assets/texture/north.png
 
 111111
 100101
