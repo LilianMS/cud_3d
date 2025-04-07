@@ -15,6 +15,14 @@ void	free_area(char **area)
 
 void	cub_free_data(t_cub3d *mapdata)
 {
+	if (mapdata->texture.north)
+		mlx_delete_texture(mapdata->texture.north);
+	if (mapdata->texture.south)
+		mlx_delete_texture(mapdata->texture.south);
+	if (mapdata->texture.west)
+		mlx_delete_texture(mapdata->texture.west);
+	if (mapdata->texture.east)
+		mlx_delete_texture(mapdata->texture.east);
 	if (mapdata->texture.no)
 		free(mapdata->texture.no);
 	if (mapdata->texture.so)
