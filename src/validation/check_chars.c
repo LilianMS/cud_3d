@@ -71,6 +71,19 @@ char	*handle_textures(int dir, char *str)
 	return (texture);
 }
 
+int	check_name_texture(t_cub3d *mapdata)
+{
+	if (!ft_check_kind_file(mapdata->texture.no, ".png") \
+		|| !ft_check_kind_file(mapdata->texture.so, ".png") \
+		|| !ft_check_kind_file(mapdata->texture.we, ".png") \
+		|| !ft_check_kind_file(mapdata->texture.ea, ".png"))
+	{
+		cub_error("All texture files must be of type .png", mapdata);
+		return (0);
+	}
+	return (1);
+}
+
 int	cub_textures(t_cub3d *mapdata)
 {
 	char	**area;
@@ -90,8 +103,9 @@ int	cub_textures(t_cub3d *mapdata)
 			mapdata->texture.ea = handle_textures('E', area[i]);
 		i++;
 	}
-	if (!mapdata->texture.no || !mapdata->texture.so
-		|| !mapdata->texture.we || !mapdata->texture.ea)
+	if (!mapdata->texture.no || !mapdata->texture.so \
+		|| !mapdata->texture.we || !mapdata->texture.ea \
+		|| !check_name_texture(mapdata))
 	{
 		cub_error("Invalid textures!", mapdata);
 		return (0);

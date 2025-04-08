@@ -94,7 +94,6 @@ void	initialize_mlx(t_cub3d *mapdata)
 	if (!img || (mlx_image_to_window(mapdata->mlx, img, 0, 0) < 0))
 		cub_error(mlx_strerror(mlx_errno), mapdata);
 	mapdata->img = img;
-	//init_map(mapdata); // função que seta o mapa
 	mlx_key_hook(mapdata->mlx, deal_key, mapdata);
 	mlx_loop_hook(mapdata->mlx, &render, mapdata);
 	mlx_loop(mapdata->mlx);

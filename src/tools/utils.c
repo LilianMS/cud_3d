@@ -44,3 +44,18 @@ int	ft_if_surrounded_by_walls(char **area, t_pos pos, char wall)
 		return (1);
 	return (0);
 }
+
+int	ft_check_kind_file(char *str, char *suffix)
+{
+	int		len;
+	int		i;
+
+	i = ft_strlen(suffix) - 1;
+	len = ft_strlen(str) - 1;
+	while (i >= 0)
+	{
+		if (str[len--] != suffix[i--])
+			return (0);
+	}
+	return (1);
+}

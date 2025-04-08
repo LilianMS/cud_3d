@@ -41,7 +41,6 @@ int	main(int ac, char **av)
 		cub_error("Argument with 'file.cub' is required!", NULL);
 	mapdata = malloc(sizeof(t_cub3d));
 	cub_starts(av, mapdata);
-	
 	initialize_mlx(mapdata);
 	cub_clean(mapdata);
 	return (0);
