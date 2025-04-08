@@ -20,6 +20,19 @@ void	ft_fill_valid_characters(const char *valid_chars, int *table)
 	}
 }
 
+int	cub_search_elements(t_cub3d *mapdata, const char *elements)
+{
+	int	table[256];
+
+	ft_hash_table(table, 256);
+	ft_fill_valid_characters(elements, table);
+	if (!check_all_chars(mapdata->mapping.area, elements) \
+		|| !cub_textures(mapdata) \
+		|| !cub_colors(mapdata))
+		cub_error("Invalid Map!", mapdata);
+	return (1);
+}
+
 int	check_map_position(t_cub3d *mapdata, int end)
 {
 	char	**area;
@@ -38,27 +51,10 @@ int	check_map_position(t_cub3d *mapdata, int end)
 			x++;
 		if (area[end][x] && area[end][x] != '\n' && area[end][x] != '\0')
 		{
-			cub_error("The map is NOT in the last position of the file", mapdata);
+			cub_error("Map is not at the end of the file", mapdata);
 			return (0);
 		}
 		end++;
 	}
-	return (1);
-}
-
-int	cub_search_elements(t_cub3d *mapdata, const char *elements)
-{
-	int	table[256];
-
-	ft_hash_table(table, 256);
-	ft_fill_valid_characters(elements, table);
-	if (!check_all_chars(mapdata->mapping.area, elements) \
-		|| !cub_textures(mapdata) \
-		|| !cub_colors(mapdata))
-		cub_error("Invalid Map!", mapdata);
-
-	//debug
-	// print_textures(mapdata);
-	// debug
 	return (1);
 }

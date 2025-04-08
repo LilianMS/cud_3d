@@ -10,9 +10,11 @@
 # include "../lib/libft/includes/libft.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # define WIDTH 1024 // tamanho da tela
-# define HEIGHT 512
-# define MAX_LINES 1024
-# define MAX_COLS 1024
+# define HEIGHT 768 // estava 512
+# define MAX_LINES 100
+# define MAX_WIDTH 100
+# define MIN_LINES 4
+# define MIN_WIDTH 3
 
 typedef struct s_pos
 {
@@ -38,16 +40,15 @@ typedef struct s_texture
 	char			*we;
 	char			*ea;
 	mlx_texture_t	*north;
-    mlx_texture_t	*south;
-    mlx_texture_t	*west;
-    mlx_texture_t	*east;
-
+	mlx_texture_t	*south;
+	mlx_texture_t	*west;
+	mlx_texture_t	*east;
 }	t_texture;
 
 typedef struct s_cub3d
 {
 	char		**map;
-	char		**flood_map; // copia do mapa para o flood fill
+	char		**flood_map; // cópia do mapa para o flood fill
 	int			map_width;
 	int			map_height;
 	int			tile_size;
@@ -58,7 +59,7 @@ typedef struct s_cub3d
 	float		player_angle;
 	bool		keys[512];
 	t_pos		p_pos; // posição do jogador
-	t_texture	texture; // nome das texturas e carregamento das texturas
+	t_texture	texture; // path e carregamento das texturas
 	t_map		mapping;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
@@ -69,6 +70,7 @@ void	cub_error(const char *str, t_cub3d *mapdata);
 void	ft_remove_newline(char ***colors);
 int		ft_array_len(char **array);
 int		ft_if_surrounded_by_walls(char **area, t_pos pos, char wall);
+int		ft_check_kind_file(char *str, char *suffix);
 
 //validations.c
 int		cub_valid(t_cub3d *mapdata);
