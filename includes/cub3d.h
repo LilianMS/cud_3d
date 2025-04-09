@@ -11,6 +11,11 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # define WIDTH 1024 // tamanho da tela
 # define HEIGHT 768 // estava 512
+# define MINIMAP_AREA_W   200
+# define MINIMAP_AREA_H   200
+# define MINIMAP_OFFSET_X 10
+# define MINIMAP_OFFSET_Y 10
+# define FOV (M_PI / 3.0)
 # define MAX_LINES 100
 # define MAX_WIDTH 100
 # define MIN_LINES 4
@@ -53,7 +58,7 @@ typedef struct s_cub3d
 	int			map_height;
 	int			tile_size;
 	int			**matrix;
-	int			player_dir; // direção
+	int			player_dir; // direção (o mesmo que player_angle)?
 	float		player_x;
 	float		player_y;
 	float		player_angle;
@@ -100,7 +105,7 @@ void	initialize_mlx(t_cub3d *mapdata);
 //map_utils.c - funções adicionais para o mapa
 void	cub_extract_map(t_cub3d *mapdata);
 int		is_map_line(char *line);
-int		calculate_tile_size(int screen_width, int screen_height, int map_width, int map_height);
+int		calculate_tile_size(int map_width, int map_height);
 
 // map_utils_2.c - + funções adicionais para o mapa
 void	allocate_and_copy_map(t_cub3d *mapdata, int start, int map_lines, t_pos pos);
@@ -124,6 +129,9 @@ void	wall_sliding(t_cub3d *mapdata, float dx, float dy);
 // clean.c
 void	cub_clean(t_cub3d *mapdata);
 void	free_area(char **area);
+
+//raycasting.c
+void	render_3d(t_cub3d *mapdata);
 
 //debug --- retirar funções de debug ao finalizar projeto
 //   não esquecer de remover todos os comentários em português

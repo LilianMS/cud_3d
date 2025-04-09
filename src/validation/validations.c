@@ -31,8 +31,7 @@ static void	cub_read_area(t_cub3d *mapdata)
 {
 	cub_extract_map(mapdata); // extrai o mapa e calcula dimensões ---- OK
 	cub_player_validation(mapdata, (t_pos){0, 0});
-	mapdata->tile_size = calculate_tile_size(WIDTH, HEIGHT, \
-												mapdata->map_width, \
+	mapdata->tile_size = calculate_tile_size(mapdata->map_width, \
 												mapdata->map_height);
 	cub_map_validation(mapdata, mapdata->p_pos);
 	find_player_start(mapdata); // seta a posição do player

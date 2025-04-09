@@ -29,6 +29,7 @@ SRC_FILE =  \
 	validation/map_validation_utils \
 	tools/clean \
 	tools/debug \
+	raycasting/render
 
 SRC = $(addsuffix .c, $(addprefix ./src/, $(SRC_FILE)))
 

@@ -1,27 +1,30 @@
 #include "cub3d.h"
 #include <stdint.h> //para uint32_t
 
-//função temporária para pintar o background do minimapa de cinza
-static void	fill_gray(mlx_image_t *img)
+static void clear_minimap_area(t_cub3d *mapdata)
 {
-	int			x;
-	int			y;
-	uint32_t	gray_color;
+	int x;
+	int y;
+	int color;
+	int width;
+	int height;
 
-	gray_color = 0x888888FF;
-	y = 0;
-	while (y < (int)img->height)
+	color = 0x333333FF;
+	width = MINIMAP_OFFSET_X + (mapdata->map_width * mapdata->tile_size);
+	height = MINIMAP_OFFSET_Y + (mapdata->map_height * mapdata->tile_size);
+	y = MINIMAP_OFFSET_Y;
+	while (y < height)
 	{
-		x = 0;
-		while (x < (int)img->width)
+		x = MINIMAP_OFFSET_X;
+		while (x < width)
 		{
-			if (x >= 0 && x < (int)img->width && y >= 0 && y < (int)img->height)
-				mlx_put_pixel(img, x, y, gray_color);
+			mlx_put_pixel(mapdata->img, x, y, color);
 			x++;
 		}
 		y++;
 	}
 }
+
 
 static void	render_player(t_cub3d *mapdata)
 {
@@ -38,8 +41,8 @@ static void	render_player(t_cub3d *mapdata)
 		dx = -player_size;
 		while (dx <= player_size)
 		{
-			px = (int)(mapdata->player_x + dx);
-			py = (int)(mapdata->player_y + dy);
+			px = MINIMAP_OFFSET_X + (int)(mapdata->player_x + dx);
+			py = MINIMAP_OFFSET_Y + (int)(mapdata->player_y + dy);
 			if (px >= 0 && px < WIDTH && py >= 0 && py < HEIGHT)
 				mlx_put_pixel(mapdata->img, px, py, 0xFFFF00FF);
 			dx++;
@@ -62,8 +65,8 @@ static void	render_direction(t_cub3d *mapdata)
 	i = 0;
 	while (i < 20)
 	{
-		px = (int)(mapdata->player_x + dir_x * i);
-		py = (int)(mapdata->player_y - dir_y * i);
+		px = MINIMAP_OFFSET_X + (int)(mapdata->player_x + dir_x * i);
+		py = MINIMAP_OFFSET_Y + (int)(mapdata->player_y - dir_y * i);
 		if (px >= 0 && px < WIDTH && py >= 0 && py < HEIGHT)
 			mlx_put_pixel(mapdata->img, px, py, 0xFFA500FF);
 		i++;
@@ -76,7 +79,9 @@ static void	render(void *param)
 
 	mapdata = (t_cub3d *)param;
 	handle_movement(mapdata);
-	fill_gray(mapdata->img);
+	render_3d(mapdata);
+	clear_minimap_area(mapdata);
+	//fill_gray(mapdata->img);
 	draw_minimap(mapdata);
 	render_player(mapdata);
 	render_direction(mapdata);

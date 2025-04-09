@@ -1,19 +1,19 @@
 #include "cub3d.h"
 
-static void	set_player_start(t_cub3d *mapdata, int row, int col, char start)
+static void set_player_start(t_cub3d *mapdata, int row, int col, char start)
 {
-	mapdata->player_x = (col + 0.5f) * mapdata->tile_size;
-	mapdata->player_y = (row + 0.5f) * mapdata->tile_size;
-	if (start == 'N')
-		mapdata->player_angle = M_PI / 2; // 90°
-	else if (start == 'S')
-		mapdata->player_angle = 3 * M_PI / 2; // 270°
-	else if (start == 'E')
-		mapdata->player_angle = 0;
-	else if (start == 'W')
-		mapdata->player_angle = M_PI;
-	return ;
+    mapdata->player_x = (col + 0.5f) * mapdata->tile_size;
+    mapdata->player_y = (row + 0.5f) * mapdata->tile_size;
+    if (start == 'N')
+        mapdata->player_angle = M_PI / 2;    // 90° = norte
+    else if (start == 'S')
+        mapdata->player_angle = 3 * M_PI / 2; // 270° = sul
+    else if (start == 'E')
+        mapdata->player_angle = 0;         // 0° = leste
+    else if (start == 'W')
+        mapdata->player_angle = M_PI;      // 180° = oeste
 }
+
 
 void	find_player_start(t_cub3d *mapdata)
 {
@@ -67,8 +67,8 @@ static void	draw_tile(t_cub3d *mapdata, int row, int column)
 	int	y_start;
 	int	x_start;
 
-	y_start = row * mapdata->tile_size;
-	x_start = column * mapdata->tile_size;
+	y_start = MINIMAP_OFFSET_Y + row * mapdata->tile_size;
+	x_start = MINIMAP_OFFSET_X + column * mapdata->tile_size;
 	draw_helper(mapdata, x_start, y_start);
 }
 

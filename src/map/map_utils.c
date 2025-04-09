@@ -1,13 +1,12 @@
 #include "cub3d.h"
 
-int	calculate_tile_size(int screen_width, int screen_height, \
-						int map_width, int map_height)
+int	calculate_tile_size(int map_width, int map_height)
 {
 	int	tile_w;
 	int	tile_h;
 
-	tile_w = screen_width / map_width;
-	tile_h = screen_height / map_height;
+	tile_w = MINIMAP_AREA_W / map_width;
+	tile_h = MINIMAP_AREA_H / map_height;
 	if (tile_w < tile_h)
 		return (tile_w);
 	else

@@ -1,29 +1,33 @@
 #include "cub3d.h"
 
-static void	movement_vector(t_cub3d *mapdata, float move_speed, \
-							float *dx, float *dy)
+static void movement_vector(t_cub3d *mapdata, float move_speed, float *dx, float *dy)
 {
-	*dx = 0.0f;
-	*dy = 0.0f;
-	if (mapdata->keys[MLX_KEY_W])
-	{
-		*dx -= -move_speed * cos(mapdata->player_angle);
-		*dy -= -move_speed * -sin(mapdata->player_angle);
-	}
-	if (mapdata->keys[MLX_KEY_S])
-	{
-		*dx -= move_speed * cos(mapdata->player_angle);
-		*dy -= move_speed * -sin(mapdata->player_angle);
-	}
+    *dx = 0.0f;
+    *dy = 0.0f;
+
+    // Para andar “para frente” (W), somamos cos no X e subtraímos sin no Y.
+    if (mapdata->keys[MLX_KEY_W])
+    {
+        *dx += move_speed * cos(mapdata->player_angle);
+        *dy -= move_speed * sin(mapdata->player_angle);
+    }
+    // Para andar “para trás” (S), é o oposto.
+    if (mapdata->keys[MLX_KEY_S])
+    {
+        *dx -= move_speed * cos(mapdata->player_angle);
+        *dy += move_speed * sin(mapdata->player_angle);
+    }
+    // Para strafe esquerdo (A): ângulo = player_angle - π/2
 	if (mapdata->keys[MLX_KEY_A])
 	{
-		*dx -= move_speed * cos(mapdata->player_angle - M_PI_2);
-		*dy -= move_speed * -sin(mapdata->player_angle - M_PI_2);
+		*dx += move_speed * cos(mapdata->player_angle + M_PI_2);
+		*dy -= move_speed * sin(mapdata->player_angle + M_PI_2);
 	}
+    // Para strafe direito (D): ângulo = player_angle + π/2
 	if (mapdata->keys[MLX_KEY_D])
 	{
-		*dx -= move_speed * cos(mapdata->player_angle + M_PI_2);
-		*dy -= move_speed * -sin(mapdata->player_angle + M_PI_2);
+		*dx += move_speed * cos(mapdata->player_angle - M_PI_2);
+		*dy -= move_speed * sin(mapdata->player_angle - M_PI_2);
 	}
 }
 
