@@ -41,7 +41,7 @@ Teste com 'maps/test_empty_png.cub': ERRO
 Executando teste com o arquivo: maps/valid_elements_disorder.cub
 Teste com 'maps/valid_elements_disorder.cub': SUCESSO
 Executando teste com o arquivo: maps/valid_elements_spaces.cub
-Teste com 'maps/valid_elements_spaces.cub': ERRO
+Teste com 'maps/valid_elements_spaces.cub': SUCESSO
 Executando teste com o arquivo: maps/valid_ideal.cub
 Teste com 'maps/valid_ideal.cub': SUCESSO
 Executando teste com o arquivo: maps/valid_newlines.cub

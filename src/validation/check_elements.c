@@ -24,12 +24,31 @@ static int	validate_color_values(char **colors)
 	return (1);
 }
 
-static char	**cub_handle_colors(t_cub3d *mapdata, int i)
+void	remove_end_spaces(char **str)
+{
+	int	len;
+
+	if (!str || !(*str))
+		return ;
+	len = ft_strlen(*str);
+	while (len > 0 && ft_isspace((*str)[len - 1]))
+		len--;
+	(*str)[len] = '\0';
+	ft_putstr_fd(*str, 1);
+	ft_putstr_fd("\\o/", 1);
+	ft_putstr_fd("\n", 1);
+}
+
+static char	**cub_handle_colors(t_cub3d *mapdata, int i, int j)
 {
 	char	**colors;
 
-	colors = ft_split(mapdata->mapping.area[i] + 2, ',');
+	if (ft_isspace(mapdata->mapping.area[i][j]))
+		while (ft_isspace(mapdata->mapping.area[i][j]))
+			j++;
+	colors = ft_split(mapdata->mapping.area[i] + j, ',');
 	ft_remove_newline(&colors);
+	remove_end_spaces(&colors[2]);
 	if (colors)
 	{
 		if (ft_array_len(colors) != 3 || !validate_color_values(colors))
@@ -53,7 +72,7 @@ static int	check_color_data(t_cub3d *mapdata)
 		if (mapdata->mapping.area[i][0] == 'F' \
 			|| mapdata->mapping.area[i][0] == 'C')
 		{
-			colors = cub_handle_colors(mapdata, i);
+			colors = cub_handle_colors(mapdata, i, 1);
 			if (colors)
 			{
 				if (mapdata->mapping.area[i][0] == 'F')

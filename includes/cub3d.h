@@ -85,6 +85,7 @@ int		cub_textures(t_cub3d *mapdata);
 
 // check_elements.c
 int		cub_colors(t_cub3d *mapdata);
+void	remove_end_spaces(char **str);
 
 // map_validation.c
 void	cub_player_validation(t_cub3d *mapdata, t_pos pos);
