@@ -1,5 +1,5 @@
 Executando teste com o arquivo: maps/invalid_elements_aftermap.cub
-Teste com 'maps/invalid_elements_aftermap.cub': SUCESSO
+Teste com 'maps/invalid_elements_aftermap.cub': ERRO
 Executando teste com o arquivo: maps/invalid_elements_garbage.cub
 Teste com 'maps/invalid_elements_garbage.cub': ERRO
 Executando teste com o arquivo: maps/invalid_elements_rgb_3commas.cub
@@ -17,7 +17,7 @@ Teste com 'maps/invalid_elements_texture_extension.cub': ERRO
 Executando teste com o arquivo: maps/invalid_elements_texture_missing.cub
 Teste com 'maps/invalid_elements_texture_missing.cub': ERRO
 Executando teste com o arquivo: maps/invalid_elements_texture_repeat.cub
-Teste com 'maps/invalid_elements_texture_repeat.cub': SUCESSO
+Teste com 'maps/invalid_elements_texture_repeat.cub': ERRO
 Executando teste com o arquivo: maps/invalid_empty.cub
 Teste com 'maps/invalid_empty.cub': ERRO
 Executando teste com o arquivo: maps/invalid_map_garbage_after.cub

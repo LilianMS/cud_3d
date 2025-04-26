@@ -34,9 +34,6 @@ void	remove_end_spaces(char **str)
 	while (len > 0 && ft_isspace((*str)[len - 1]))
 		len--;
 	(*str)[len] = '\0';
-	ft_putstr_fd(*str, 1);
-	ft_putstr_fd("\\o/", 1);
-	ft_putstr_fd("\n", 1);
 }
 
 static char	**cub_handle_colors(t_cub3d *mapdata, int i, int j)
