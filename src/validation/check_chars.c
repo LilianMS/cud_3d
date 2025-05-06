@@ -58,12 +58,12 @@ char	*handle_textures(int dir, char *str)
 	if (!texture)
 		return (NULL);
 	i = 0;
-	while (tmp_str[i] == ' ')
+	while (ft_isspace(tmp_str[i]))
 		i++;
 	j = 0;
 	while (tmp_str[i])
 	{
-		if (tmp_str[i] != ' ' && tmp_str[i] != '\n')
+		if (tmp_str[i] != '\n')
 			texture[j++] = tmp_str[i];
 		i++;
 	}
