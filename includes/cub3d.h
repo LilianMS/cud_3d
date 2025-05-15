@@ -6,6 +6,7 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h> //open
+# include <math.h>
 // # include <stdbool.h>
 # include "../lib/libft/includes/libft.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
@@ -20,6 +21,8 @@
 # define MAX_WIDTH 100
 # define MIN_LINES 4
 # define MIN_WIDTH 3
+// / Valor grande para evitar divisão por zero.
+# define VERY_BIG 1e30
 
 typedef struct s_pos
 {

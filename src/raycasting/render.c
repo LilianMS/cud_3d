@@ -1,11 +1,6 @@
 #include "cub3d.h"
-#include <math.h>
-#include <stdio.h>
 
-// Valor grande para evitar divisão por zero.
-#define VERY_BIG 1e30
-
-static void clear_3d_render(t_cub3d *mapdata)
+static void	clear_3d_render(t_cub3d *mapdata)
 {
 	int	x;
 	int	y;
@@ -21,29 +16,31 @@ static void clear_3d_render(t_cub3d *mapdata)
 		}
 		x++;
 	}
-};
-static void calculate_delta_distances(t_cub3d *mapdata)
+}
+
+static void	calculate_delta_distances(t_cub3d *mapdata)
 {
 	// deltaDistX / deltaDistY
 	if (mapdata->render.rayDirX == 0)
 		mapdata->render.deltaDistX = VERY_BIG;
 	else
 		mapdata->render.deltaDistX = fabs(1.0 / mapdata->render.rayDirX);
-
 	if (mapdata->render.rayDirY == 0)
 		mapdata->render.deltaDistY = VERY_BIG;
 	else
 		mapdata->render.deltaDistY = fabs(1.0 / mapdata->render.rayDirY);
 }
-static double	calculate_side_distance(double player_pos, int map_pos, double delta_dist, double ray_dir)
+
+static double	calculate_side_distance(double player_pos, int map_pos, \
+				double delta_dist, double ray_dir)
 {
 	if (ray_dir < 0)
-		return (player_pos - map_pos) * delta_dist;
+		return ((player_pos - map_pos) * delta_dist);
 	else
-		return (map_pos + 1.0 - player_pos) * delta_dist;
+		return ((map_pos + 1.0 - player_pos) * delta_dist);
 }
 
-static void initialize_ray_steps(t_cub3d *mapdata)
+static void	initialize_ray_steps(t_cub3d *mapdata)
 {
 	mapdata->render.stepX = ft_tern_op(mapdata->render.rayDirX < 0, -1, 1);
 	mapdata->render.stepY = ft_tern_op(mapdata->render.rayDirY < 0, -1, 1);
@@ -52,17 +49,17 @@ static void initialize_ray_steps(t_cub3d *mapdata)
 			mapdata->render.mapX,
 			mapdata->render.deltaDistX,
 			mapdata->render.rayDirX
-	);
+			);
 	mapdata->render.sideDistY = calculate_side_distance(
 			mapdata->player_y / mapdata->tile_size,
 			mapdata->render.mapY,
 			mapdata->render.deltaDistY,
 			mapdata->render.rayDirY
-	);
+			);
 }
 
 //DDA - descobre onde o raio bateu (e se vert ou hor) e retorna a distância perpendicular
-static void perform_dda(t_cub3d *mapdata, int *hit)
+static void	perform_dda(t_cub3d *mapdata, int *hit)
 {
 	while (!(*hit))
 	{
@@ -78,16 +75,21 @@ static void perform_dda(t_cub3d *mapdata, int *hit)
 			mapdata->render.mapY += mapdata->render.stepY;
 			mapdata->render.side = 1;
 		}
-		if (mapdata->render.mapY < 0 || mapdata->render.mapY >= mapdata->map_height ||
-			mapdata->render.mapX < 0 || mapdata->render.mapX >= mapdata->map_width)
+		if (mapdata->render.mapY < 0 \
+			|| mapdata->render.mapY >= mapdata->map_height \
+			|| mapdata->render.mapX < 0 \
+			|| mapdata->render.mapX >= mapdata->map_width)
 			*hit = 1; // saiu do mapa
-		else if (mapdata->map[mapdata->render.mapY][mapdata->render.mapX] == '1')
+		else if (mapdata-> \
+				map[mapdata->render.mapY][mapdata->render.mapX] == '1')
 			*hit = 1;
 	}
 }
 
-static void cast_single_ray(t_cub3d *mapdata)
+static void	cast_single_ray(t_cub3d *mapdata)
 {
+	int	hit;
+
 	mapdata->render.rayDirX = cos(mapdata->render.rayAngle);
 	mapdata->render.rayDirY = -sin(mapdata->render.rayAngle);
 	mapdata->render.mapX = (int)(mapdata->player_x / mapdata->tile_size);
@@ -97,28 +99,31 @@ static void cast_single_ray(t_cub3d *mapdata)
 	// stepX, stepY, sideDistX, sideDistY
 	initialize_ray_steps(mapdata);
 	// DDA loop
-	int hit = 0;
+	hit = 0;
 	perform_dda(mapdata, &hit);
 	// Distância perpendicular
 	if (mapdata->render.side == 0)
-		mapdata->render.perpWallDist = (
-				mapdata->render.mapX - (mapdata->player_x / mapdata->tile_size) \
+		mapdata->render.perpWallDist = (mapdata->render.mapX \
+				- (mapdata->player_x / mapdata->tile_size) \
 				+ (1 - mapdata->render.stepX) / 2.0) / mapdata->render.rayDirX;
 	else
-		mapdata->render.perpWallDist = (
-			mapdata->render.mapY - (mapdata->player_y / mapdata->tile_size) \
-			+ (1 - mapdata->render.stepY) / 2.0) / mapdata->render.rayDirY;
+		mapdata->render.perpWallDist = (mapdata->render.mapY \
+				- (mapdata->player_y / mapdata->tile_size) \
+				+ (1 - mapdata->render.stepY) / 2.0) / mapdata->render.rayDirY;
 	if (mapdata->render.perpWallDist < 0.0001)
 		mapdata->render.perpWallDist = 0.0001;
 }
 
 //faz o desenho de uma linha vertical
-static void draw_column_slice(t_cub3d *mapdata, int x)
+static void	draw_column_slice(t_cub3d *mapdata, int x)
 {
-	mapdata->render.lineHeight = (int)(HEIGHT / mapdata->render.perpWallDist);
-	mapdata->render.drawStart = (-mapdata->render.lineHeight / 2) + (HEIGHT / 2);
-	mapdata->render.drawEnd = (mapdata->render.lineHeight / 2) + (HEIGHT / 2);
+	int	y;
 
+	mapdata->render.lineHeight = \
+			(int)(HEIGHT / mapdata->render.perpWallDist);
+	mapdata->render.drawStart = \
+			(-mapdata->render.lineHeight / 2) + (HEIGHT / 2);
+	mapdata->render.drawEnd = (mapdata->render.lineHeight / 2) + (HEIGHT / 2);
 	if (mapdata->render.drawStart < 0)
 		mapdata->render.drawStart = 0;
 	if (mapdata->render.drawEnd >= HEIGHT)
@@ -128,7 +133,7 @@ static void draw_column_slice(t_cub3d *mapdata, int x)
 	if (mapdata->render.side == 1)
 		mapdata->render.wallColor = 0xFFAA00FF; // laranja
 	// Desenha pixel a pixel
-	int y = mapdata->render.drawStart;
+	y = mapdata->render.drawStart;
 	while (y < mapdata->render.drawEnd)
 	{
 		mlx_put_pixel(mapdata->img, x, y, mapdata->render.wallColor);
