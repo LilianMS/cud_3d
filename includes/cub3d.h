@@ -6,7 +6,7 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h> //open
-// # include <stdbool.h> 
+// # include <stdbool.h>
 # include "../lib/libft/includes/libft.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # define WIDTH 1024 // tamanho da tela
@@ -50,6 +50,29 @@ typedef struct s_texture
 	mlx_texture_t	*east;
 }	t_texture;
 
+typedef struct s_render
+{
+	int		side;
+	int		mapX;
+	int		mapY;
+	int		stepX;
+	int		stepY;
+	double	cameraX;
+	double	rayAngle;
+	double	perpWallDist;
+	double	rayDirX;
+	double	rayDirY;
+	double	deltaDistX;
+	double	deltaDistY;
+	double	sideDistX;
+	double	sideDistY;
+	int		lineHeight;
+	int		drawStart;
+	int		drawEnd;
+	int		wallColor;
+
+}	t_render;
+
 typedef struct s_cub3d
 {
 	char		**map;
@@ -58,7 +81,7 @@ typedef struct s_cub3d
 	int			map_height;
 	int			tile_size;
 	int			**matrix;
-	int			player_dir; // direção (o mesmo que player_angle)?
+	int			player_dir; // guarda o int char de nascimento ex: 'N'
 	float		player_x;
 	float		player_y;
 	float		player_angle;
@@ -66,11 +89,12 @@ typedef struct s_cub3d
 	t_pos		p_pos; // posição do jogador
 	t_texture	texture; // path e carregamento das texturas
 	t_map		mapping;
+	t_render	render; // estrutura diminuir o numero de variaveis dentro das funçoes de render
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 }	t_cub3d;
 
-// utils.c 
+// utils.c
 void	cub_error(const char *str, t_cub3d *mapdata);
 void	ft_remove_newline(char ***colors);
 int		ft_array_len(char **array);
@@ -130,6 +154,7 @@ void	wall_sliding(t_cub3d *mapdata, float dx, float dy);
 // clean.c
 void	cub_clean(t_cub3d *mapdata);
 void	free_area(char **area);
+int		ft_tern_op(int condition, int true_value, int false_value);
 
 //raycasting.c
 void	render_3d(t_cub3d *mapdata);
