@@ -5,16 +5,26 @@ static void	clear_3d_render(t_cub3d *mapdata)
 	int	x;
 	int	y;
 
-	x = 0;
-	while (x < WIDTH)
+	y = 0;
+	while (y < HEIGHT / 2)
 	{
-		y = 0;
-		while (y < HEIGHT)
+		x = 0;
+		while (x < WIDTH)
 		{
-			mlx_put_pixel(mapdata->img, x, y, 0x333333FF);
-			y++;
+			mlx_put_pixel(mapdata->img, x, y, mapdata->mapping.c_color);
+			x++;
 		}
-		x++;
+		y++;
+	}
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			mlx_put_pixel(mapdata->img, x, y, mapdata->mapping.f_color);
+			x++;
+		}
+		y++;
 	}
 }
 

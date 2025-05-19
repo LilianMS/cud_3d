@@ -73,9 +73,17 @@ static int	check_color_data(t_cub3d *mapdata)
 			if (colors)
 			{
 				if (mapdata->mapping.area[i][0] == 'F')
-					mapdata->mapping.f_color = colors;
+					mapdata->mapping.f_color = ft_convert_rgb( \
+						ft_atoi(colors[0]), \
+						ft_atoi(colors[1]), \
+						ft_atoi(colors[2]));
 				else
-					mapdata->mapping.c_color = colors;
+					mapdata->mapping.c_color = ft_convert_rgb( \
+						ft_atoi(colors[0]), \
+						ft_atoi(colors[1]), \
+						ft_atoi(colors[2]));
+				ft_free_split(colors);
+				colors = NULL;
 			}
 			else
 				return (0);

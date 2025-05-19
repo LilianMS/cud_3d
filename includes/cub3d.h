@@ -32,12 +32,12 @@ typedef struct s_pos
 
 typedef struct s_map
 {
-	char	*file;
-	char	**area;
-	char	**f_color;
-	char	**c_color;
+	char		*file;
+	char		**area;
+	uint32_t	f_color;
+	uint32_t	c_color;
 	// char	**map;
-	int		lines;
+	int			lines;
 	// int		cols;
 }	t_map;
 
@@ -98,11 +98,12 @@ typedef struct s_cub3d
 }	t_cub3d;
 
 // utils.c
-void	cub_error(const char *str, t_cub3d *mapdata);
-void	ft_remove_newline(char ***colors);
-int		ft_array_len(char **array);
-int		ft_if_surrounded_by_walls(char **area, t_pos pos, char wall);
-int		ft_check_kind_file(char *str, char *suffix);
+void		cub_error(const char *str, t_cub3d *mapdata);
+void		ft_remove_newline(char ***colors);
+int				ft_array_len(char **array);
+int			ft_if_surrounded_by_walls(char **area, t_pos pos, char wall);
+int			ft_check_kind_file(char *str, char *suffix);
+uint32_t	ft_convert_rgb(int r, int g, int b);
 
 //validations.c
 int		cub_valid(t_cub3d *mapdata);
