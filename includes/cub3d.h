@@ -89,7 +89,7 @@ typedef struct s_cub3d
 	float		player_y;
 	float		player_angle;
 	bool		keys[512];
-	t_pos		p_pos; // posição do jogador
+	t_pos		p_pos; // estrutura para guardar x e y (coordenadas, posição do jogador...)
 	t_texture	texture; // path e carregamento das texturas
 	t_map		mapping;
 	t_render	render; // estrutura diminuir o numero de variaveis dentro das funçoes de render
@@ -103,7 +103,7 @@ void		ft_remove_newline(char ***colors);
 int				ft_array_len(char **array);
 int			ft_if_surrounded_by_walls(char **area, t_pos pos, char wall);
 int			ft_check_kind_file(char *str, char *suffix);
-uint32_t	ft_convert_rgb(int r, int g, int b);
+uint32_t	ft_rgb_to_int(int r, int g, int b);
 
 //validations.c
 int		cub_valid(t_cub3d *mapdata);

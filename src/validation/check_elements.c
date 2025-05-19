@@ -36,7 +36,27 @@ void	remove_end_spaces(char **str)
 	(*str)[len] = '\0';
 }
 
-static char	**cub_handle_colors(t_cub3d *mapdata, int i, int j)
+int	*ft_convert_to_int_array(char **array, int n)
+{
+	int	*int_array;
+	int	i;
+
+	int_array = malloc(sizeof(int) * n);
+	if (!int_array)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		int_array[i] = ft_atoi(array[i]);
+		i++;
+	}
+	ft_free_split(array);
+	array = NULL;
+	free(array);
+	return (int_array);
+}
+
+static int	*cub_handle_colors(t_cub3d *mapdata, int i, int j)
 {
 	char	**colors;
 
@@ -53,15 +73,15 @@ static char	**cub_handle_colors(t_cub3d *mapdata, int i, int j)
 			ft_free_split(colors);
 			return (NULL);
 		}
-		return (colors);
+		return (ft_convert_to_int_array(colors, 3));
 	}
 	return (NULL);
 }
 
 static int	check_color_data(t_cub3d *mapdata)
 {
-	char	**colors;
-	int		i;
+	int	*c;
+	int	i;
 
 	i = 0;
 	while (mapdata->mapping.area[i])
@@ -69,21 +89,14 @@ static int	check_color_data(t_cub3d *mapdata)
 		if (mapdata->mapping.area[i][0] == 'F' \
 			|| mapdata->mapping.area[i][0] == 'C')
 		{
-			colors = cub_handle_colors(mapdata, i, 1);
-			if (colors)
+			c = cub_handle_colors(mapdata, i, 1);
+			if (c)
 			{
 				if (mapdata->mapping.area[i][0] == 'F')
-					mapdata->mapping.f_color = ft_convert_rgb( \
-						ft_atoi(colors[0]), \
-						ft_atoi(colors[1]), \
-						ft_atoi(colors[2]));
+					mapdata->mapping.f_color = ft_rgb_to_int(c[0], c[1], c[2]);
 				else
-					mapdata->mapping.c_color = ft_convert_rgb( \
-						ft_atoi(colors[0]), \
-						ft_atoi(colors[1]), \
-						ft_atoi(colors[2]));
-				ft_free_split(colors);
-				colors = NULL;
+					mapdata->mapping.c_color = ft_rgb_to_int(c[0], c[1], c[2]);
+				free(c);
 			}
 			else
 				return (0);

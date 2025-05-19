@@ -61,7 +61,7 @@ int	ft_check_kind_file(char *str, char *suffix)
 	return (1);
 }
 
-uint32_t	ft_convert_rgb(int r, int g, int b)
+uint32_t	ft_rgb_to_int(int r, int g, int b)
 {
 	return (r << 24 | g << 16 | b << 8 | 255);
 }
