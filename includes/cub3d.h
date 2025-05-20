@@ -51,28 +51,34 @@ typedef struct s_texture
 	mlx_texture_t	*south;
 	mlx_texture_t	*west;
 	mlx_texture_t	*east;
+	mlx_texture_t	*curr;
 }	t_texture;
 
 typedef struct s_render
 {
 	int		side;
-	int		mapX;
-	int		mapY;
-	int		stepX;
-	int		stepY;
-	double	cameraX;
-	double	rayAngle;
-	double	perpWallDist;
-	double	rayDirX;
-	double	rayDirY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	sideDistX;
-	double	sideDistY;
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
-	int		wallColor;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	double	camera_x;
+	double	ray_angle;
+	double	perp_wall_dist;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	float		wall_point;
+	int		texture_x;
+	int		texture_y;
+	float		texture_pos;
+	float		resize;
+	uint32_t		wall_color;
 
 }	t_render;
 

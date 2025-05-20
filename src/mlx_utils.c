@@ -1,7 +1,7 @@
 #include "cub3d.h"
 #include <stdint.h> //para uint32_t
 
-static void clear_minimap_area(t_cub3d *mapdata)
+void clear_minimap_area(t_cub3d *mapdata)
 {
 	int x;
 	int y;
