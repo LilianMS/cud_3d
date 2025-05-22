@@ -84,6 +84,7 @@ typedef struct s_render
 
 typedef struct s_cub3d
 {
+	char		*tmp;
 	char		**map;
 	char		**flood_map; // cópia do mapa para o flood fill
 	int			map_width;

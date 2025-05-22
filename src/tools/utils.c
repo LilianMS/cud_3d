@@ -50,6 +50,8 @@ int	ft_check_kind_file(char *str, char *suffix)
 	int		len;
 	int		i;
 
+	if (!str || !suffix)
+		return (0);
 	remove_end_spaces(&str);
 	i = ft_strlen(suffix) - 1;
 	len = ft_strlen(str) - 1;

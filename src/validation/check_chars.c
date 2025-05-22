@@ -43,6 +43,22 @@ int	check_all_chars(char **area, const char *valid_chars)
 	return (1);
 }
 
+int	ft_str_is_space(const char *str)
+{
+	int	i;
+
+	if (!str)
+		return (1);
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isspace(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 char	*handle_textures(int dir, char *str)
 {
 	char	*texture;
@@ -51,7 +67,7 @@ char	*handle_textures(int dir, char *str)
 	int		j;
 
 	tmp_str = ft_strchr(str, dir);
-	if (!tmp_str)
+	if (!tmp_str || ft_str_is_space(tmp_str + 2))
 		return (NULL);
 	tmp_str += 2;
 	texture = malloc(sizeof(char) * (ft_strlen(tmp_str) + 1));
@@ -71,17 +87,51 @@ char	*handle_textures(int dir, char *str)
 	return (texture);
 }
 
-int	check_name_texture(t_cub3d *mapdata)
+#include <fcntl.h>
+
+char	*get_invalid_texture_file(t_cub3d *mapdata)
 {
-	if (!ft_check_kind_file(mapdata->texture.no, ".png") \
-		|| !ft_check_kind_file(mapdata->texture.so, ".png") \
-		|| !ft_check_kind_file(mapdata->texture.we, ".png") \
-		|| !ft_check_kind_file(mapdata->texture.ea, ".png"))
+	char	*invalid_file;
+	int		fd;
+
+	invalid_file = NULL;
+	fd = open(mapdata->texture.no, O_RDONLY);
+	if (!ft_check_kind_file(mapdata->texture.no, ".png") || fd < 0)
+		invalid_file = mapdata->texture.no;
+	else
+		close(fd);
+	fd = open(mapdata->texture.so, O_RDONLY);
+	if (!ft_check_kind_file(mapdata->texture.so, ".png") || fd < 0)
+		invalid_file = mapdata->texture.so;
+	else
+		close(fd);
+	fd = open(mapdata->texture.we, O_RDONLY);
+	if (!ft_check_kind_file(mapdata->texture.we, ".png") || fd < 0)
+		invalid_file = mapdata->texture.we;
+	else
+		close(fd);
+	fd = open(mapdata->texture.ea, O_RDONLY);
+	if (!ft_check_kind_file(mapdata->texture.ea, ".png") || fd < 0)
+		invalid_file = mapdata->texture.ea;
+	else
+		close(fd);
+	return (invalid_file);
+}
+
+void	check_file_texture(t_cub3d *mapdata)
+{
+	const char	*msg = "Invalid file!";
+	char		*invalid_file;
+
+	invalid_file = get_invalid_texture_file(mapdata);
+	if (invalid_file)
 	{
-		cub_error("All texture files must be of type .png", mapdata);
-		return (0);
+		mapdata->tmp = ft_strjoin(msg, invalid_file);
+		if (mapdata->tmp)
+			cub_error(mapdata->tmp, mapdata);
+		else
+			cub_error(msg, mapdata);
 	}
-	return (1);
 }
 
 int	cub_textures(t_cub3d *mapdata)
@@ -104,11 +154,11 @@ int	cub_textures(t_cub3d *mapdata)
 		i++;
 	}
 	if (!mapdata->texture.no || !mapdata->texture.so \
-		|| !mapdata->texture.we || !mapdata->texture.ea \
-		|| !check_name_texture(mapdata))
+		|| !mapdata->texture.we || !mapdata->texture.ea)
 	{
 		cub_error("Invalid textures!", mapdata);
 		return (0);
 	}
+	check_file_texture(mapdata);
 	return (1);
 }

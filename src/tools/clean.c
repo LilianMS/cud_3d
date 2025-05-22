@@ -31,10 +31,8 @@ void	cub_free_data(t_cub3d *mapdata)
 		free(mapdata->texture.we);
 	if (mapdata->texture.ea)
 		free(mapdata->texture.ea);
-	// if (mapdata->mapping.f_color)
-	// 	free_area(mapdata->mapping.f_color);
-	// if (mapdata->mapping.c_color)
-	// 	free_area(mapdata->mapping.c_color);
+	if (mapdata->tmp)
+		free(mapdata->tmp);
 }
 
 void	cub_clean(t_cub3d *mapdata)
