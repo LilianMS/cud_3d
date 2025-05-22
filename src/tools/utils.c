@@ -52,7 +52,7 @@ int	ft_check_kind_file(char *str, char *suffix)
 
 	if (!str || !suffix)
 		return (0);
-	remove_end_spaces(&str);
+	ft_remove_end_spaces(&str);
 	i = ft_strlen(suffix) - 1;
 	len = ft_strlen(str) - 1;
 	while (i >= 0)
@@ -66,4 +66,52 @@ int	ft_check_kind_file(char *str, char *suffix)
 uint32_t	ft_rgb_to_int(int r, int g, int b)
 {
 	return (r << 24 | g << 16 | b << 8 | 255);
+}
+
+void	ft_remove_end_spaces(char **str)
+{
+	int	len;
+
+	if (!str || !(*str))
+		return ;
+	len = ft_strlen(*str);
+	while (len > 0 && ft_isspace((*str)[len - 1]))
+		len--;
+	(*str)[len] = '\0';
+}
+
+void	ft_init_table(int *t, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n)
+		t[i++] = 0;
+}
+
+int	ft_hash_table(const char *str, int *table)
+{
+	const char	*ch = str;
+
+	if (table[(unsigned char)*ch] == 0)
+		table[(unsigned char)*ch] = 1;
+	else
+		return (0);
+	return (1);
+}
+
+int	ft_str_is_space(const char *str)
+{
+	int	i;
+
+	if (!str)
+		return (1);
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isspace(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

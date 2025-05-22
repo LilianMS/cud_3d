@@ -24,19 +24,7 @@ static int	validate_color_values(char **colors)
 	return (1);
 }
 
-void	remove_end_spaces(char **str)
-{
-	int	len;
-
-	if (!str || !(*str))
-		return ;
-	len = ft_strlen(*str);
-	while (len > 0 && ft_isspace((*str)[len - 1]))
-		len--;
-	(*str)[len] = '\0';
-}
-
-int	*ft_convert_to_int_array(char **array, int n)
+static int	*ft_convert_to_int_array(char **array, int n)
 {
 	int	*int_array;
 	int	i;
@@ -65,7 +53,7 @@ static int	*cub_handle_colors(t_cub3d *mapdata, int i, int j)
 			j++;
 	colors = ft_split(mapdata->mapping.area[i] + j, ',');
 	ft_remove_newline(&colors);
-	remove_end_spaces(&colors[2]);
+	ft_remove_end_spaces(&colors[2]);
 	if (colors)
 	{
 		if (ft_array_len(colors) != 3 || !validate_color_values(colors))

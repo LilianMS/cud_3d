@@ -24,6 +24,7 @@ SRC_FILE =  \
 	validation/validations \
 	validation/validation_utils \
 	validation/check_chars \
+	validation/check_textures \
 	validation/check_elements \
 	validation/map_validation \
 	validation/map_validation_utils \

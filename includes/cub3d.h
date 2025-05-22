@@ -111,6 +111,9 @@ int				ft_array_len(char **array);
 int			ft_if_surrounded_by_walls(char **area, t_pos pos, char wall);
 int			ft_check_kind_file(char *str, char *suffix);
 uint32_t	ft_rgb_to_int(int r, int g, int b);
+int			ft_hash_table(const char *str, int *table);
+void		ft_init_table(int *table, int size);
+int			ft_str_is_space(const char *str);
 
 //validations.c
 int		cub_valid(t_cub3d *mapdata);
@@ -125,7 +128,7 @@ int		cub_textures(t_cub3d *mapdata);
 
 // check_elements.c
 int		cub_colors(t_cub3d *mapdata);
-void	remove_end_spaces(char **str);
+void	ft_remove_end_spaces(char **str);
 
 // map_validation.c
 void	cub_player_validation(t_cub3d *mapdata, t_pos pos);

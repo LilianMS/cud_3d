@@ -1,25 +1,5 @@
 #include "cub3d.h"
 
-void	ft_init_table(int *t, int n)
-{
-	int	i;
-
-	i = 0;
-	while (i < n)
-		t[i++] = 0;
-}
-
-int	ft_hash_table(const char *valid_chars, int *table)
-{
-	const char	*ch = valid_chars;
-
-	if (table[(unsigned char)*ch] == 0)
-		table[(unsigned char)*ch] = 1;
-	else
-		return (0);
-	return (1);
-}
-
 int	check_duplicate(t_cub3d *mapdata, int *tab)
 {
 	char	**area;
