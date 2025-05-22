@@ -115,3 +115,11 @@ int	ft_str_is_space(const char *str)
 	}
 	return (1);
 }
+
+int	ft_tern_op(int condition, int true_value, int false_value)
+{
+	if (condition)
+		return (true_value);
+	else
+		return (false_value);
+}

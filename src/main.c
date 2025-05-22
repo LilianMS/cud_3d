@@ -1,5 +1,5 @@
 #include "cub3d.h"
-#include <stdio.h>
+#include <stdio.h> //debug
 
 void	cub_load_textures(t_cub3d *mapdata)
 {
@@ -30,6 +30,7 @@ int	cub_starts(char **av, t_cub3d *mapdata)
 	printf("Player pos: (%.1f, %.1f), angle: %.2f\n", mapdata->player_x, mapdata->player_y, mapdata->player_angle);
 	printf("Map size: %d x %d\n", mapdata->map_width, mapdata->map_height);
 	//end debug
+	mapdata->fov = M_PI / 3.0; // Exemplo: 60 graus em radianos
 	return (0);
 }
 

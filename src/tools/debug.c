@@ -49,6 +49,6 @@ void	init_map(t_cub3d *mapdata)
 	mapdata->map_height = 8;
 	mapdata->tile_size = 64;
 	mapdata->map = local_map;
-	find_player_start(mapdata);
+	cub_player_start(mapdata);
 }
 //fim mapa placeholder

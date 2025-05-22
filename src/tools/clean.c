@@ -48,10 +48,3 @@ void	cub_clean(t_cub3d *mapdata)
 		free(mapdata);
 }
 
-int	ft_tern_op(int condition, int true_value, int false_value)
-{
-	if (condition)
-		return true_value;
-	else
-		return false_value;
-}
