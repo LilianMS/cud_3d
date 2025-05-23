@@ -1,11 +1,11 @@
 #include "cub3d.h"
 
-int	check_duplicate(t_cub3d *mapdata, int *tab)
+int	check_duplicate(t_cub3d *mdata, int *tab)
 {
 	char	**area;
 	int		i;
 
-	area = mapdata->mapping.area;
+	area = mdata->mapping.area;
 	i = 0;
 	while (area[i])
 	{
@@ -26,25 +26,25 @@ int	check_duplicate(t_cub3d *mapdata, int *tab)
 	return (1);
 }
 
-int	cub_search_elements(t_cub3d *mapdata, const char *elements)
+int	cub_search_elements(t_cub3d *mdata, const char *elements)
 {
 	int	table[256];
 
 	ft_init_table(table, 256);
-	if (!check_duplicate(mapdata, table) \
-		|| !check_all_chars(mapdata->mapping.area, elements) \
-		|| !cub_textures(mapdata) \
-		|| !cub_colors(mapdata))
-		cub_error("Invalid Map!", mapdata);
+	if (!check_duplicate(mdata, table) \
+		|| !check_all_chars(mdata->mapping.area, elements) \
+		|| !cub_textures(mdata) \
+		|| !cub_colors(mdata))
+		cub_error("Invalid Map!", mdata);
 	return (1);
 }
 
-int	check_map_position(t_cub3d *mapdata, int end)
+int	check_map_position(t_cub3d *mdata, int end)
 {
 	char	**area;
 	int		x;
 
-	area = mapdata->mapping.area;
+	area = mdata->mapping.area;
 	if (area[end] == NULL)
 		return (1);
 	while (area[end])
@@ -55,7 +55,7 @@ int	check_map_position(t_cub3d *mapdata, int end)
 		if (area[end][x] && area[end][x] != '\n' \
 			&& area[end][x] != '\0' && !ft_isspace(area[end][x]))
 		{
-			cub_error("Map is not at the end of the file", mapdata);
+			cub_error("Map is not at the end of the file", mdata);
 			return (0);
 		}
 		end++;

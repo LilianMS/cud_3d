@@ -44,14 +44,14 @@ static int	*ft_convert_to_int_array(char **array, int n)
 	return (int_array);
 }
 
-static int	*cub_handle_colors(t_cub3d *mapdata, int i, int j)
+static int	*cub_handle_colors(t_cub3d *mdata, int i, int j)
 {
 	char	**colors;
 
-	if (ft_isspace(mapdata->mapping.area[i][j]))
-		while (ft_isspace(mapdata->mapping.area[i][j]))
+	if (ft_isspace(mdata->mapping.area[i][j]))
+		while (ft_isspace(mdata->mapping.area[i][j]))
 			j++;
-	colors = ft_split(mapdata->mapping.area[i] + j, ',');
+	colors = ft_split(mdata->mapping.area[i] + j, ',');
 	ft_remove_newline(&colors);
 	ft_remove_end_spaces(&colors[2]);
 	if (colors)
@@ -66,24 +66,24 @@ static int	*cub_handle_colors(t_cub3d *mapdata, int i, int j)
 	return (NULL);
 }
 
-static int	check_color_data(t_cub3d *mapdata)
+static int	check_color_data(t_cub3d *mdata)
 {
 	int	*c;
 	int	i;
 
 	i = 0;
-	while (mapdata->mapping.area[i])
+	while (mdata->mapping.area[i])
 	{
-		if (mapdata->mapping.area[i][0] == 'F' \
-			|| mapdata->mapping.area[i][0] == 'C')
+		if (mdata->mapping.area[i][0] == 'F' \
+			|| mdata->mapping.area[i][0] == 'C')
 		{
-			c = cub_handle_colors(mapdata, i, 1);
+			c = cub_handle_colors(mdata, i, 1);
 			if (c)
 			{
-				if (mapdata->mapping.area[i][0] == 'F')
-					mapdata->mapping.f_color = ft_rgb_to_int(c[0], c[1], c[2]);
+				if (mdata->mapping.area[i][0] == 'F')
+					mdata->mapping.f_color = ft_rgb_to_int(c[0], c[1], c[2]);
 				else
-					mapdata->mapping.c_color = ft_rgb_to_int(c[0], c[1], c[2]);
+					mdata->mapping.c_color = ft_rgb_to_int(c[0], c[1], c[2]);
 				free(c);
 			}
 			else
@@ -94,13 +94,13 @@ static int	check_color_data(t_cub3d *mapdata)
 	return (1);
 }
 
-int	cub_colors(t_cub3d *mapdata)
+int	cub_colors(t_cub3d *mdata)
 {
-	if (!check_color_data(mapdata) \
-		|| !mapdata->mapping.f_color \
-		|| !mapdata->mapping.c_color)
+	if (!check_color_data(mdata) \
+		|| !mdata->mapping.f_color \
+		|| !mdata->mapping.c_color)
 	{
-		cub_error("Invalid color data!", mapdata);
+		cub_error("Invalid color data!", mdata);
 		return (0);
 	}
 	return (1);

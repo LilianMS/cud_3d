@@ -1,15 +1,15 @@
 #include "cub3d.h"
 
-static void	calculate_delta_distances(t_cub3d *mapdata)
+static void	calculate_delta_distances(t_cub3d *mdata)
 {
-	if (mapdata->render.ray_dir_x == 0)
-		mapdata->render.delta_dist_x = VERY_BIG;
+	if (mdata->render.ray_dir_x == 0)
+		mdata->render.delta_dist_x = VERY_BIG;
 	else
-		mapdata->render.delta_dist_x = fabs(1.0 / mapdata->render.ray_dir_x);
-	if (mapdata->render.ray_dir_y == 0)
-		mapdata->render.delta_dist_y = VERY_BIG;
+		mdata->render.delta_dist_x = fabs(1.0 / mdata->render.ray_dir_x);
+	if (mdata->render.ray_dir_y == 0)
+		mdata->render.delta_dist_y = VERY_BIG;
 	else
-		mapdata->render.delta_dist_y = fabs(1.0 / mapdata->render.ray_dir_y);
+		mdata->render.delta_dist_y = fabs(1.0 / mdata->render.ray_dir_y);
 }
 
 static double	calculate_side_distance(double player_pos, int map_pos, \
@@ -21,73 +21,73 @@ static double	calculate_side_distance(double player_pos, int map_pos, \
 		return ((map_pos + 1.0 - player_pos) * delta_dist);
 }
 
-static void	initialize_ray_steps(t_cub3d *mapdata)
+static void	initialize_ray_steps(t_cub3d *mdata)
 {
-	mapdata->render.step_x = ft_tern_op(mapdata->render.ray_dir_x < 0, -1, 1);
-	mapdata->render.step_y = ft_tern_op(mapdata->render.ray_dir_y < 0, -1, 1);
-	mapdata->render.side_dist_x = calculate_side_distance(
-			mapdata->player_x / mapdata->tile_size,
-			mapdata->render.map_x,
-			mapdata->render.delta_dist_x,
-			mapdata->render.ray_dir_x
+	mdata->render.step_x = ft_tern_op(mdata->render.ray_dir_x < 0, -1, 1);
+	mdata->render.step_y = ft_tern_op(mdata->render.ray_dir_y < 0, -1, 1);
+	mdata->render.side_dist_x = calculate_side_distance(
+			mdata->player_x / mdata->tile_size,
+			mdata->render.map_x,
+			mdata->render.delta_dist_x,
+			mdata->render.ray_dir_x
 			);
-	mapdata->render.side_dist_y = calculate_side_distance(
-			mapdata->player_y / mapdata->tile_size,
-			mapdata->render.map_y,
-			mapdata->render.delta_dist_y,
-			mapdata->render.ray_dir_y
+	mdata->render.side_dist_y = calculate_side_distance(
+			mdata->player_y / mdata->tile_size,
+			mdata->render.map_y,
+			mdata->render.delta_dist_y,
+			mdata->render.ray_dir_y
 			);
 }
 
-static void	perform_dda(t_cub3d *mapdata, int *hit)
+static void	perform_dda(t_cub3d *mdata, int *hit)
 {
 	while (!(*hit))
 	{
-		if (mapdata->render.side_dist_x < mapdata->render.side_dist_y)
+		if (mdata->render.side_dist_x < mdata->render.side_dist_y)
 		{
-			mapdata->render.side_dist_x += mapdata->render.delta_dist_x;
-			mapdata->render.map_x += mapdata->render.step_x;
-			mapdata->render.side = 0;
+			mdata->render.side_dist_x += mdata->render.delta_dist_x;
+			mdata->render.map_x += mdata->render.step_x;
+			mdata->render.side = 0;
 		}
 		else
 		{
-			mapdata->render.side_dist_y += mapdata->render.delta_dist_y;
-			mapdata->render.map_y += mapdata->render.step_y;
-			mapdata->render.side = 1;
+			mdata->render.side_dist_y += mdata->render.delta_dist_y;
+			mdata->render.map_y += mdata->render.step_y;
+			mdata->render.side = 1;
 		}
-		if (mapdata->render.map_y < 0 \
-			|| mapdata->render.map_y >= mapdata->map_height \
-			|| mapdata->render.map_x < 0 \
-			|| mapdata->render.map_x >= mapdata->map_width)
+		if (mdata->render.map_y < 0 \
+			||mdata->render.map_y >= mdata->map_height \
+			||mdata->render.map_x < 0 \
+			||mdata->render.map_x >= mdata->map_width)
 			*hit = 1;
-		else if (mapdata-> \
-				map[mapdata->render.map_y][mapdata->render.map_x] == '1')
+		else if (mdata-> \
+				map[mdata->render.map_y][mdata->render.map_x] == '1')
 			*hit = 1;
 	}
 }
 
-void	cub_cast_single_ray(t_cub3d *mapdata)
+void	cub_cast_single_ray(t_cub3d *mdata)
 {
 	int	hit;
 
-	mapdata->render.ray_dir_x = cos(mapdata->render.ray_angle);
-	mapdata->render.ray_dir_y = -sin(mapdata->render.ray_angle);
-	mapdata->render.map_x = (int)(mapdata->player_x / mapdata->tile_size);
-	mapdata->render.map_y = (int)(mapdata->player_y / mapdata->tile_size);
-	calculate_delta_distances(mapdata);
-	initialize_ray_steps(mapdata);
+	mdata->render.ray_dir_x = cos(mdata->render.ray_angle);
+	mdata->render.ray_dir_y = -sin(mdata->render.ray_angle);
+	mdata->render.map_x = (int)(mdata->player_x / mdata->tile_size);
+	mdata->render.map_y = (int)(mdata->player_y / mdata->tile_size);
+	calculate_delta_distances(mdata);
+	initialize_ray_steps(mdata);
 	hit = 0;
-	perform_dda(mapdata, &hit);
-	if (mapdata->render.side == 0)
-		mapdata->render.perp_wall_dist = (mapdata->render.map_x \
-				- (mapdata->player_x / mapdata->tile_size) \
-				+ (1 - mapdata->render.step_x) / 2.0) \
-				/ mapdata->render.ray_dir_x;
+	perform_dda(mdata, &hit);
+	if (mdata->render.side == 0)
+		mdata->render.perp_wall_dist = (mdata->render.map_x \
+				-(mdata->player_x / mdata->tile_size) \
+				+ (1 - mdata->render.step_x) / 2.0) \
+				/mdata->render.ray_dir_x;
 	else
-		mapdata->render.perp_wall_dist = (mapdata->render.map_y \
-				- (mapdata->player_y / mapdata->tile_size) \
-				+ (1 - mapdata->render.step_y) / 2.0) \
-				/ mapdata->render.ray_dir_y;
-	if (mapdata->render.perp_wall_dist < 0.0001)
-		mapdata->render.perp_wall_dist = 0.0001;
+		mdata->render.perp_wall_dist = (mdata->render.map_y \
+				-(mdata->player_y / mdata->tile_size) \
+				+ (1 - mdata->render.step_y) / 2.0) \
+				/ mdata->render.ray_dir_y;
+	if (mdata->render.perp_wall_dist < 0.0001)
+		mdata->render.perp_wall_dist = 0.0001;
 }

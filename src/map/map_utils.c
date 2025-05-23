@@ -57,17 +57,17 @@ static int	find_map_end(char **area, int start)
 	return (end);
 }
 
-void	cub_extract_map(t_cub3d *mapdata)
+void	cub_extract_map(t_cub3d *mdata)
 {
 	int	start;
 	int	end;
 	int	map_lines;
 
-	start = find_map_start(mapdata->mapping.area);
+	start = find_map_start(mdata->mapping.area);
 	if (start == -1)
-		cub_error("Map not found in file!", mapdata);
-	end = find_map_end(mapdata->mapping.area, start);
+		cub_error("Map not found in file!", mdata);
+	end = find_map_end(mdata->mapping.area, start);
 	map_lines = end - start;
-	check_map_position(mapdata, end); // Checa posição do mapa
-	allocate_copy_map(mapdata, start, map_lines, (t_pos){0, 0});
+	check_map_position(mdata, end); // Checa posição do mapa
+	allocate_copy_map(mdata, start, map_lines, (t_pos){0, 0});
 }

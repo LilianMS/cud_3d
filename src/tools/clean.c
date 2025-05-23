@@ -13,38 +13,37 @@ void	free_area(char **area)
 	free(area);
 }
 
-void	cub_free_data(t_cub3d *mapdata)
+void	cub_free_data(t_cub3d *mdata)
 {
-	if (mapdata->texture.north)
-		mlx_delete_texture(mapdata->texture.north);
-	if (mapdata->texture.south)
-		mlx_delete_texture(mapdata->texture.south);
-	if (mapdata->texture.west)
-		mlx_delete_texture(mapdata->texture.west);
-	if (mapdata->texture.east)
-		mlx_delete_texture(mapdata->texture.east);
-	if (mapdata->texture.no)
-		free(mapdata->texture.no);
-	if (mapdata->texture.so)
-		free(mapdata->texture.so);
-	if (mapdata->texture.we)
-		free(mapdata->texture.we);
-	if (mapdata->texture.ea)
-		free(mapdata->texture.ea);
-	if (mapdata->tmp)
-		free(mapdata->tmp);
+	if (mdata->texture.north)
+		mlx_delete_texture(mdata->texture.north);
+	if (mdata->texture.south)
+		mlx_delete_texture(mdata->texture.south);
+	if (mdata->texture.west)
+		mlx_delete_texture(mdata->texture.west);
+	if (mdata->texture.east)
+		mlx_delete_texture(mdata->texture.east);
+	if (mdata->texture.no)
+		free(mdata->texture.no);
+	if (mdata->texture.so)
+		free(mdata->texture.so);
+	if (mdata->texture.we)
+		free(mdata->texture.we);
+	if (mdata->texture.ea)
+		free(mdata->texture.ea);
+	if (mdata->tmp)
+		free(mdata->tmp);
 }
 
-void	cub_clean(t_cub3d *mapdata)
+void	cub_clean(t_cub3d *mdata)
 {
-	cub_free_data(mapdata);
-	if (mapdata->flood_map)
-		free_area(mapdata->flood_map);
-	if (mapdata->mapping.area)
-		free_area(mapdata->mapping.area);
-	if (mapdata->map)
-		free_area(mapdata->map);
-	if (mapdata)
-		free(mapdata);
+	cub_free_data(mdata);
+	if (mdata->flood_map)
+		free_area(mdata->flood_map);
+	if (mdata->mapping.area)
+		free_area(mdata->mapping.area);
+	if (mdata->map)
+		free_area(mdata->map);
+	if (mdata)
+		free(mdata);
 }
-

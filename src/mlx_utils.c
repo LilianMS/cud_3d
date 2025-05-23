@@ -1,32 +1,30 @@
 #include "cub3d.h"
-#include <stdint.h> //para uint32_t
 
-void clear_minimap_area(t_cub3d *mapdata)
+void	clear_minimap_area(t_cub3d *mdata)
 {
-	int x;
-	int y;
-	int color;
-	int width;
-	int height;
+	int	x;
+	int	y;
+	int	color;
+	int	width;
+	int	height;
 
 	color = 0x333333FF;
-	width = MINIMAP_OFFSET_X + (mapdata->map_width * mapdata->tile_size);
-	height = MINIMAP_OFFSET_Y + (mapdata->map_height * mapdata->tile_size);
+	width = MINIMAP_OFFSET_X + (mdata->map_width * mdata->tile_size);
+	height = MINIMAP_OFFSET_Y + (mdata->map_height * mdata->tile_size);
 	y = MINIMAP_OFFSET_Y;
 	while (y < height)
 	{
 		x = MINIMAP_OFFSET_X;
 		while (x < width)
 		{
-			mlx_put_pixel(mapdata->img, x, y, color);
+			mlx_put_pixel(mdata->img, x, y, color);
 			x++;
 		}
 		y++;
 	}
 }
 
-
-static void	render_player(t_cub3d *mapdata)
+static void	render_player(t_cub3d *mdata)
 {
 	int	dx;
 	int	dy;
@@ -34,25 +32,25 @@ static void	render_player(t_cub3d *mapdata)
 	int	py;
 	int	player_size;
 
-	player_size = mapdata->tile_size / 8;
+	player_size = mdata->tile_size / 8;
 	dy = -player_size;
 	while (dy <= player_size)
 	{
 		dx = -player_size;
 		while (dx <= player_size)
 		{
-			px = MINIMAP_OFFSET_X + (int)(mapdata->player_x + dx);
-			py = MINIMAP_OFFSET_Y + (int)(mapdata->player_y + dy);
+			px = MINIMAP_OFFSET_X + (int)(mdata->player_x + dx);
+			py = MINIMAP_OFFSET_Y + (int)(mdata->player_y + dy);
 			if (px >= 0 && px < WIDTH && py >= 0 && py < HEIGHT)
-				mlx_put_pixel(mapdata->img, px, py, 0xFFFF00FF);
+				mlx_put_pixel(mdata->img, px, py, 0xFFFF00FF);
 			dx++;
 		}
 		dy++;
 	}
 }
 
-//atualização a direção e renderiza seu vetor
-static void	render_direction(t_cub3d *mapdata)
+//atualiza a direção e renderiza seu vetor
+static void	render_direction(t_cub3d *mdata)
 {
 	float	dir_x;
 	float	dir_y;
@@ -60,47 +58,47 @@ static void	render_direction(t_cub3d *mapdata)
 	int		px;
 	int		py;
 
-	dir_x = cos(mapdata->player_angle);
-	dir_y = sin(mapdata->player_angle);
+	dir_x = cos(mdata->player_angle);
+	dir_y = sin(mdata->player_angle);
 	i = 0;
 	while (i < 20)
 	{
-		px = MINIMAP_OFFSET_X + (int)(mapdata->player_x + dir_x * i);
-		py = MINIMAP_OFFSET_Y + (int)(mapdata->player_y - dir_y * i);
+		px = MINIMAP_OFFSET_X + (int)(mdata->player_x + dir_x * i);
+		py = MINIMAP_OFFSET_Y + (int)(mdata->player_y - dir_y * i);
 		if (px >= 0 && px < WIDTH && py >= 0 && py < HEIGHT)
-			mlx_put_pixel(mapdata->img, px, py, 0xFFA500FF);
+			mlx_put_pixel(mdata->img, px, py, 0xFFA500FF);
 		i++;
 	}
 }
 
 static void	render(void *param)
 {
-	t_cub3d	*mapdata;
+	t_cub3d	*mdata;
 
-	mapdata = (t_cub3d *)param;
-	handle_movement(mapdata);
-	cub_render_3d(mapdata);
-	clear_minimap_area(mapdata);
-	//fill_gray(mapdata->img);
-	draw_minimap(mapdata);
-	render_player(mapdata);
-	render_direction(mapdata);
+	mdata = (t_cub3d *)param;
+	handle_movement(mdata);
+	cub_render_3d(mdata);
+	clear_minimap_area(mdata);
+	//fill_gray(mdata->img);
+	draw_minimap(mdata);
+	render_player(mdata);
+	render_direction(mdata);
 }
 
-void	initialize_mlx(t_cub3d *mapdata)
+void	initialize_mlx(t_cub3d *mdata)
 {
 	mlx_image_t	*img;
 
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
-	mapdata->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", true);
-	if (!mapdata->mlx)
-		cub_error(mlx_strerror(mlx_errno), mapdata);
-	img = mlx_new_image(mapdata->mlx, WIDTH, HEIGHT);
-	if (!img || (mlx_image_to_window(mapdata->mlx, img, 0, 0) < 0))
-		cub_error(mlx_strerror(mlx_errno), mapdata);
-	mapdata->img = img;
-	mlx_key_hook(mapdata->mlx, deal_key, mapdata);
-	mlx_loop_hook(mapdata->mlx, &render, mapdata);
-	mlx_loop(mapdata->mlx);
-	mlx_terminate(mapdata->mlx);
+	mdata->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", true);
+	if (!mdata->mlx)
+		cub_error(mlx_strerror(mlx_errno), mdata);
+	img = mlx_new_image(mdata->mlx, WIDTH, HEIGHT);
+	if (!img || (mlx_image_to_window(mdata->mlx, img, 0, 0) < 0))
+		cub_error(mlx_strerror(mlx_errno), mdata);
+	mdata->img = img;
+	mlx_key_hook(mdata->mlx, deal_key, mdata);
+	mlx_loop_hook(mdata->mlx, &render, mdata);
+	mlx_loop(mdata->mlx);
+	mlx_terminate(mdata->mlx);
 }

@@ -14,19 +14,19 @@ void	print_area(char **area)
 	ft_putstr_fd("\n", 1);
 }
 
-void	print_textures(t_cub3d *mapdata)
+void	print_textures(t_cub3d *mdata)
 {
-	ft_putendl_fd(mapdata->texture.no, 1);
-	ft_putendl_fd(mapdata->texture.so, 1);
-	ft_putendl_fd(mapdata->texture.we, 1);
-	ft_putendl_fd(mapdata->texture.ea, 1);
+	ft_putendl_fd(mdata->texture.no, 1);
+	ft_putendl_fd(mdata->texture.so, 1);
+	ft_putendl_fd(mdata->texture.we, 1);
+	ft_putendl_fd(mdata->texture.ea, 1);
 }
 
 
 
 
 //função mapa placeholder
-void	init_map(t_cub3d *mapdata)
+void	init_map(t_cub3d *mdata)
 {
 /*responsabilidade futura dessa função
 	- parsear mapa e preencher *map na struct do cub3d;
@@ -45,10 +45,10 @@ void	init_map(t_cub3d *mapdata)
 		"10000001",
 		"11111111"
 	};
-	mapdata->map_width = 8;
-	mapdata->map_height = 8;
-	mapdata->tile_size = 64;
-	mapdata->map = local_map;
-	cub_player_start(mapdata);
+	mdata->map_width = 8;
+	mdata->map_height = 8;
+	mdata->tile_size = 64;
+	mdata->map = local_map;
+	cub_player_start(mdata);
 }
 //fim mapa placeholder
