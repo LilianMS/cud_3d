@@ -68,6 +68,6 @@ void	cub_extract_map(t_cub3d *mdata)
 		cub_error("Map not found in file!", mdata);
 	end = find_map_end(mdata->mapping.area, start);
 	map_lines = end - start;
-	check_map_position(mdata, end); // Checa posição do mapa
+	check_map_position(mdata, end);
 	allocate_copy_map(mdata, start, map_lines, (t_pos){0, 0});
 }

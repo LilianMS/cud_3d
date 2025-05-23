@@ -1,77 +1,69 @@
 #include "cub3d.h"
 
-static void	get_texture_point(t_cub3d *mdata)
+void	cub_clear_3d_render(t_cub3d *mdata)
 {
-	mdata->render.texture_x = (int)(mdata->render.wall_point \
-									* mdata->texture.curr->width);
-	if ((mdata->render.side == 0 && mdata->render.ray_dir_x < 0) \
-		|| (mdata->render.side == 1 && mdata->render.ray_dir_y > 0))
-		mdata->render.texture_x = mdata->texture.curr->width \
-									- mdata->render.texture_x - 1;
-	mdata->render.resize = 1.0 * mdata->texture.curr->height \
-			/ mdata->render.line_height;
-}
+	int	x;
+	int	y;
 
-static void	set_wall_point(t_cub3d *mdata)
-{
-	double	wall_point;
-
-	if (mdata->render.side == 0)
+	y = 0;
+	while (y < HEIGHT / 2)
 	{
-		wall_point = (mdata->player_y / mdata->tile_size) \
-						+ mdata->render.perp_wall_dist
-			* mdata->render.ray_dir_y;
+		x = 0;
+		while (x < WIDTH)
+		{
+			mlx_put_pixel(mdata->img, x, y, mdata->mapping.c_color);
+			x++;
+		}
+		y++;
 	}
-	else
+	while (y < HEIGHT)
 	{
-		wall_point = (mdata->player_x / mdata->tile_size) \
-						+ mdata->render.perp_wall_dist
-			* mdata->render.ray_dir_x;
-	}
-	mdata->render.wall_point = wall_point - floor(wall_point);
-}
-
-static void	draw_texture_slice(t_cub3d *mdata, int x)
-{
-	int			y;
-	int			tex_y;
-	uint32_t	color;
-
-	y = mdata->render.draw_start;
-	while (y < mdata->render.draw_end)
-	{
-		// Calcula a posição Y correspondente na textura
-		tex_y = (int)mdata->render.texture_pos;
-		if (tex_y < 0)
-			tex_y = 0;
-		if (tex_y >= (int)mdata->texture.curr->height)
-			tex_y = (int)mdata->texture.curr->height - 1;
-		mdata->render.texture_pos += mdata->render.resize;
-		// Pega a cor da textura
-		color = cub_get_texture_pixel(mdata->texture.curr, \
-				mdata->render.texture_x, tex_y);
-		// Desenha o pixel no framebuffer
-		mlx_put_pixel(mdata->img, x, y, color);
+		x = 0;
+		while (x < WIDTH)
+		{
+			mlx_put_pixel(mdata->img, x, y, mdata->mapping.f_color);
+			x++;
+		}
 		y++;
 	}
 }
 
-void	cub_draw_column_slice(t_cub3d *mdata, int x)
+void	cub_capture_texture(t_cub3d *mdata)
 {
-	mdata->render.line_height = (int)(HEIGHT / mdata->render.perp_wall_dist);
-	mdata->render.draw_start = -mdata->render.line_height / 2 + HEIGHT / 2;
-	mdata->render.draw_end = mdata->render.line_height / 2 + HEIGHT / 2;
-	if (mdata->render.draw_start < 0)
-		mdata->render.draw_start = 0;
-	if (mdata->render.draw_end >= HEIGHT)
-		mdata->render.draw_end = HEIGHT - 1;
-	// Captura a textura correta para a parede (norte, sul, leste, oeste)
-	cub_capture_texture(mdata);
-	// Calcula a posição X da textura
-	set_wall_point(mdata);
-	get_texture_point(mdata);
-	mdata->render.texture_pos = (mdata->render.draw_start - HEIGHT / 2 \
-								+ mdata->render.line_height / 2) \
-								* mdata->render.resize;
-	draw_texture_slice(mdata, x);
+	mlx_texture_t	*texture;
+
+	texture = NULL;
+	if (mdata->render.side == 1)
+	{
+		if (mdata->render.step_y < 0)
+			texture = mdata->texture.north;
+		else
+			texture = mdata->texture.south;
+	}
+	else
+	{
+		if (mdata->render.step_x < 0)
+			texture = mdata->texture.west;
+		else
+			texture = mdata->texture.east;
+	}
+	mdata->texture.curr = texture;
+}
+
+uint32_t	cub_get_texture_pixel(mlx_texture_t *texture, int x, int y)
+{
+	int			texture_pos;
+	uint8_t		*pixel;
+	uint32_t	color;
+
+	if (x < 0 \
+		|| x >= (int)texture->width \
+		|| y < 0 \
+		|| y >= (int)texture->height)
+		return (0);
+	texture_pos = y * texture->width + x;
+	texture_pos *= texture->bytes_per_pixel;
+	pixel = &texture->pixels[texture_pos];
+	color = (pixel[0] << 24 | pixel[1] << 16 | pixel[2] << 8 | pixel[3]);
+	return (color);
 }

@@ -92,11 +92,8 @@ void	cub_check_area_visited(t_cub3d *mdata)
 void	cub_map_validation(t_cub3d *mdata, t_pos p_pos)
 {
 	(void) p_pos;
-	is_valid_walls(mdata, (t_pos){0, 0}); // checa se o mapa está fechado
+	is_valid_walls(mdata, (t_pos){0, 0});
 	copy_map(mdata);
 	cub_flood_fill(mdata, p_pos);
-//////////////////////////////////
-	print_area(mdata->flood_map); // debug
-/////////////////////////////////
-	cub_check_area_visited(mdata); // checar se o caminho é válido
+	cub_check_area_visited(mdata);
 }

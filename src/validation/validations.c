@@ -29,12 +29,12 @@ int	cub_read_file(t_cub3d *mdata)
 
 static void	cub_read_area(t_cub3d *mdata)
 {
-	cub_extract_map(mdata); // extrai o mapa e calcula dimensões ---- OK
+	cub_extract_map(mdata);
 	cub_player_validation(mdata, (t_pos){0, 0});
 	mdata->tile_size = calculate_tile_size(mdata->map_width, \
 												mdata->map_height);
 	cub_map_validation(mdata, mdata->p_pos);
-	cub_player_start(mdata); // seta a posição do player
+	cub_player_start(mdata);
 }
 
 int	cub_check_invalid_chars(t_cub3d *mdata, t_pos pos)

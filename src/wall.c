@@ -5,14 +5,11 @@ int	is_wall(t_cub3d *mdata, float x, float y)
 	int	col;
 	int	row;
 
-	// Calcula em qual colua e linha o jogador está
-	col = (int)(x / mdata->tile_size); // O cast para int "arredonda" para o número da coluna atual
+	col = (int)(x / mdata->tile_size);
 	row = (int)(y / mdata->tile_size);
-	// Se estiver fora do mapa
 	if (row < 0 || row >= mdata->map_height
 		|| col < 0 || col >= mdata->map_width)
 		return (1);
-	// Se a célula do mapa for 1
 	if (mdata->map[row][col] == '1')
 		return (1);
 	else

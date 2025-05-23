@@ -30,9 +30,6 @@ static void	calculate_map_width(t_cub3d *mdata, int start, int map_lines)
 	check_size_map(mdata, map_lines); // validação para tamanho máximo e mínimo do mapa ???
 }
 
-// essa função estava gerando bug, pois a alocação estava errada p/ mapas não retangulares
-// agora a alocação é feita com base na maior linha do mapa (e agora a largura é calculada antes da alocação)
-// e preenchemos o restante com '9' (ou seja, espaços vazios)
 void	allocate_copy_map(t_cub3d *mdata, int init, int lines, t_pos pos)
 {
 	calculate_map_width(mdata, init, lines);
@@ -55,7 +52,7 @@ void	allocate_copy_map(t_cub3d *mdata, int init, int lines, t_pos pos)
 				mdata->map[pos.y][pos.x] = '9';
 			pos.x++;
 		}
-		mdata->map[pos.y][pos.x - 1] = '\n'; // adiciona o \n ao fim da linha não é necessário para o funcionamento do programa, mas ajuda a visualizar o mapa no print de debug
+		mdata->map[pos.y][pos.x - 1] = '\n';
 		mdata->map[pos.y][pos.x] = '\0';
 		pos.y++;
 	}

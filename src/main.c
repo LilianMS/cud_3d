@@ -1,5 +1,4 @@
 #include "cub3d.h"
-#include <stdio.h> //debug
 
 void	cub_load_textures(t_cub3d *mdata)
 {
@@ -21,16 +20,11 @@ int	cub_starts(char **av, t_cub3d *mdata)
 {
 	if (!mdata)
 		cub_error("Memory allocation error.", NULL);
-	ft_memset(mdata, 0, sizeof(t_cub3d)); //inicializar a struct
+	ft_memset(mdata, 0, sizeof(t_cub3d));
 	mdata->mapping.file = av[1];
-	cub_valid(mdata); // validação completa
-	cub_load_textures(mdata); // carrega as texturas
-	//////////////////////// --- debug
-	print_area(mdata->map);
-	printf("Player pos: (%.1f, %.1f), angle: %.2f\n", mdata->player_x, mdata->player_y, mdata->player_angle);
-	printf("Map size: %d x %d\n", mdata->map_width, mdata->map_height);
-	////////////////////////end debug
-	mdata->fov = M_PI / 3.0; // Exemplo: 60 graus em radianos
+	cub_valid(mdata);
+	cub_load_textures(mdata);
+	mdata->fov = M_PI / 3.0;
 	return (0);
 }
 
@@ -47,6 +41,10 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-// para rodar com valgrind e supressions:
-// valgrind --suppressions=mlx42.supp  ./cub3D assets/map/simple_map.cub
-// mais completo: valgrind --leak-check=full --show-leak-kinds=all --suppressions=mlx42.supp ./cub3D assets/map/simple_map.cub
+/*
+ ** To run with Valgrind and suppressions:
+ *** valgrind --suppressions=mlx42.supp ./cub3D assets/map/simple_map.cub
+ ** For detailed analysis:
+ *** valgrind --leak-check=full --show-leak-kinds=all
+ *** --suppressions=mlx42.supp ./cub3D assets/map/simple_map.cub
+ */
