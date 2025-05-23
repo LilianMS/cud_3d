@@ -1,5 +1,5 @@
 #include "cub3d.h"
-
+/*
 void	clear_minimap_area(t_cub3d *mdata)
 {
 	int	x;
@@ -70,6 +70,7 @@ static void	render_direction(t_cub3d *mdata)
 		i++;
 	}
 }
+*/
 
 static void	render(void *param)
 {
@@ -78,11 +79,10 @@ static void	render(void *param)
 	mdata = (t_cub3d *)param;
 	handle_movement(mdata);
 	cub_render_3d(mdata);
-	clear_minimap_area(mdata);
-	//fill_gray(mdata->img);
-	draw_minimap(mdata);
-	render_player(mdata);
-	render_direction(mdata);
+	// clear_minimap_area(mdata);
+	// draw_minimap(mdata);
+	// render_player(mdata);
+	// render_direction(mdata);
 }
 
 void	initialize_mlx(t_cub3d *mdata)
