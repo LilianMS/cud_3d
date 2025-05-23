@@ -1,17 +1,28 @@
 #include "cub3d.h"
 
+/**
+ * Directional angles used in the program:
+ * - M_PI / 2 (90°): Represents the north direction.
+ * - 3 * M_PI / 2 (270°): Represents the south direction.
+ * - 0 (0°): Represents the east direction.
+ * - M_PI (180°): Represents the west direction.
+ *
+ * These angles are expressed in radians and correspond to the standard
+ * mathematical representation of directions on a unit circle.
+ */
+
 static void	set_player_start(t_cub3d *mdata, int row, int col, char start)
 {
 	mdata->player_x = (col + 0.5f) * mdata->tile_size;
 	mdata->player_y = (row + 0.5f) * mdata->tile_size;
 	if (start == 'N')
-		mdata->player_angle = M_PI / 2; // 90° = norte
+		mdata->player_angle = M_PI / 2;
 	else if (start == 'S')
-		mdata->player_angle = 3 * M_PI / 2; // 270° = sul
+		mdata->player_angle = 3 * M_PI / 2;
 	else if (start == 'E')
-		mdata->player_angle = 0; // 0° = leste
+		mdata->player_angle = 0;
 	else if (start == 'W')
-		mdata->player_angle = M_PI; // 180° = oeste
+		mdata->player_angle = M_PI;
 }
 
 void	cub_player_start(t_cub3d *mdata)

@@ -5,25 +5,21 @@ static void	movement_vector(t_cub3d *mdata, \
 {
 	*dx = 0.0f;
 	*dy = 0.0f;
-	// Para andar “para frente” (W), somamos cos no X e subtraímos sin no Y.
 	if (mdata->keys[MLX_KEY_W])
 	{
 		*dx += move_speed * cos(mdata->player_angle);
 		*dy -= move_speed * sin(mdata->player_angle);
 	}
-	// Para andar “para trás” (S), é o oposto.
 	if (mdata->keys[MLX_KEY_S])
 	{
 		*dx -= move_speed * cos(mdata->player_angle);
 		*dy += move_speed * sin(mdata->player_angle);
 	}
-	// Para strafe esquerdo (A): ângulo = player_angle - π/2
 	if (mdata->keys[MLX_KEY_A])
 	{
 		*dx += move_speed * cos(mdata->player_angle + M_PI_2);
 		*dy -= move_speed * sin(mdata->player_angle + M_PI_2);
 	}
-	// Para strafe direito (D): ângulo = player_angle + π/2
 	if (mdata->keys[MLX_KEY_D])
 	{
 		*dx += move_speed * cos(mdata->player_angle - M_PI_2);
@@ -50,10 +46,8 @@ void	handle_movement(t_cub3d *mdata)
 	float	move_speed;
 	float	rotate_speed;
 
-	// move_speed = 5.0f; // em mapas maiores o movimento fica muito rápido, se diminuir o valor fica muito lento em mapas pequenos
-	move_speed = 0.5f; // velocidade legal para o mapa minimalist
-	// rotate_speed = 0.1f;
-	rotate_speed = 0.03f; // teste ficou legal pros dois tamanhos
+	move_speed = 0.5f;
+	rotate_speed = 0.04f;
 	movement_vector(mdata, move_speed, &dx, &dy);
 	player_rotation(mdata, rotate_speed);
 	wall_sliding(mdata, dx, dy);

@@ -21,3 +21,13 @@ TODO final...
 - [ ] TESTAR TESTAR TESTAR!
 - [ ] checar pastas e arquivos de envio !!!
 - [ ] dar push repo 42 e checar
+
+OBSERVAÇÕES:
+ - move_speed = 5.0f; -> em mapas maiores o movimento fica muito rápido, se diminuir o valor fica muito lento em mapas pequenos
+
+ BONUS
+ - [x] colisão
+ - [x] minimapa
+ - [ ] animação (tocha)
+ - [ ] mover camera com o mouse
+ - [ ] 

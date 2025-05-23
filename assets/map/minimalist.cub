@@ -1,7 +1,7 @@
-NO ./assets/texture/walln.png
-SO ./assets/texture/wallc.png
-EA ./assets/texture/walln.png
-WE ./assets/texture/wall42.png
+NO ./assets/texture/wall_42b.png
+SO ./assets/texture/wall_l.png
+EA ./assets/texture/wall_42b.png
+WE ./assets/texture/wall_d.png
 
 F 10,20,20
 C 10,20,30

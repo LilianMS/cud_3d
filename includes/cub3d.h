@@ -81,31 +81,25 @@ typedef struct s_render
 
 typedef struct s_cub3d
 {
-	// Ponteiros gerais
-	mlx_t		*mlx;// Ponteiro para a instância do MLX
-	mlx_image_t	*img;// Imagem principal para renderização
-	char		*tmp;// String temporária para uso geral
-	// Dados do mapa
-	char		**map;// Mapa principal
-	char		**flood_map;// Cópia do mapa para o flood fill
-	int			**matrix;// Matriz auxiliar para cálculos
-	int			map_width;// Largura do mapa
-	int			map_height;// Altura do mapa
-	int			tile_size;// Tamanho de cada tile no mapa
-	// Dados do jogador
-	float		player_x;// Posição X do jogador
-	float		player_y;// Posição Y do jogador
-	float		player_angle;// Ângulo de visão do jogador
-	float		fov;// Campo de visão do jogador
-	int			player_dir;// Direção inicial do jogador (ex.: 'N')
-	t_pos		p_pos; // Estrutura para coordenadas do jogador
-	bool		keys[512];// Estado das teclas pressionadas
-	// Texturas
-	t_texture	texture;// Estrutura para texturas (paths e carregamento)
-	// Dados do mapa e validação
-	t_map		mapping;// Estrutura para informações do mapa
-	// Dados de renderização
-	t_render	render;// Estrutura para variáveis de renderização
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+	char		*tmp;
+	char		**map;
+	char		**flood_map;
+	int			**matrix;
+	int			map_width;
+	int			map_height;
+	int			tile_size;
+	float		player_x;
+	float		player_y;
+	float		player_angle;
+	float		fov;
+	int			player_dir;
+	t_pos		p_pos;
+	bool		keys[512];
+	t_texture	texture;
+	t_map		mapping;
+	t_render	render;
 }	t_cub3d;
 
 // utils.c - Funções utilitárias gerais
@@ -178,9 +172,5 @@ void		cub_draw_column_slice(t_cub3d *mdata, int x);
 void		cub_clear_3d_render(t_cub3d *mdata);
 void		cub_capture_texture(t_cub3d *game);
 uint32_t	cub_get_texture_pixel(mlx_texture_t *texture, int x, int y);
-
-// debug.c - Funções de debug (remover ao finalizar o projeto)
-void		print_area(char **area);
-void		print_textures(t_cub3d *mdata);
 
 #endif
