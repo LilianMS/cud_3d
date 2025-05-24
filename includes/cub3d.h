@@ -106,6 +106,8 @@ typedef struct s_cub3d
 	t_map			mapping;
 	t_render		render;
 	t_animations	anim;
+	mlx_t			*minimap_window;
+	mlx_image_t		*minimap_img;
 }	t_cub3d;
 
 typedef struct s_cub_img
@@ -197,5 +199,6 @@ void		render_direction(t_cub3d *mdata);
 void		clear_minimap_area(t_cub3d *mdata);
 
 void		cub_load_textures_bonus(t_cub3d *mdata);
+void		open_close_minimap(t_cub3d *mdata);
 
 #endif

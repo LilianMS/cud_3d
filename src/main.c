@@ -147,6 +147,8 @@ int	main(int ac, char **av)
 	cub_starts(av, mdata);
 	initialize_mlx(mdata);
 	// cub_load_textures_bonus(mdata);
+	if (mdata->minimap_window)
+		mlx_loop(mdata->minimap_window);
 	mlx_loop(mdata->mlx);
 	cub_clean(mdata);
 	mlx_terminate(mdata->mlx);

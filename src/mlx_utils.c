@@ -44,6 +44,33 @@ static void	render(void *param)
 	}
 }
 
+void	mouse_hook(double xpos, \
+				__attribute__((unused)) double ypos, void *param)
+{
+	t_cub3d			*mdata;
+	static double	last_x = -1;
+	double			delta_x;
+	double			sensitivity;
+
+	mdata = (t_cub3d *)param;
+	if (mdata->minimap_visible)
+		mlx_set_cursor_mode(mdata->mlx, MLX_MOUSE_NORMAL);
+	else
+		mlx_set_cursor_mode(mdata->mlx, MLX_MOUSE_DISABLED);
+	// if (xpos < 0 || xpos > WIDTH)
+	// 	return ; // ignora movimento fora da tela
+	if (last_x == -1)
+		last_x = xpos;
+	delta_x = xpos - last_x;
+	last_x = xpos;
+	sensitivity = 0.0025;
+	mdata->player_angle -= delta_x * sensitivity;
+	if (mdata->player_angle < 0)
+		mdata->player_angle += 2 * M_PI;
+	if (mdata->player_angle > 2 * M_PI)
+		mdata->player_angle -= 2 * M_PI;
+}
+
 void	initialize_mlx(t_cub3d *mdata)
 {
 	mlx_image_t	*img;
@@ -57,6 +84,8 @@ void	initialize_mlx(t_cub3d *mdata)
 	if (!img || (mlx_image_to_window(mdata->mlx, img, 0, 0) < 0))
 		cub_error(mlx_strerror(mlx_errno), mdata);
 	mdata->img = img;
+	mlx_set_cursor_mode(mdata->mlx, MLX_MOUSE_DISABLED);
+	mlx_cursor_hook(mdata->mlx, mouse_hook, mdata);
 	mlx_key_hook(mdata->mlx, deal_key, mdata);
 	mlx_loop_hook(mdata->mlx, &render, mdata);
 }
