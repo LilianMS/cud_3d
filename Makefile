@@ -32,6 +32,8 @@ SRC_FILE =  \
 	raycasting/ray \
 	raycasting/render \
 	raycasting/render_utils \
+	map/mini_map \
+	map/mini_map_utils \
 
 SRC = $(addsuffix .c, $(addprefix ./src/, $(SRC_FILE)))
 

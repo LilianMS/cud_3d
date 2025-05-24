@@ -102,7 +102,7 @@ typedef struct s_cub3d
 	t_render	render;
 }	t_cub3d;
 
-// utils.c - Funções utilitárias gerais
+// utils
 void		cub_error(const char *str, t_cub3d *mdata);
 void		ft_remove_newline(char ***colors);
 void		ft_init_table(int *table, int size);
@@ -114,63 +114,68 @@ int			ft_str_is_space(const char *str);
 int			ft_tern_op(int condition, int true_value, int false_value);
 uint32_t	ft_rgb_to_int(int r, int g, int b);
 
-// validations.c - Validação geral do mapa e elementos
+// validations
 int			cub_valid(t_cub3d *mdata);
 
-// validation_utils.c - Funções auxiliares para validação
+// validation_utils
 int			cub_search_elements(t_cub3d *mdata, const char *elements);
 int			check_map_position(t_cub3d *mdata, int end);
 
-// check_chars.c - Validação de caracteres no mapa
+// check_chars
 int			check_all_chars(char **area, const char *valid_chars);
 int			cub_textures(t_cub3d *mdata);
 
-// check_elements.c - Validação de cores e remoção de espaços
+// check_elements
 int			cub_colors(t_cub3d *mdata);
 void		ft_remove_end_spaces(char **str);
 
-// map_validation.c - Validação do jogador e do mapa
+// map_validation
 void		cub_player_validation(t_cub3d *mdata, t_pos pos);
 void		cub_map_validation(t_cub3d *mdata, t_pos pos);
 
-// map_validation_utils.c - Funções auxiliares para validação do mapa
+// map_validation_utils
 void		cub_flood_fill(t_cub3d *mdata, t_pos pos);
 void		copy_map(t_cub3d *mdata);
 
-// mlx_utils.c - Inicialização do MLX e renderização
+// mlx_utils
 void		initialize_mlx(t_cub3d *mdata);
 
-// map_utils.c - Funções auxiliares para manipulação do mapa
+// map_utils
 void		cub_extract_map(t_cub3d *mdata);
 int			is_map_line(char *line);
 int			calculate_tile_size(int map_width, int map_height);
 
-// map_utils_2.c - Funções adicionais para manipulação do mapa
+// map_utils_2
 void		allocate_copy_map(t_cub3d *data, int init, int lines, t_pos pos);
 
-// map.c - Inicialização e renderização do minimapa
-void		init_map(t_cub3d *mdata);
-void		draw_minimap(t_cub3d *mdata);
+// map
 void		cub_player_start(t_cub3d *mdata);
 
-// movement.c - Funções de movimentação e rotação
+// movement
 void		deal_key(struct mlx_key_data keydata, void *param);
 void		handle_movement(t_cub3d *mdata);
 
-// wall.c - Funções de colisão e movimentação junto à parede
+// wall
 int			is_wall(t_cub3d *mdata, float x, float y);
 void		wall_sliding(t_cub3d *mdata, float dx, float dy);
 
-// clean.c - Funções de limpeza de memória
+// clean
 void		cub_clean(t_cub3d *mdata);
 void		free_area(char **area);
 
-// raycasting.c - Renderização 3D
+// raycasting
 void		cub_render_3d(t_cub3d *mdata);
 void		cub_cast_single_ray(t_cub3d *mdata);
 void		cub_draw_column_slice(t_cub3d *mdata, int x);
 void		cub_clear_3d_render(t_cub3d *mdata);
 void		cub_capture_texture(t_cub3d *game);
 uint32_t	cub_get_texture_pixel(mlx_texture_t *texture, int x, int y);
+
+// bonus
+// void		cub_render_minimap(t_cub3d *mdata);
+void		draw_minimap(t_cub3d *mdata);
+void		render_player(t_cub3d *mdata);
+void		render_direction(t_cub3d *mdata);
+void		clear_minimap_area(t_cub3d *mdata);
 
 #endif

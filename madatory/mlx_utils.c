@@ -7,10 +7,6 @@ static void	render(void *param)
 	mdata = (t_cub3d *)param;
 	handle_movement(mdata);
 	cub_render_3d(mdata);
-	clear_minimap_area(mdata);
-	draw_minimap(mdata);
-	render_player(mdata);
-	render_direction(mdata);
 }
 
 void	initialize_mlx(t_cub3d *mdata)
