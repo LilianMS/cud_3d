@@ -28,6 +28,7 @@ OBSERVAÇÕES:
  BONUS
  - [x] colisão
  - [x] minimapa
+ - [x] tecla M mostra minimapa
  - [ ] animação (tocha)
  - [ ] mover camera com o mouse
  - [ ] 

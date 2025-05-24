@@ -58,6 +58,8 @@ void	deal_key(struct mlx_key_data keydata, void *param)
 	t_cub3d	*mdata;
 
 	mdata = (t_cub3d *)param;
+	if (keydata.key == MLX_KEY_M && keydata.action == MLX_PRESS)
+		mdata->minimap_visible = !mdata->minimap_visible;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(mdata->mlx);
 	if (keydata.action == MLX_PRESS)

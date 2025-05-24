@@ -63,7 +63,6 @@
 // 	extract_torch_frames(mdata, mdata->anim.torch_texture);
 // }
 
-
 // void	cub_load_textures_bonus(t_cub3d *mdata)
 // {
 // 	init_t_animation(mdata);
@@ -105,11 +104,10 @@ void	cub_load_textures_bonus(t_cub3d *mdata)
 	i = 0;
 	while (i < TORCH_FRAMES)
 	{
-		set_hud_position(frames[i], -80, 80);
+		set_hud_position(frames[i], -80, 180);
 		i++;
 	}
 }
-
 
 void	cub_load_textures(t_cub3d *mdata)
 {
@@ -131,8 +129,11 @@ int	cub_starts(char **av, t_cub3d *mdata)
 {
 	if (!mdata)
 		cub_error("Memory allocation error.", NULL);
+	ft_memset(mdata, 0, sizeof(t_cub3d));
 	mdata->mapping.file = av[1];
 	mdata->fov = M_PI / 3.0;
+	cub_valid(mdata);
+	cub_load_textures(mdata);
 	return (0);
 }
 
@@ -143,14 +144,9 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		cub_error("Argument with 'file.cub' is required!", NULL);
 	mdata = malloc(sizeof(t_cub3d));
-	if (!mdata)
-		cub_error("Memory allocation error.", NULL);
-	ft_memset(mdata, 0, sizeof(t_cub3d));
 	cub_starts(av, mdata);
 	initialize_mlx(mdata);
-	cub_valid(mdata);
-	cub_load_textures(mdata);
-	cub_load_textures_bonus(mdata);
+	// cub_load_textures_bonus(mdata);
 	mlx_loop(mdata->mlx);
 	cub_clean(mdata);
 	mlx_terminate(mdata->mlx);

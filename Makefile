@@ -50,6 +50,7 @@ SRC = \
 	src/map/mini_map.c \
 	src/map/mini_map_utils.c \
 	src/animation/animation.c
+	src/animation/animation_utils.c
 
 # ➕ Se tiver bonus:
 SRC_BONUS =

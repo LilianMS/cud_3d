@@ -98,6 +98,7 @@ typedef struct s_cub3d
 	float			player_y;
 	float			player_angle;
 	float			fov;
+	int				minimap_visible;
 	int				player_dir;
 	t_pos			p_pos;
 	bool			keys[512];

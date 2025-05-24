@@ -24,20 +24,24 @@
 
 static void	render(void *param)
 {
+	double	current_time;
+	// double	delta_time;
 	t_cub3d	*mdata;
 
 	mdata = (t_cub3d *)param;
-	double current_time = mlx_get_time();
-    double delta_time = current_time - mdata->last_frame_time;
-    mdata->last_frame_time = current_time;
-
+	current_time = mlx_get_time();
+	// delta_time = current_time - mdata->last_frame_time;
+	mdata->last_frame_time = current_time;
 	handle_movement(mdata);
 	cub_render_3d(mdata);
-	update_animation(&mdata->anim.torch, delta_time);
-	clear_minimap_area(mdata);
-	draw_minimap(mdata);
-	render_player(mdata);
-	render_direction(mdata);
+	// update_animation(&mdata->anim.torch, delta_time);
+	if (mdata->minimap_visible)
+	{
+		clear_minimap_area(mdata);
+		draw_minimap(mdata);
+		render_player(mdata);
+		render_direction(mdata);
+	}
 }
 
 void	initialize_mlx(t_cub3d *mdata)
@@ -55,5 +59,4 @@ void	initialize_mlx(t_cub3d *mdata)
 	mdata->img = img;
 	mlx_key_hook(mdata->mlx, deal_key, mdata);
 	mlx_loop_hook(mdata->mlx, &render, mdata);
-	
 }
