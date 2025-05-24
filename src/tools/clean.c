@@ -1,5 +1,15 @@
 #include "cub3d.h"
 
+void	cub_error(const char *str, t_cub3d *mdata)
+{
+	ft_putstr_fd("Error!\n", 2);
+	ft_putstr_fd((char *)str, 2);
+	ft_putstr_fd("\n", 2);
+	if (mdata)
+		cub_clean(mdata);
+	exit(EXIT_FAILURE);
+}
+
 void	free_area(char **area)
 {
 	int	i;

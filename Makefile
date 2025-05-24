@@ -36,6 +36,7 @@ SRC = \
 	src/movement.c \
 	src/wall.c \
 	src/tools/utils.c \
+	src/tools/utils_2.c \
 	src/tools/clean.c \
 	src/validation/validations.c \
 	src/validation/validation_utils.c \
@@ -47,11 +48,8 @@ SRC = \
 	src/raycasting/ray.c \
 	src/raycasting/render.c \
 	src/raycasting/render_utils.c \
-	src/map/mini_map.c \
-	src/map/mini_map_utils.c \
-	src/animation/animation.c
 
-# ➕ Se tiver bonus:
+#  Se tiver bonus:
 SRC_BONUS =
 
 # ****************************************************

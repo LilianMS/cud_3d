@@ -10,7 +10,7 @@ TODO final...
 - [ ] checar como entregar o arquivo .SUPP   !!!!!!!!!!!!!
 - [ ] mudar ou retirar validação de tamanho min e max ???!!!!
 - [ ] editar arquivos BONUS e makefile para bonus
-- [ ] refatorar MAKEFILE
+- [x] refatorar MAKEFILE
 - [ ] organizar melhor pastas e .h ?
 - [x] branch cópia da mandatory para registro dos comentários explicativos
 - [x] editar imagens legais pros testes

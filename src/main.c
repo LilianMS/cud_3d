@@ -37,6 +37,8 @@ int	main(int ac, char **av)
 	mdata = malloc(sizeof(t_cub3d));
 	cub_starts(av, mdata);
 	initialize_mlx(mdata);
+	mlx_loop(mdata->mlx);
+	mlx_terminate(mdata->mlx);
 	cub_clean(mdata);
 	return (0);
 }
