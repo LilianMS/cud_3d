@@ -1,4 +1,5 @@
 #include "cub3d.h"
+#include "minimap.h"
 
 // void update_torch(void* param, double delta_time)
 // {
@@ -37,10 +38,14 @@ static void	render(void *param)
 	// update_animation(&mdata->anim.torch, delta_time);
 	if (mdata->minimap_visible)
 	{
-		clear_minimap_area(mdata);
-		draw_minimap(mdata);
-		render_player(mdata);
-		render_direction(mdata);
+		mdata->minimap_static->enabled = true;
+		mdata->minimap_dynamic->enabled = true;
+		update_minimap_dynamic(mdata);
+	}
+	else
+	{
+		mdata->minimap_static->enabled = false;
+		mdata->minimap_dynamic->enabled = false;
 	}
 }
 

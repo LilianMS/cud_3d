@@ -12,8 +12,8 @@
 # include "animation.h"
 # define WIDTH 1024
 # define HEIGHT 768
-# define MINIMAP_AREA_W   200
-# define MINIMAP_AREA_H   200
+# define MINIMAP_AREA_W   300
+# define MINIMAP_AREA_H   300
 # define MINIMAP_OFFSET_X 10
 # define MINIMAP_OFFSET_Y 10
 # ifndef M_PI
@@ -25,7 +25,7 @@
 # define MIN_WIDTH 3
 # define VERY_BIG 1e30
 
-typedef struct s_animations t_animations;
+typedef struct s_animations	t_animations;
 
 typedef struct s_pos
 {
@@ -108,6 +108,8 @@ typedef struct s_cub3d
 	t_animations	anim;
 	mlx_t			*minimap_window;
 	mlx_image_t		*minimap_img;
+	mlx_image_t		*minimap_static;
+	mlx_image_t		*minimap_dynamic;
 }	t_cub3d;
 
 typedef struct s_cub_img
@@ -200,5 +202,6 @@ void		clear_minimap_area(t_cub3d *mdata);
 
 void		cub_load_textures_bonus(t_cub3d *mdata);
 void		open_close_minimap(t_cub3d *mdata);
+void		init_minimap(t_cub3d *mdata);
 
 #endif
