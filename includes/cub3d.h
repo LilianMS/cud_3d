@@ -9,6 +9,7 @@
 # include <stdint.h>
 # include "../lib/libft/includes/libft.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
+# include "animation.h"
 # define WIDTH 1024
 # define HEIGHT 768
 # define MINIMAP_AREA_W   200
@@ -23,6 +24,8 @@
 # define MIN_LINES 4
 # define MIN_WIDTH 3
 # define VERY_BIG 1e30
+
+typedef struct s_animations t_animations;
 
 typedef struct s_pos
 {
@@ -81,26 +84,40 @@ typedef struct s_render
 
 typedef struct s_cub3d
 {
-	mlx_t		*mlx;
-	mlx_image_t	*img;
-	char		*tmp;
-	char		**map;
-	char		**flood_map;
-	int			**matrix;
-	int			map_width;
-	int			map_height;
-	int			tile_size;
-	float		player_x;
-	float		player_y;
-	float		player_angle;
-	float		fov;
-	int			player_dir;
-	t_pos		p_pos;
-	bool		keys[512];
-	t_texture	texture;
-	t_map		mapping;
-	t_render	render;
+	double			last_frame_time;
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	char			*tmp;
+	char			**map;
+	char			**flood_map;
+	int				**matrix;
+	int				map_width;
+	int				map_height;
+	int				tile_size;
+	float			player_x;
+	float			player_y;
+	float			player_angle;
+	float			fov;
+	int				player_dir;
+	t_pos			p_pos;
+	bool			keys[512];
+	t_texture		texture;
+	t_map			mapping;
+	t_render		render;
+	t_animations	anim;
 }	t_cub3d;
+
+typedef struct s_cub_img
+{
+	uint32_t	src_x;
+	uint32_t	src_y;
+	uint32_t	src_index;
+	uint32_t	dst_index;
+	uint8_t		r;
+	uint8_t		g;
+	uint8_t		b;
+	uint8_t		a;
+}	t_cub_img;
 
 // utils
 void		cub_error(const char *str, t_cub3d *mdata);
@@ -177,5 +194,7 @@ void		draw_minimap(t_cub3d *mdata);
 void		render_player(t_cub3d *mdata);
 void		render_direction(t_cub3d *mdata);
 void		clear_minimap_area(t_cub3d *mdata);
+
+void		cub_load_textures_bonus(t_cub3d *mdata);
 
 #endif

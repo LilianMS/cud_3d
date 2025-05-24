@@ -33,6 +33,10 @@ void	cub_free_data(t_cub3d *mdata)
 		free(mdata->texture.ea);
 	if (mdata->tmp)
 		free(mdata->tmp);
+	if (mdata->anim.torch.frames)
+		destroy_frames(mdata->mlx, mdata->anim.torch.frames, \
+			mdata->anim.torch.frame_count);
+
 }
 
 void	cub_clean(t_cub3d *mdata)
@@ -44,6 +48,4 @@ void	cub_clean(t_cub3d *mdata)
 		free_area(mdata->mapping.area);
 	if (mdata->map)
 		free_area(mdata->map);
-	if (mdata)
-		free(mdata);
 }
