@@ -28,5 +28,6 @@ void		init_animation(t_animation *anim, mlx_t *mlx,
 void		update_animation(t_animation *anim, double delta_time);
 void		set_hud_position(mlx_image_t *img, int offset_x, int offset_y);
 void		destroy_frames(mlx_t *mlx, mlx_image_t **frames, int frame_count);
+void		clear_image(mlx_image_t *img);
 
 #endif

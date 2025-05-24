@@ -2,25 +2,27 @@
 #include "cub3d.h"
 
 void	copy_texture_to_image(mlx_texture_t *tx, mlx_image_t *img,
-			int idx, uint32_t fw)
+	int idx, uint32_t fw)
 {
 	uint32_t	x;
 	uint32_t	y;
 	uint32_t	src;
 	uint32_t	color;
 
+	clear_image(img);
 	y = 0;
 	while (y < img->height)
 	{
 		x = 0;
 		while (x < img->width)
 		{
-			src = ((y * tx->width) + x + idx * fw) * 4;
+			src = ((y * tx->width) + (x + idx * fw)) * 4;
 			color = (tx->pixels[src + 3] << 24)
 				| (tx->pixels[src + 2] << 16)
 				| (tx->pixels[src + 1] << 8)
 				| tx->pixels[src + 0];
-			mlx_put_pixel(img, x, y, color);
+			if (tx->pixels[src + 3] != 0)
+				mlx_put_pixel(img, x, y, color);
 			x++;
 		}
 		y++;

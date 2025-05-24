@@ -26,16 +26,16 @@
 static void	render(void *param)
 {
 	double	current_time;
-	// double	delta_time;
+	double	delta_time;
 	t_cub3d	*mdata;
 
 	mdata = (t_cub3d *)param;
 	current_time = mlx_get_time();
-	// delta_time = current_time - mdata->last_frame_time;
+	delta_time = current_time - mdata->last_frame_time;
 	mdata->last_frame_time = current_time;
 	handle_movement(mdata);
 	cub_render_3d(mdata);
-	// update_animation(&mdata->anim.torch, delta_time);
+	update_animation(&mdata->anim.torch, delta_time);
 	if (mdata->minimap_visible)
 	{
 		mdata->minimap_static->enabled = true;
