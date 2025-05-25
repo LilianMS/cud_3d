@@ -27,7 +27,7 @@ static void	calculate_map_width(t_cub3d *mdata, int start, int map_lines)
 			mdata->map_width = len;
 		k++;
 	}
-	check_size_map(mdata, map_lines); // validação para tamanho máximo e mínimo do mapa ???
+	check_size_map(mdata, map_lines);
 }
 
 void	allocate_copy_map(t_cub3d *mdata, int init, int lines, t_pos pos)

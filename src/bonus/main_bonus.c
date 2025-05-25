@@ -1,5 +1,29 @@
 #include "cub3d.h"
 
+void	cub_load_textures_bonus(t_cub3d *mdata)
+{
+	mlx_texture_t	*tx;
+	mlx_image_t		**frames;
+	int				i;
+
+	if (!mdata->mlx)
+		cub_error("MLX not initialized!", mdata);
+	tx = mlx_load_png("./assets/textures/torch_spritesheet.png");
+	if (!tx)
+		cub_error("Failed to load torch texture", mdata);
+	frames = extract_frames(mdata->mlx, tx, TORCH_FRAMES);
+	mlx_delete_texture(tx);
+	if (!frames)
+		cub_error("Failed to extract torch frames", mdata);
+	init_animation(&mdata->anim.torch, mdata->mlx, frames, 0.15);
+	i = 0;
+	while (i < TORCH_FRAMES)
+	{
+		set_hud_position(frames[i], 180, 320);
+		i++;
+	}
+}
+
 void	cub_load_textures(t_cub3d *mdata)
 {
 	mdata->texture.north = mlx_load_png(mdata->texture.no);
@@ -22,9 +46,9 @@ int	cub_starts(char **av, t_cub3d *mdata)
 		cub_error("Memory allocation error.", NULL);
 	ft_memset(mdata, 0, sizeof(t_cub3d));
 	mdata->mapping.file = av[1];
+	mdata->fov = M_PI / 3.0;
 	cub_valid(mdata);
 	cub_load_textures(mdata);
-	mdata->fov = M_PI / 3.0;
 	return (0);
 }
 
@@ -37,7 +61,13 @@ int	main(int ac, char **av)
 	mdata = malloc(sizeof(t_cub3d));
 	cub_starts(av, mdata);
 	initialize_mlx(mdata);
+	cub_load_textures_bonus(mdata);
+	init_minimap(mdata);
+	mlx_loop(mdata->mlx);
 	cub_clean(mdata);
+	mlx_terminate(mdata->mlx);
+	if (mdata)
+		free(mdata);
 	return (0);
 }
 

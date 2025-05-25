@@ -48,13 +48,32 @@ SRC = \
 	src/raycasting/ray.c \
 	src/raycasting/render.c \
 	src/raycasting/render_utils.c \
-	src/map/mini_map.c \
-	src/map/mini_map_utils.c \
-	src/animation/animation.c \
-	src/animation/animation_utils.c
 
-# ➕ Se tiver bonus:
-SRC_BONUS =
+SRC_BONUS = \
+	src/bonus/main_bonus.c \
+	src/bonus/mlx_utils_bonus.c \
+	src/bonus/mini_map/mini_map_bonus.c \
+	src/bonus/mini_map/mini_map_utils_bonus.c \
+	src/bonus/animation/animation_bonus.c \
+	src/bonus/animation/animation_utils_bonus.c \
+	src/bonus/clean_bonus.c \
+	src/map/map.c \
+	src/map/map_utils.c \
+	src/map/map_utils_2.c \
+	src/movement.c \
+	src/wall.c \
+	src/tools/utils.c \
+	src/tools/utils_2.c \
+	src/validation/validations.c \
+	src/validation/validation_utils.c \
+	src/validation/check_chars.c \
+	src/validation/check_textures.c \
+	src/validation/check_elements.c \
+	src/validation/map_validation.c \
+	src/validation/map_validation_utils.c \
+	src/raycasting/ray.c \
+	src/raycasting/render.c \
+	src/raycasting/render_utils.c \
 
 # ****************************************************
 #                     OBJETOS
@@ -120,8 +139,8 @@ re: fclean all
 run: all
 	@./$(NAME) assets/map/minimalist_map.cub
 
-valgrind: all
-	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) assets/map/minimalist_map.cub
+val: all
+	@valgrind --leak-check=full --suppressions=lib/MLX42/mlx42.supp --show-leak-kinds=all ./$(NAME) assets/map/minimalist_map.cub
 
 # ****************************************************
 #                     PHONY
