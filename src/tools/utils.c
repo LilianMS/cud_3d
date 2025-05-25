@@ -1,15 +1,5 @@
 #include "cub3d.h"
 
-void	cub_error(const char *str, t_cub3d *mapdata)
-{
-	ft_putstr_fd("Error!\n", 2);
-	ft_putstr_fd((char *)str, 2);
-	ft_putstr_fd("\n", 2);
-	if (mapdata)
-		cub_clean(mapdata);
-	exit(EXIT_FAILURE);
-}
-
 void	ft_remove_newline(char ***colors)
 {
 	char	*newline;
@@ -50,7 +40,9 @@ int	ft_check_kind_file(char *str, char *suffix)
 	int		len;
 	int		i;
 
-	remove_end_spaces(&str);
+	if (!str || !suffix)
+		return (0);
+	ft_remove_end_spaces(&str);
 	i = ft_strlen(suffix) - 1;
 	len = ft_strlen(str) - 1;
 	while (i >= 0)
@@ -59,4 +51,9 @@ int	ft_check_kind_file(char *str, char *suffix)
 			return (0);
 	}
 	return (1);
+}
+
+uint32_t	ft_rgb_to_int(int r, int g, int b)
+{
+	return (r << 24 | g << 16 | b << 8 | 255);
 }
