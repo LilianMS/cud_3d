@@ -1,4 +1,16 @@
-#include "animation.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   animation_utils_bonus.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/25 16:48:33 by lilmende          #+#    #+#             */
+/*   Updated: 2025/05/25 17:07:17 by lilmende         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "animation_bonus.h"
 #include "cub3d.h"
 
 void	set_hud_position(mlx_image_t *img, int offset_x, int offset_y)

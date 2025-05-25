@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/25 17:02:23 by lilmende          #+#    #+#             */
+/*   Updated: 2025/05/25 17:13:18 by lilmende         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -9,7 +21,7 @@
 # include <stdint.h>
 # include "../lib/libft/includes/libft.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
-# include "animation.h"
+# include "animation_bonus.h"
 # define WIDTH 1024
 # define HEIGHT 768
 # define MINIMAP_AREA_W   300

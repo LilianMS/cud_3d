@@ -1,4 +1,16 @@
-#include "animation.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   animation_bonus.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/25 16:47:59 by lilmende          #+#    #+#             */
+/*   Updated: 2025/05/25 17:07:06 by lilmende         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "animation_bonus.h"
 #include "cub3d.h"
 
 void	copy_texture_to_image(mlx_texture_t *tx, mlx_image_t *img,
