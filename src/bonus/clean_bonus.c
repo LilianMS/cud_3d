@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:48:43 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/25 17:03:40 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/05/26 23:27:00 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,6 @@ void	cub_clean(t_cub3d *mdata)
 		free_area(mdata->mapping.area);
 	if (mdata->map)
 		free_area(mdata->map);
+	if (!mdata->passed)
+		free(mdata);
 }

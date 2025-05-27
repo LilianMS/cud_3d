@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:51:35 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/25 16:51:36 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/05/26 23:45:55 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,18 @@ int	main(int ac, char **av)
 	t_cub3d	*mdata;
 
 	if (ac != 2)
-		cub_error("Argument with 'file.cub' is required!", NULL);
+	{
+		cub_error("Usage: ./cub3d <map.cub>", NULL);
+		return (0);
+	}
 	mdata = malloc(sizeof(t_cub3d));
 	cub_starts(av, mdata);
 	initialize_mlx(mdata);
 	mlx_loop(mdata->mlx);
+	mdata->passed = 1;
 	cub_clean(mdata);
 	mlx_terminate(mdata->mlx);
 	if (mdata)
 		free(mdata);
 	return (0);
 }
-
-/*
- ** To run with Valgrind and suppressions:
- *** valgrind --suppressions=mlx42.supp ./cub3D assets/map/simple_map.cub
- ** For detailed analysis:
- *** valgrind --leak-check=full --show-leak-kinds=all
- *** --suppressions=mlx42.supp ./cub3D assets/map/simple_map.cub
- */

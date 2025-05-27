@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:51:46 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/25 17:13:34 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/05/26 23:22:08 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 static void	render(void *param)
 {
 	double	current_time;
-	double	delta_time;
 	t_cub3d	*mdata;
 
 	mdata = (t_cub3d *)param;
 	current_time = mlx_get_time();
-	delta_time = current_time - mdata->last_frame_time;
 	mdata->last_frame_time = current_time;
 	handle_movement(mdata);
 	cub_render_3d(mdata);

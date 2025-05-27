@@ -6,22 +6,11 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:49:37 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/25 16:49:38 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/05/26 22:50:34 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/**
- * Directional angles used in the program:
- * - M_PI / 2 (90°): Represents the north direction.
- * - 3 * M_PI / 2 (270°): Represents the south direction.
- * - 0 (0°): Represents the east direction.
- * - M_PI (180°): Represents the west direction.
- *
- * These angles are expressed in radians and correspond to the standard
- * mathematical representation of directions on a unit circle.
- */
 
 static void	set_player_start(t_cub3d *mdata, int row, int col, char start)
 {

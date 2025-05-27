@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 17:02:23 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/25 17:13:18 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/05/26 23:11:12 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ typedef struct s_cub3d
 	float			fov;
 	int				minimap_visible;
 	int				player_dir;
+	int				passed;
 	t_pos			p_pos;
 	bool			keys[512];
 	t_texture		texture;

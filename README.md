@@ -6,17 +6,17 @@
 
 TODO final...
 
-- [ ] tirar dúvidas com a comunidade
-- [ ] checar como entregar o arquivo .SUPP   !!!!!!!!!!!!!
-- [ ] mudar ou retirar validação de tamanho min e max ???!!!!
-- [ ] editar arquivos BONUS e makefile para bonus
-- [ ] refatorar MAKEFILE
+- [x] tirar dúvidas com a comunidade
+- [x] checar como entregar o arquivo .SUPP   !!!!!!!!!!!!!
+- [x] mudar ou retirar validação de tamanho min e max ???!!!!
+- [x] editar arquivos BONUS e makefile para bonus
+- [x] refatorar MAKEFILE
 - [ ] organizar melhor pastas e .h ?
 - [x] branch cópia da mandatory para registro dos comentários explicativos
 - [x] editar imagens legais pros testes
 - [ ] testar validação
 - [x] retirar DEBUG e comentários
-- [ ] colocar cabeçalho na 42
+- [x] colocar cabeçalho na 42
 - [ ] passar norminette na 42 42xxxx
 - [ ] TESTAR TESTAR TESTAR!
 - [ ] checar pastas e arquivos de envio !!!
@@ -31,4 +31,4 @@ OBSERVAÇÕES:
     - [x] tecla M mostra minimapa
  - [x] animação (tocha)
  - [x] mover camera com o mouse
- - [ ]
+ - [ ] portas que abrem

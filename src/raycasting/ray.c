@@ -6,20 +6,11 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:49:44 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/25 16:49:45 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/05/26 22:50:48 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/*
-** This file contains the implementation of raycasting for the cub3D
-** project. Raycasting is used to calculate the distance to walls and
-** render a 3D perspective based on a 2D map. The functions in this
-** file handle the initialization of ray directions, calculation of
-** distances, and the Digital Differential Analysis (DDA) algorithm
-** to determine wall intersections.
-*/
 
 static void	calculate_delta_distances(t_cub3d *mdata)
 {
