@@ -93,7 +93,7 @@ void	cub_load_textures_bonus(t_cub3d *mdata)
 
 	if (!mdata->mlx)
 		cub_error("MLX not initialized!", mdata);
-	tx = mlx_load_png("./assets/textures/torch_spritesheet.png");
+	tx = mlx_load_png("./assets/textures/red_torch.png");
 	if (!tx)
 		cub_error("Failed to load torch texture", mdata);
 	frames = extract_frames(mdata->mlx, tx, TORCH_FRAMES);
