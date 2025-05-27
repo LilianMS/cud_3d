@@ -6,6 +6,7 @@
 
 TODO final...
 
+- [ ] acertar reset de cor no makefile da libft
 - [x] tirar dúvidas com a comunidade
 - [x] checar como entregar o arquivo .SUPP   !!!!!!!!!!!!!
 - [x] mudar ou retirar validação de tamanho min e max ???!!!!

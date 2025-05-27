@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:51:35 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/26 23:45:55 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/05/27 00:03:38 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,14 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		cub_error("Usage: ./cub3d <map.cub>", NULL);
-		return (0);
+		if (ac > 2)
+			ft_putstr_fd("Error: Too many arguments.\n", 2);
+		else
+		{
+			ft_putstr_fd("Error: Missing argument.\n", 2);
+			ft_putstr_fd("Usage: ./cub3d <map.cub>\n", 1);
+			return (1);
+		}
 	}
 	mdata = malloc(sizeof(t_cub3d));
 	cub_starts(av, mdata);
