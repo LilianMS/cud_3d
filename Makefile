@@ -6,7 +6,7 @@
 #    By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 22:49:22 by lilmende          #+#    #+#              #
-#    Updated: 2025/05/26 22:49:25 by lilmende         ###   ########.fr        #
+#    Updated: 2025/06/07 13:05:42 by lilmende         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,4 +158,4 @@ val: all
 #                     PHONY
 # ****************************************************
 
-.PHONY: all bonus libmlx libft clean fclean re run valgrind
+.PHONY: all bonus libmlx libft clean fclean re run val

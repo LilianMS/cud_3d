@@ -6,7 +6,7 @@
 #    By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/13 19:06:53 by lilmende          #+#    #+#              #
-#    Updated: 2025/02/28 20:13:21 by lilmende         ###   ########.fr        #
+#    Updated: 2025/06/07 13:08:35 by lilmende         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,28 +75,28 @@ SRC = ./src/ft_memset.c \
 OBJS = ${SRC:%.c=%.o}
 
 all: $(NAME)
-	@echo "${YELLOW}Libft Compiled."
-	
+	@echo "${YELLOW}Libft Compiled.${RESET}"
+
 %.o: %.c
 	@$(CC) $(FLAGS) -c $< -o $@ -I $(HEADERS)
 	@ar rcs ${NAME} $@
 
 $(NAME): $(OBJS)
-	@echo "${YELLOW}Compiling Libft files..."
-	
+	@echo "${YELLOW}Compiling Libft files...${RESET}"
+
 clean:
 	@if ls $(OBJS) 1> /dev/null 2>&1; then \
 		echo "${RED}Cleaning up libft objects...${RESET}"; \
 		$(RM) $(OBJS); \
-		echo "${YELLOW}Done."; \
+		echo "${YELLOW}Done.${RESET}"; \
 	else \
-		echo "${YELLOW}No objects to delete."; \
+		echo "${YELLOW}No objects to delete.${RESET}"; \
 	fi
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "${RED}Libft.a removed."
-	
+	@echo "${RED}Libft.a removed.${RESET}"
+
 re: fclean all
 
 RED     = \033[2;31m
