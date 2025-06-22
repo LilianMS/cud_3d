@@ -6,7 +6,10 @@
 
 TODO final...
 
-- [ ] acertar reset de cor no makefile da libft
+- [x] acertar reset de cor no makefile da libft
+- [ ] corrigir bugs:
+            ! erro de leitura com espaços;
+            ! erro segfault com dois players;
 - [x] tirar dúvidas com a comunidade
 - [x] checar como entregar o arquivo .SUPP   !!!!!!!!!!!!!
 - [x] mudar ou retirar validação de tamanho min e max ???!!!!

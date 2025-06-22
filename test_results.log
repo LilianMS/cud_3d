@@ -1,0 +1,48 @@
+Executando teste com o arquivo: maps/invalid_elements_aftermap.cub
+Teste com 'maps/invalid_elements_aftermap.cub': ERRO
+Executando teste com o arquivo: maps/invalid_elements_garbage.cub
+Teste com 'maps/invalid_elements_garbage.cub': ERRO
+Executando teste com o arquivo: maps/invalid_elements_rgb_3commas.cub
+Teste com 'maps/invalid_elements_rgb_3commas.cub': ERRO
+Executando teste com o arquivo: maps/invalid_elements_rgb_len.cub
+Teste com 'maps/invalid_elements_rgb_len.cub': ERRO
+Executando teste com o arquivo: maps/invalid_elements_rgb_nondigit.cub
+Teste com 'maps/invalid_elements_rgb_nondigit.cub': ERRO
+Executando teste com o arquivo: maps/invalid_elements_rgb_range.cub
+Teste com 'maps/invalid_elements_rgb_range.cub': ERRO
+Executando teste com o arquivo: maps/invalid_elements_texture_dne.cub
+Teste com 'maps/invalid_elements_texture_dne.cub': ERRO
+Executando teste com o arquivo: maps/invalid_elements_texture_extension.cub
+Teste com 'maps/invalid_elements_texture_extension.cub': ERRO
+Executando teste com o arquivo: maps/invalid_elements_texture_missing.cub
+Teste com 'maps/invalid_elements_texture_missing.cub': ERRO
+Executando teste com o arquivo: maps/invalid_elements_texture_repeat.cub
+Teste com 'maps/invalid_elements_texture_repeat.cub': ERRO
+Executando teste com o arquivo: maps/invalid_empty.cub
+Teste com 'maps/invalid_empty.cub': ERRO
+Executando teste com o arquivo: maps/invalid_map_garbage_after.cub
+Teste com 'maps/invalid_map_garbage_after.cub': ERRO
+Executando teste com o arquivo: maps/invalid_map_garbage_inside.cub
+Teste com 'maps/invalid_map_garbage_inside.cub': ERRO
+Executando teste com o arquivo: maps/invalid_map_newlines.cub
+Teste com 'maps/invalid_map_newlines.cub': ERRO
+Executando teste com o arquivo: maps/invalid_map_noplayers.cub
+Teste com 'maps/invalid_map_noplayers.cub': ERRO
+Executando teste com o arquivo: maps/invalid_map_notsurrounded.cub
+Teste com 'maps/invalid_map_notsurrounded.cub': ERRO
+Executando teste com o arquivo: maps/invalid_map_space_inside.cub
+Teste com 'maps/invalid_map_space_inside.cub': ERRO
+Executando teste com o arquivo: maps/invalid_map_twoplayers.cub
+Teste com 'maps/invalid_map_twoplayers.cub': ERRO
+Executando teste com o arquivo: maps/invalid_map_twoplayersout.cub
+Teste com 'maps/invalid_map_twoplayersout.cub': ERRO
+Executando teste com o arquivo: maps/test_empty_png.cub
+Teste com 'maps/test_empty_png.cub': ERRO
+Executando teste com o arquivo: maps/valid_elements_disorder.cub
+Teste com 'maps/valid_elements_disorder.cub': SUCESSO
+Executando teste com o arquivo: maps/valid_elements_spaces.cub
+Teste com 'maps/valid_elements_spaces.cub': SUCESSO
+Executando teste com o arquivo: maps/valid_ideal.cub
+Teste com 'maps/valid_ideal.cub': SUCESSO
+Executando teste com o arquivo: maps/valid_newlines.cub
+Teste com 'maps/valid_newlines.cub': SUCESSO

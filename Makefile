@@ -6,7 +6,7 @@
 #    By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 22:49:22 by lilmende          #+#    #+#              #
-#    Updated: 2025/06/07 13:05:42 by lilmende         ###   ########.fr        #
+#    Updated: 2025/06/21 21:16:56 by lilmende         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -154,8 +154,12 @@ run: all
 val: all
 	@valgrind --leak-check=full --suppressions=lib/MLX42/mlx42.supp --show-leak-kinds=all ./$(NAME) assets/map/minimalist_map.cub
 
+test: all
+	@echo "Running tests..."
+	@./test_teste.sh
+
 # ****************************************************
 #                     PHONY
 # ****************************************************
 
-.PHONY: all bonus libmlx libft clean fclean re run val
+.PHONY: all bonus libmlx libft clean fclean re run val test
