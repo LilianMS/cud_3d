@@ -1,35 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_validation_utils.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/25 16:50:55 by lilmende          #+#    #+#             */
+/*   Updated: 2025/05/25 16:50:56 by lilmende         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void	cub_flood_fill(t_cub3d *mapdata, t_pos pos)
+void	cub_flood_fill(t_cub3d *mdata, t_pos pos)
 {
-	if (pos.y < 0 || pos.x < 0 || pos.y >= mapdata->map_height \
-		|| pos.x >= mapdata->map_width)
+	if (pos.y < 0 || pos.x < 0 || pos.y >= mdata->map_height \
+		|| pos.x >= mdata->map_width)
 		return ;
-	if (mapdata->flood_map[pos.y][pos.x] == '1' \
-		|| mapdata->flood_map[pos.y][pos.x] == 'T')
+	if (mdata->flood_map[pos.y][pos.x] == '1' \
+		|| mdata->flood_map[pos.y][pos.x] == 'T')
 		return ;
-	if (mapdata->flood_map[pos.y][pos.x] == '0')
-		mapdata->flood_map[pos.y][pos.x] = 'T';
-	cub_flood_fill(mapdata, (t_pos){pos.x + 1, pos.y});
-	cub_flood_fill(mapdata, (t_pos){pos.x - 1, pos.y});
-	cub_flood_fill(mapdata, (t_pos){pos.x, pos.y + 1});
-	cub_flood_fill(mapdata, (t_pos){pos.x, pos.y - 1});
+	if (mdata->flood_map[pos.y][pos.x] == '0')
+		mdata->flood_map[pos.y][pos.x] = 'T';
+	cub_flood_fill(mdata, (t_pos){pos.x + 1, pos.y});
+	cub_flood_fill(mdata, (t_pos){pos.x - 1, pos.y});
+	cub_flood_fill(mdata, (t_pos){pos.x, pos.y + 1});
+	cub_flood_fill(mdata, (t_pos){pos.x, pos.y - 1});
 }
 
-void	copy_map(t_cub3d *mapdata)
+void	copy_map(t_cub3d *mdata)
 {
 	int	i;
 
-	mapdata->flood_map = malloc(sizeof(char *) * (mapdata->map_height + 1));
-	if (!mapdata->flood_map)
-		cub_error("Memory allocation failed!", mapdata);
+	mdata->flood_map = malloc(sizeof(char *) * (mdata->map_height + 1));
+	if (!mdata->flood_map)
+		cub_error("Memory allocation failed!", mdata);
 	i = 0;
-	while (i < mapdata->map_height)
+	while (i < mdata->map_height)
 	{
-		mapdata->flood_map[i] = ft_strdup(mapdata->map[i]);
-		if (!mapdata->flood_map[i])
-			cub_error("Memory allocation failed!", mapdata);
+		mdata->flood_map[i] = ft_strdup(mdata->map[i]);
+		if (!mdata->flood_map[i])
+			cub_error("Memory allocation failed!", mdata);
 		i++;
 	}
-	mapdata->flood_map[mapdata->map_height] = NULL;
+	mdata->flood_map[mdata->map_height] = NULL;
 }

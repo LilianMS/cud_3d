@@ -1,91 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/25 16:49:37 by lilmende          #+#    #+#             */
+/*   Updated: 2025/05/26 22:50:34 by lilmende         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-static void	set_player_start(t_cub3d *mapdata, int row, int col, char start)
+static void	set_player_start(t_cub3d *mdata, int row, int col, char start)
 {
-	mapdata->player_x = (col + 0.5f) * mapdata->tile_size;
-	mapdata->player_y = (row + 0.5f) * mapdata->tile_size;
+	mdata->player_x = (col + 0.5f) * mdata->tile_size;
+	mdata->player_y = (row + 0.5f) * mdata->tile_size;
 	if (start == 'N')
-		mapdata->player_angle = M_PI / 2; // 90°
+		mdata->player_angle = M_PI / 2;
 	else if (start == 'S')
-		mapdata->player_angle = 3 * M_PI / 2; // 270°
+		mdata->player_angle = 3 * M_PI / 2;
 	else if (start == 'E')
-		mapdata->player_angle = 0;
+		mdata->player_angle = 0;
 	else if (start == 'W')
-		mapdata->player_angle = M_PI;
-	return ;
+		mdata->player_angle = M_PI;
 }
 
-void	find_player_start(t_cub3d *mapdata)
+void	cub_player_start(t_cub3d *mdata)
 {
 	char	start;
 	int		row;
 	int		col;
 
 	row = 0;
-	while (row < mapdata->map_height)
+	while (row < mdata->map_height)
 	{
 		col = 0;
-		while (col < mapdata->map_width)
+		while (col < mdata->map_width)
 		{
-			start = mapdata->map[row][col];
+			start = mdata->map[row][col];
 			if (start == 'N' || start == 'S' || start == 'E' || start == 'W')
 			{
-				set_player_start(mapdata, row, col, start);
+				set_player_start(mdata, row, col, start);
 				return ;
 			}
 			col++;
-		}
-		row++;
-	}
-}
-
-static void	draw_helper(t_cub3d *mapdata, int x_start, int y_start)
-{
-	int	y;
-	int	x;
-	int	x_end;
-	int	y_end;
-
-	x_end = x_start + mapdata->tile_size;
-	y_end = y_start + mapdata->tile_size;
-	y = y_start;
-	while (y < y_end)
-	{
-		x = x_start;
-		while (x < x_end)
-		{
-			if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
-				mlx_put_pixel(mapdata->img, x, y, 0x000000FF);
-			x++;
-		}
-		y++;
-	}
-}
-
-static void	draw_tile(t_cub3d *mapdata, int row, int column)
-{
-	int	y_start;
-	int	x_start;
-
-	y_start = row * mapdata->tile_size;
-	x_start = column * mapdata->tile_size;
-	draw_helper(mapdata, x_start, y_start);
-}
-
-void	draw_minimap(t_cub3d *mapdata)
-{
-	int	row;
-	int	column;
-
-	row = 0;
-	while (row < mapdata->map_height)
-	{
-		column = 0;
-		while (column < mapdata->map_width)
-		{
-			if (mapdata->map[row][column] == '1')
-				draw_tile(mapdata, row, column);
-			column++;
 		}
 		row++;
 	}

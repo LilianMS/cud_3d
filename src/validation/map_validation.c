@@ -1,68 +1,79 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/25 16:51:13 by lilmende          #+#    #+#             */
+/*   Updated: 2025/06/22 18:48:29 by lilmende         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void	cub_player_validation(t_cub3d *mapdata, t_pos pos)
+void	cub_player_validation(t_cub3d *mdata, t_pos pos)
 {
 	int	player_count;
 
 	player_count = 0;
-	while (mapdata->map[pos.y])
+	while (mdata->map[pos.y])
 	{
 		pos.x = 0;
-		while (mapdata->map[pos.y][pos.x])
+		while (mdata->map[pos.y][pos.x])
 		{
-			if (ft_strchr("NSEW", mapdata->map[pos.y][pos.x]))
+			if (ft_strchr("NSEW", mdata->map[pos.y][pos.x]))
 			{
 				player_count++;
-				mapdata->player_dir = mapdata->map[pos.y][pos.x];
-				mapdata->p_pos.x = pos.x;
-				mapdata->p_pos.y = pos.y;
+				mdata->player_dir = mdata->map[pos.y][pos.x];
+				mdata->p_pos.x = pos.x;
+				mdata->p_pos.y = pos.y;
 			}
 			pos.x++;
 		}
 		pos.y++;
 	}
-	if (player_count != 1)
-		cub_error("Multiple players in map or no player!", mapdata);
+	if (player_count > 1)
+		cub_error("Multiple players in map!", mdata);
+	if (player_count == 0)
+		cub_error("No player in map!", mdata);
 }
 
-static void	if_pos_zero(t_cub3d *mapdata, t_pos pos)
+static void	if_pos_zero(t_cub3d *mdata, t_pos pos)
 {
-	if ((pos.y + 1 >= mapdata->map_height || pos.x + 1 >= mapdata->map_width \
+	if ((pos.y + 1 >= mdata->map_height || pos.x + 1 >= mdata->map_width \
 		|| pos.y - 1 < 0 || pos.x - 1 < 0) \
-		|| (mapdata->map[pos.y + 1][pos.x] == '\0' \
-			|| mapdata->map[pos.y + 1][pos.x] == ' ' \
-			|| mapdata->map[pos.y + 1][pos.x] == '\n' \
-			|| mapdata->map[pos.y + 1][pos.x] == '9') \
-		|| (mapdata->map[pos.y][pos.x + 1] == '\0' \
-			|| mapdata->map[pos.y][pos.x + 1] == ' ' \
-			|| mapdata->map[pos.y][pos.x + 1] == '\n' \
-			|| mapdata->map[pos.y][pos.x + 1] == '9') \
-		|| (mapdata->map[pos.y - 1][pos.x] == '\0' \
-			|| mapdata->map[pos.y - 1][pos.x] == ' ' \
-			|| mapdata->map[pos.y - 1][pos.x] == '\n' \
-			|| mapdata->map[pos.y - 1][pos.x] == '9') \
-		|| (mapdata->map[pos.y][pos.x - 1] == '\0' \
-			|| mapdata->map[pos.y][pos.x - 1] == ' ' \
-			|| mapdata->map[pos.y][pos.x - 1] == '\n' \
-			|| mapdata->map[pos.y][pos.x - 1] == '9'))
-		cub_error("Invalid wall in map!", mapdata);
+		|| (mdata->map[pos.y + 1][pos.x] == '\0' \
+			|| mdata->map[pos.y + 1][pos.x] == ' ' \
+			|| mdata->map[pos.y + 1][pos.x] == '\n' \
+			|| mdata->map[pos.y + 1][pos.x] == '9') \
+		|| (mdata->map[pos.y][pos.x + 1] == '\0' \
+			|| mdata->map[pos.y][pos.x + 1] == ' ' \
+			|| mdata->map[pos.y][pos.x + 1] == '\n' \
+			|| mdata->map[pos.y][pos.x + 1] == '9') \
+		|| (mdata->map[pos.y - 1][pos.x] == '\0' \
+			|| mdata->map[pos.y - 1][pos.x] == ' ' \
+			|| mdata->map[pos.y - 1][pos.x] == '\n' \
+			|| mdata->map[pos.y - 1][pos.x] == '9') \
+		|| (mdata->map[pos.y][pos.x - 1] == '\0' \
+			|| mdata->map[pos.y][pos.x - 1] == ' ' \
+			|| mdata->map[pos.y][pos.x - 1] == '\n' \
+			|| mdata->map[pos.y][pos.x - 1] == '9'))
+		cub_error("Invalid wall in map!", mdata);
 }
 
-static void	is_valid_walls(t_cub3d *mapdata, t_pos pos)
+static void	is_valid_walls(t_cub3d *mdata, t_pos pos)
 {
-	while (mapdata->map[pos.y])
+	while (mdata->map[pos.y])
 	{
 		pos.x = 0;
-		while (mapdata->map[pos.y][pos.x])
+		while (mdata->map[pos.y][pos.x])
 		{
-			if (mapdata->map[pos.y][pos.x] == '0')
-				if_pos_zero(mapdata, (t_pos){pos.x, pos.y});
-			else if (ft_strchr("NSEW", mapdata->map[pos.y][pos.x]))
+			if (mdata->map[pos.y][pos.x] == '0')
+				if_pos_zero(mdata, (t_pos){pos.x, pos.y});
+			else if (ft_strchr("NSEW", mdata->map[pos.y][pos.x]))
 			{
-				if_pos_zero(mapdata, (t_pos){pos.x, pos.y});
-				if (ft_if_surrounded_by_walls(mapdata->map, \
-												(t_pos){pos.x, pos.y}, '1'))
-					cub_error("The player is walled in!!!", mapdata);
+				if_pos_zero(mdata, (t_pos){pos.x, pos.y});
 			}
 			pos.x++;
 		}
@@ -70,33 +81,30 @@ static void	is_valid_walls(t_cub3d *mapdata, t_pos pos)
 	}
 }
 
-void	cub_check_area_visited(t_cub3d *mapdata)
+void	cub_check_area_visited(t_cub3d *mdata)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (mapdata->flood_map[i])
+	while (mdata->flood_map[i])
 	{
 		j = 0;
-		while (mapdata->flood_map[i][j])
+		while (mdata->flood_map[i][j])
 		{
-			if (mapdata->flood_map[i][j] == '0')
-				cub_error("Invalid path!", mapdata);
+			if (mdata->flood_map[i][j] == '0')
+				cub_error("Invalid path!", mdata);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	cub_map_validation(t_cub3d *mapdata, t_pos p_pos)
+void	cub_map_validation(t_cub3d *mdata, t_pos p_pos)
 {
 	(void) p_pos;
-	is_valid_walls(mapdata, (t_pos){0, 0}); // checa se o mapa está fechado
-	copy_map(mapdata);
-	cub_flood_fill(mapdata, p_pos);
-//////////////////////////////////
-	print_area(mapdata->flood_map); // debug
-/////////////////////////////////
-	cub_check_area_visited(mapdata); // checar se o caminho é válido
+	is_valid_walls(mdata, (t_pos){0, 0});
+	copy_map(mdata);
+	cub_flood_fill(mdata, p_pos);
+	cub_check_area_visited(mdata);
 }

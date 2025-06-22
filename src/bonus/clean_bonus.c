@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   clean_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/25 16:50:15 by lilmende          #+#    #+#             */
-/*   Updated: 2025/06/22 16:26:55 by lilmende         ###   ########.fr       */
+/*   Created: 2025/05/25 16:48:43 by lilmende          #+#    #+#             */
+/*   Updated: 2025/05/26 23:27:00 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ void	cub_free_data(t_cub3d *mdata)
 		free(mdata->texture.ea);
 	if (mdata->tmp)
 		free(mdata->tmp);
+	if (mdata->anim.torch.frames)
+		destroy_frames(mdata->mlx, mdata->anim.torch.frames, \
+			mdata->anim.torch.frame_count);
 }
 
 void	cub_clean(t_cub3d *mdata)

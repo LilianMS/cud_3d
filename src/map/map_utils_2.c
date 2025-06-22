@@ -1,63 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils_2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/25 16:49:15 by lilmende          #+#    #+#             */
+/*   Updated: 2025/06/22 18:51:03 by lilmende         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void	check_size_map(t_cub3d *mapdata, int map_lines)
-{
-	if (mapdata->map_width > MAX_WIDTH || map_lines > MAX_LINES)
-	{
-		cub_error("Map size is too big!", mapdata);
-	}
-	if (mapdata->map_width < MIN_WIDTH || map_lines < MIN_LINES)
-	{
-		cub_error("Map size is too small!", mapdata);
-	}
-}
-
-void	calculate_map_width(t_cub3d *mapdata, int start, int map_lines)
+static void	calculate_map_width(t_cub3d *mdata, int start, int map_lines)
 {
 	int	k;
 	int	len;
 
 	k = 0;
-	mapdata->map_height = map_lines;
-	mapdata->map_width = 0;
+	mdata->map_height = map_lines;
+	mdata->map_width = 0;
 	while (k < map_lines)
 	{
-		len = ft_strlen(mapdata->mapping.area[start + k]);
-		if (len > mapdata->map_width)
-			mapdata->map_width = len;
+		len = ft_strlen(mdata->mapping.area[start + k]);
+		if (len > mdata->map_width)
+			mdata->map_width = len;
 		k++;
 	}
-	check_size_map(mapdata, map_lines);
 }
 
-// essa função estava gerando bug, pois a alocação estava errada p/ mapas não retangulares
-// agora a alocação é feita com base na maior linha do mapa (e agora a largura é calculada antes da alocação)
-// e preenchemos o restante com '9' (ou seja, espaços vazios)
-void	allocate_and_copy_map(t_cub3d *mapdata, int start, int map_lines, t_pos pos)
+void	allocate_copy_map(t_cub3d *mdata, int init, int lines, t_pos pos)
 {
-	calculate_map_width(mapdata, start, map_lines);
-	mapdata->map = malloc(sizeof(char *) * (map_lines + 1));
-	if (!mapdata->map)
-		cub_error("Failed to allocate map", mapdata);
-	while (pos.y < map_lines)
+	calculate_map_width(mdata, init, lines);
+	mdata->map = malloc(sizeof(char *) * (lines + 1));
+	if (!mdata->map)
+		cub_error("Failed to allocate map", mdata);
+	while (pos.y < lines)
 	{
-		mapdata->map[pos.y] = malloc(sizeof(char) * (mapdata->map_width + 1));
-		if (!mapdata->map[pos.y])
-			cub_error("Map line allocation failed", mapdata);
+		mdata->map[pos.y] = malloc(sizeof(char) * (mdata->map_width + 1));
+		if (!mdata->map[pos.y])
+			cub_error("Map line allocation failed", mdata);
 		pos.x = 0;
-		while (pos.x < mapdata->map_width)
+		while (pos.x < mdata->map_width)
 		{
-			if ((size_t)pos.x < ft_strlen(mapdata->mapping.area[start + pos.y]) \
-				&& mapdata->mapping.area[start + pos.y][pos.x] != '\n')
-				mapdata->map[pos.y][pos.x] = \
-							mapdata->mapping.area[start + pos.y][pos.x];
+			if ((size_t)pos.x < ft_strlen(mdata->mapping.area[init + pos.y]) \
+				&& mdata->mapping.area[init + pos.y][pos.x] != '\n')
+				mdata->map[pos.y][pos.x] = \
+							mdata->mapping.area[init + pos.y][pos.x];
 			else
-				mapdata->map[pos.y][pos.x] = '9';
+				mdata->map[pos.y][pos.x] = '9';
 			pos.x++;
 		}
-		mapdata->map[pos.y][pos.x - 1] = '\n'; // adiciona o \n ao fim da linha não é necessário para o funcionamento do programa, mas ajuda a visualizar o mapa no print de debug
-		mapdata->map[pos.y][pos.x] = '\0';
+		mdata->map[pos.y][pos.x - 1] = '\n';
+		mdata->map[pos.y][pos.x] = '\0';
 		pos.y++;
 	}
-	mapdata->map[pos.y] = NULL;
+	mdata->map[pos.y] = NULL;
 }

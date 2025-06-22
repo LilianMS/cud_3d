@@ -1,13 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/25 16:49:24 by lilmende          #+#    #+#             */
+/*   Updated: 2025/05/25 16:49:25 by lilmende         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-int	calculate_tile_size(int screen_width, int screen_height, \
-						int map_width, int map_height)
+int	calculate_tile_size(int map_width, int map_height)
 {
 	int	tile_w;
 	int	tile_h;
 
-	tile_w = screen_width / map_width;
-	tile_h = screen_height / map_height;
+	tile_w = MINIMAP_AREA_W / map_width;
+	tile_h = MINIMAP_AREA_H / map_height;
 	if (tile_w < tile_h)
 		return (tile_w);
 	else
@@ -58,17 +69,17 @@ static int	find_map_end(char **area, int start)
 	return (end);
 }
 
-void	cub_extract_map(t_cub3d *mapdata)
+void	cub_extract_map(t_cub3d *mdata)
 {
 	int	start;
 	int	end;
 	int	map_lines;
 
-	start = find_map_start(mapdata->mapping.area);
+	start = find_map_start(mdata->mapping.area);
 	if (start == -1)
-		cub_error("Map not found in file!", mapdata);
-	end = find_map_end(mapdata->mapping.area, start);
+		cub_error("Map not found in file!", mdata);
+	end = find_map_end(mdata->mapping.area, start);
 	map_lines = end - start;
-	check_map_position(mapdata, end); // Checa posição do mapa
-	allocate_and_copy_map(mapdata, start, map_lines, (t_pos){0, 0});
+	check_map_position(mdata, end);
+	allocate_copy_map(mdata, start, map_lines, (t_pos){0, 0});
 }

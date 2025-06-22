@@ -2,4 +2,37 @@
 
     - para rodar com valgrind e supressions:
         - valgrind --suppressions=mlx42.supp  ./cub3D assets/map/simple_map.cub
-        - valgrind --leak-check=full --show-leak-kinds=all --suppressions=mlx42.supp ./cub3D assets/map/simple_map.cub
+        - valgrind --leak-check=full --show-leak-kinds=all --suppressions=lib/MLX42/mlx42.supp ./cub3D assets/map/simple_map.cub
+
+TODO final...
+
+- [x] acertar reset de cor no makefile da libft
+- [ ] corrigir bugs:
+            ! erro de leitura com espaços;
+            ! erro segfault com dois players;
+- [x] tirar dúvidas com a comunidade
+- [x] checar como entregar o arquivo .SUPP   !!!!!!!!!!!!!
+- [x] mudar ou retirar validação de tamanho min e max ???!!!!
+- [x] editar arquivos BONUS e makefile para bonus
+- [x] refatorar MAKEFILE
+- [ ] organizar melhor pastas e .h ?
+- [x] branch cópia da mandatory para registro dos comentários explicativos
+- [x] editar imagens legais pros testes
+- [ ] testar validação
+- [x] retirar DEBUG e comentários
+- [x] colocar cabeçalho na 42
+- [ ] passar norminette na 42 42xxxx
+- [ ] TESTAR TESTAR TESTAR!
+- [ ] checar pastas e arquivos de envio !!!
+- [ ] dar push repo 42 e checar
+
+OBSERVAÇÕES:
+ - move_speed = 5.0f; -> em mapas maiores o movimento fica muito rápido, se diminuir o valor fica muito lento em mapas pequenos
+
+ BONUS
+ - [x] colisão
+ - [x] minimapa
+    - [x] tecla M mostra minimapa
+ - [x] animação (tocha)
+ - [x] mover camera com o mouse
+ - [ ] portas que abrem

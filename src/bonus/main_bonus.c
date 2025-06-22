@@ -1,16 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/25 16:51:35 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/27 00:03:38 by lilmende         ###   ########.fr       */
+/*   Created: 2025/05/25 16:48:50 by lilmende          #+#    #+#             */
+/*   Updated: 2025/06/22 19:14:29 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "minimap_bonus.h"
+
+void	cub_load_textures_bonus(t_cub3d *mdata)
+{
+	mlx_texture_t	*tx;
+	mlx_image_t		**frames;
+	int				i;
+
+	if (!mdata->mlx)
+		cub_error("MLX not initialized!", mdata);
+	tx = mlx_load_png("./assets/textures/torch_spritesheet.png");
+	if (!tx)
+		cub_error("Failed to load torch texture", mdata);
+	frames = extract_frames(mdata->mlx, tx, TORCH_FRAMES);
+	mlx_delete_texture(tx);
+	if (!frames)
+		cub_error("Failed to extract torch frames", mdata);
+	init_animation(&mdata->anim.torch, mdata->mlx, frames, 0.15);
+	i = 0;
+	while (i < TORCH_FRAMES)
+	{
+		set_hud_position(frames[i], 180, 320);
+		i++;
+	}
+}
 
 void	cub_load_textures(t_cub3d *mdata)
 {
@@ -58,6 +83,8 @@ int	main(int ac, char **av)
 	mdata = malloc(sizeof(t_cub3d));
 	cub_starts(av, mdata);
 	initialize_mlx(mdata);
+	cub_load_textures_bonus(mdata);
+	init_minimap(mdata);
 	mlx_loop(mdata->mlx);
 	mdata->passed = 1;
 	cub_clean(mdata);

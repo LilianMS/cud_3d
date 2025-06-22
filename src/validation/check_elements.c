@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_elements.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/25 16:50:44 by lilmende          #+#    #+#             */
+/*   Updated: 2025/05/25 16:50:45 by lilmende         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static int	validate_color_values(char **colors)
@@ -24,28 +36,36 @@ static int	validate_color_values(char **colors)
 	return (1);
 }
 
-void	remove_end_spaces(char **str)
+static int	*ft_convert_to_int_array(char **array, int n)
 {
-	int	len;
+	int	*int_array;
+	int	i;
 
-	if (!str || !(*str))
-		return ;
-	len = ft_strlen(*str);
-	while (len > 0 && ft_isspace((*str)[len - 1]))
-		len--;
-	(*str)[len] = '\0';
+	int_array = malloc(sizeof(int) * n);
+	if (!int_array)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		int_array[i] = ft_atoi(array[i]);
+		i++;
+	}
+	ft_free_split(array);
+	array = NULL;
+	free(array);
+	return (int_array);
 }
 
-static char	**cub_handle_colors(t_cub3d *mapdata, int i, int j)
+static int	*cub_handle_colors(t_cub3d *mdata, int i, int j)
 {
 	char	**colors;
 
-	if (ft_isspace(mapdata->mapping.area[i][j]))
-		while (ft_isspace(mapdata->mapping.area[i][j]))
+	if (ft_isspace(mdata->mapping.area[i][j]))
+		while (ft_isspace(mdata->mapping.area[i][j]))
 			j++;
-	colors = ft_split(mapdata->mapping.area[i] + j, ',');
+	colors = ft_split(mdata->mapping.area[i] + j, ',');
 	ft_remove_newline(&colors);
-	remove_end_spaces(&colors[2]);
+	ft_remove_end_spaces(&colors[2]);
 	if (colors)
 	{
 		if (ft_array_len(colors) != 3 || !validate_color_values(colors))
@@ -53,29 +73,30 @@ static char	**cub_handle_colors(t_cub3d *mapdata, int i, int j)
 			ft_free_split(colors);
 			return (NULL);
 		}
-		return (colors);
+		return (ft_convert_to_int_array(colors, 3));
 	}
 	return (NULL);
 }
 
-static int	check_color_data(t_cub3d *mapdata)
+static int	check_color_data(t_cub3d *mdata)
 {
-	char	**colors;
-	int		i;
+	int	*c;
+	int	i;
 
 	i = 0;
-	while (mapdata->mapping.area[i])
+	while (mdata->mapping.area[i])
 	{
-		if (mapdata->mapping.area[i][0] == 'F' \
-			|| mapdata->mapping.area[i][0] == 'C')
+		if (mdata->mapping.area[i][0] == 'F' \
+			|| mdata->mapping.area[i][0] == 'C')
 		{
-			colors = cub_handle_colors(mapdata, i, 1);
-			if (colors)
+			c = cub_handle_colors(mdata, i, 1);
+			if (c)
 			{
-				if (mapdata->mapping.area[i][0] == 'F')
-					mapdata->mapping.f_color = colors;
+				if (mdata->mapping.area[i][0] == 'F')
+					mdata->mapping.f_color = ft_rgb_to_int(c[0], c[1], c[2]);
 				else
-					mapdata->mapping.c_color = colors;
+					mdata->mapping.c_color = ft_rgb_to_int(c[0], c[1], c[2]);
+				free(c);
 			}
 			else
 				return (0);
@@ -85,13 +106,13 @@ static int	check_color_data(t_cub3d *mapdata)
 	return (1);
 }
 
-int	cub_colors(t_cub3d *mapdata)
+int	cub_colors(t_cub3d *mdata)
 {
-	if (!check_color_data(mapdata) \
-		|| !mapdata->mapping.f_color \
-		|| !mapdata->mapping.c_color)
+	if (!check_color_data(mdata) \
+		|| !mdata->mapping.f_color \
+		|| !mdata->mapping.c_color)
 	{
-		cub_error("Invalid color data!", mapdata);
+		cub_error("Invalid color data!", mdata);
 		return (0);
 	}
 	return (1);
