@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:50:50 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/25 16:50:51 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/06/22 16:32:22 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ static char	*handle_textures(int dir, char *str)
 	int		j;
 
 	tmp_str = ft_strchr(str, dir);
-	if (!tmp_str || ft_str_is_space(tmp_str + 2))
+	// if (!tmp_str || ft_str_is_space(tmp_str + 2))
+	// 	return (NULL);
+	if (!tmp_str)
 		return (NULL);
 	tmp_str += 2;
 	texture = malloc(sizeof(char) * (ft_strlen(tmp_str) + 1));
@@ -29,6 +31,7 @@ static char	*handle_textures(int dir, char *str)
 	i = 0;
 	while (ft_isspace(tmp_str[i]))
 		i++;
+	ft_remove_end_spaces(&tmp_str);
 	j = 0;
 	while (tmp_str[i])
 	{

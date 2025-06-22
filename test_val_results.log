@@ -1,0 +1,639 @@
+Running test with file: ./maps/invalid_elements_aftermap.cub
+Test with './maps/invalid_elements_aftermap.cub': ERROR
+cub3D output:
+Error!
+Map is not at the end of the file
+Running valgrind for: ./maps/invalid_elements_aftermap.cub
+==17147== Memcheck, a memory error detector
+==17147== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17147== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17147== Command: ./cub3D_bonus ./maps/invalid_elements_aftermap.cub
+==17147== 
+Error!
+Map is not at the end of the file
+==17147== 
+==17147== HEAP SUMMARY:
+==17147==     in use at exit: 0 bytes in 0 blocks
+==17147==   total heap usage: 54 allocs, 54 frees, 16,149 bytes allocated
+==17147== 
+==17147== All heap blocks were freed -- no leaks are possible
+==17147== 
+==17147== For lists of detected and suppressed errors, rerun with: -s
+==17147== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_elements_garbage.cub
+Test with './maps/invalid_elements_garbage.cub': ERROR
+cub3D output:
+Error!
+Invalid character in map!
+Running valgrind for: ./maps/invalid_elements_garbage.cub
+==17165== Memcheck, a memory error detector
+==17165== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17165== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17165== Command: ./cub3D_bonus ./maps/invalid_elements_garbage.cub
+==17165== 
+Error!
+Invalid character in map!
+==17165== 
+==17165== HEAP SUMMARY:
+==17165==     in use at exit: 0 bytes in 0 blocks
+==17165==   total heap usage: 57 allocs, 57 frees, 17,257 bytes allocated
+==17165== 
+==17165== All heap blocks were freed -- no leaks are possible
+==17165== 
+==17165== For lists of detected and suppressed errors, rerun with: -s
+==17165== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_elements_rgb_3commas.cub
+Test with './maps/invalid_elements_rgb_3commas.cub': ERROR
+cub3D output:
+Error!
+Invalid color data!
+Running valgrind for: ./maps/invalid_elements_rgb_3commas.cub
+==17181== Memcheck, a memory error detector
+==17181== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17181== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17181== Command: ./cub3D_bonus ./maps/invalid_elements_rgb_3commas.cub
+==17181== 
+Error!
+Invalid color data!
+==17181== 
+==17181== HEAP SUMMARY:
+==17181==     in use at exit: 0 bytes in 0 blocks
+==17181==   total heap usage: 54 allocs, 54 frees, 16,134 bytes allocated
+==17181== 
+==17181== All heap blocks were freed -- no leaks are possible
+==17181== 
+==17181== For lists of detected and suppressed errors, rerun with: -s
+==17181== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_elements_rgb_len.cub
+Test with './maps/invalid_elements_rgb_len.cub': ERROR
+cub3D output:
+Error!
+Invalid color data!
+Running valgrind for: ./maps/invalid_elements_rgb_len.cub
+==17208== Memcheck, a memory error detector
+==17208== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17208== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17208== Command: ./cub3D_bonus ./maps/invalid_elements_rgb_len.cub
+==17208== 
+Error!
+Invalid color data!
+==17208== 
+==17208== HEAP SUMMARY:
+==17208==     in use at exit: 0 bytes in 0 blocks
+==17208==   total heap usage: 53 allocs, 53 frees, 16,098 bytes allocated
+==17208== 
+==17208== All heap blocks were freed -- no leaks are possible
+==17208== 
+==17208== For lists of detected and suppressed errors, rerun with: -s
+==17208== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_elements_rgb_nondigit.cub
+Test with './maps/invalid_elements_rgb_nondigit.cub': ERROR
+cub3D output:
+Error!
+Invalid color data!
+Running valgrind for: ./maps/invalid_elements_rgb_nondigit.cub
+==17229== Memcheck, a memory error detector
+==17229== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17229== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17229== Command: ./cub3D_bonus ./maps/invalid_elements_rgb_nondigit.cub
+==17229== 
+Error!
+Invalid color data!
+==17229== 
+==17229== HEAP SUMMARY:
+==17229==     in use at exit: 0 bytes in 0 blocks
+==17229==   total heap usage: 48 allocs, 48 frees, 16,037 bytes allocated
+==17229== 
+==17229== All heap blocks were freed -- no leaks are possible
+==17229== 
+==17229== For lists of detected and suppressed errors, rerun with: -s
+==17229== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_elements_rgb_range.cub
+Test with './maps/invalid_elements_rgb_range.cub': ERROR
+cub3D output:
+Error!
+Invalid color data!
+Running valgrind for: ./maps/invalid_elements_rgb_range.cub
+==17244== Memcheck, a memory error detector
+==17244== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17244== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17244== Command: ./cub3D_bonus ./maps/invalid_elements_rgb_range.cub
+==17244== 
+Error!
+Invalid color data!
+==17244== 
+==17244== HEAP SUMMARY:
+==17244==     in use at exit: 0 bytes in 0 blocks
+==17244==   total heap usage: 48 allocs, 48 frees, 16,037 bytes allocated
+==17244== 
+==17244== All heap blocks were freed -- no leaks are possible
+==17244== 
+==17244== For lists of detected and suppressed errors, rerun with: -s
+==17244== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_elements_texture_dne.cub
+Test with './maps/invalid_elements_texture_dne.cub': ERROR
+cub3D output:
+Error!
+Invalid file!./images/a.png
+Running valgrind for: ./maps/invalid_elements_texture_dne.cub
+==17259== Memcheck, a memory error detector
+==17259== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17259== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17259== Command: ./cub3D_bonus ./maps/invalid_elements_texture_dne.cub
+==17259== 
+Error!
+Invalid file!./images/a.png
+==17259== 
+==17259== HEAP SUMMARY:
+==17259==     in use at exit: 0 bytes in 0 blocks
+==17259==   total heap usage: 45 allocs, 45 frees, 16,020 bytes allocated
+==17259== 
+==17259== All heap blocks were freed -- no leaks are possible
+==17259== 
+==17259== For lists of detected and suppressed errors, rerun with: -s
+==17259== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_elements_texture_extension.cub
+Test with './maps/invalid_elements_texture_extension.cub': ERROR
+cub3D output:
+Error!
+Invalid file!./t1.pnx
+Running valgrind for: ./maps/invalid_elements_texture_extension.cub
+==17274== Memcheck, a memory error detector
+==17274== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17274== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17274== Command: ./cub3D_bonus ./maps/invalid_elements_texture_extension.cub
+==17274== 
+Error!
+Invalid file!./t1.pnx
+==17274== 
+==17274== HEAP SUMMARY:
+==17274==     in use at exit: 0 bytes in 0 blocks
+==17274==   total heap usage: 45 allocs, 45 frees, 15,996 bytes allocated
+==17274== 
+==17274== All heap blocks were freed -- no leaks are possible
+==17274== 
+==17274== For lists of detected and suppressed errors, rerun with: -s
+==17274== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_elements_texture_missing.cub
+Test with './maps/invalid_elements_texture_missing.cub': ERROR
+cub3D output:
+Error!
+Invalid textures!
+Running valgrind for: ./maps/invalid_elements_texture_missing.cub
+==17289== Memcheck, a memory error detector
+==17289== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17289== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17289== Command: ./cub3D_bonus ./maps/invalid_elements_texture_missing.cub
+==17289== 
+Error!
+Invalid textures!
+==17289== 
+==17289== HEAP SUMMARY:
+==17289==     in use at exit: 0 bytes in 0 blocks
+==17289==   total heap usage: 40 allocs, 40 frees, 14,793 bytes allocated
+==17289== 
+==17289== All heap blocks were freed -- no leaks are possible
+==17289== 
+==17289== For lists of detected and suppressed errors, rerun with: -s
+==17289== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_elements_texture_repeat.cub
+Test with './maps/invalid_elements_texture_repeat.cub': ERROR
+cub3D output:
+Error!
+Invalid Map!
+Running valgrind for: ./maps/invalid_elements_texture_repeat.cub
+==17315== Memcheck, a memory error detector
+==17315== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17315== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17315== Command: ./cub3D_bonus ./maps/invalid_elements_texture_repeat.cub
+==17315== 
+Error!
+Invalid Map!
+==17315== 
+==17315== HEAP SUMMARY:
+==17315==     in use at exit: 0 bytes in 0 blocks
+==17315==   total heap usage: 43 allocs, 43 frees, 17,124 bytes allocated
+==17315== 
+==17315== All heap blocks were freed -- no leaks are possible
+==17315== 
+==17315== For lists of detected and suppressed errors, rerun with: -s
+==17315== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_empty.cub
+Test with './maps/invalid_empty.cub': ERROR
+cub3D output:
+Error!
+Invalid Map!
+Running valgrind for: ./maps/invalid_empty.cub
+==17336== Memcheck, a memory error detector
+==17336== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17336== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17336== Command: ./cub3D_bonus ./maps/invalid_empty.cub
+==17336== 
+Error!
+Invalid Map!
+==17336== 
+==17336== HEAP SUMMARY:
+==17336==     in use at exit: 0 bytes in 0 blocks
+==17336==   total heap usage: 3 allocs, 3 frees, 2,745 bytes allocated
+==17336== 
+==17336== All heap blocks were freed -- no leaks are possible
+==17336== 
+==17336== For lists of detected and suppressed errors, rerun with: -s
+==17336== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_extension
+Test with './maps/invalid_extension': ERROR
+cub3D output:
+Error!
+Incorrect file type. It's not '*.cub'!
+Running valgrind for: ./maps/invalid_extension
+==17351== Memcheck, a memory error detector
+==17351== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17351== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17351== Command: ./cub3D_bonus ./maps/invalid_extension
+==17351== 
+Error!
+Incorrect file type. It's not '*.cub'!
+==17351== 
+==17351== HEAP SUMMARY:
+==17351==     in use at exit: 0 bytes in 0 blocks
+==17351==   total heap usage: 1 allocs, 1 frees, 920 bytes allocated
+==17351== 
+==17351== All heap blocks were freed -- no leaks are possible
+==17351== 
+==17351== For lists of detected and suppressed errors, rerun with: -s
+==17351== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_extension.
+Test with './maps/invalid_extension.': ERROR
+cub3D output:
+Error!
+Incorrect file type. It's not '*.cub'!
+Running valgrind for: ./maps/invalid_extension.
+==17366== Memcheck, a memory error detector
+==17366== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17366== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17366== Command: ./cub3D_bonus ./maps/invalid_extension.
+==17366== 
+Error!
+Incorrect file type. It's not '*.cub'!
+==17366== 
+==17366== HEAP SUMMARY:
+==17366==     in use at exit: 0 bytes in 0 blocks
+==17366==   total heap usage: 1 allocs, 1 frees, 920 bytes allocated
+==17366== 
+==17366== All heap blocks were freed -- no leaks are possible
+==17366== 
+==17366== For lists of detected and suppressed errors, rerun with: -s
+==17366== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_extension.car
+Test with './maps/invalid_extension.car': ERROR
+cub3D output:
+Error!
+Incorrect file type. It's not '*.cub'!
+Running valgrind for: ./maps/invalid_extension.car
+==17381== Memcheck, a memory error detector
+==17381== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17381== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17381== Command: ./cub3D_bonus ./maps/invalid_extension.car
+==17381== 
+Error!
+Incorrect file type. It's not '*.cub'!
+==17381== 
+==17381== HEAP SUMMARY:
+==17381==     in use at exit: 0 bytes in 0 blocks
+==17381==   total heap usage: 1 allocs, 1 frees, 920 bytes allocated
+==17381== 
+==17381== All heap blocks were freed -- no leaks are possible
+==17381== 
+==17381== For lists of detected and suppressed errors, rerun with: -s
+==17381== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_extension.cu
+Test with './maps/invalid_extension.cu': ERROR
+cub3D output:
+Error!
+Incorrect file type. It's not '*.cub'!
+Running valgrind for: ./maps/invalid_extension.cu
+==17396== Memcheck, a memory error detector
+==17396== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17396== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17396== Command: ./cub3D_bonus ./maps/invalid_extension.cu
+==17396== 
+Error!
+Incorrect file type. It's not '*.cub'!
+==17396== 
+==17396== HEAP SUMMARY:
+==17396==     in use at exit: 0 bytes in 0 blocks
+==17396==   total heap usage: 1 allocs, 1 frees, 920 bytes allocated
+==17396== 
+==17396== All heap blocks were freed -- no leaks are possible
+==17396== 
+==17396== For lists of detected and suppressed errors, rerun with: -s
+==17396== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_extension.cub3d
+Test with './maps/invalid_extension.cub3d': ERROR
+cub3D output:
+Error!
+Incorrect file type. It's not '*.cub'!
+Running valgrind for: ./maps/invalid_extension.cub3d
+==17411== Memcheck, a memory error detector
+==17411== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17411== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17411== Command: ./cub3D_bonus ./maps/invalid_extension.cub3d
+==17411== 
+Error!
+Incorrect file type. It's not '*.cub'!
+==17411== 
+==17411== HEAP SUMMARY:
+==17411==     in use at exit: 0 bytes in 0 blocks
+==17411==   total heap usage: 1 allocs, 1 frees, 920 bytes allocated
+==17411== 
+==17411== All heap blocks were freed -- no leaks are possible
+==17411== 
+==17411== For lists of detected and suppressed errors, rerun with: -s
+==17411== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_map_garbage_after.cub
+Test with './maps/invalid_map_garbage_after.cub': ERROR
+cub3D output:
+Error!
+Invalid character in map!
+Running valgrind for: ./maps/invalid_map_garbage_after.cub
+==17437== Memcheck, a memory error detector
+==17437== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17437== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17437== Command: ./cub3D_bonus ./maps/invalid_map_garbage_after.cub
+==17437== 
+Error!
+Invalid character in map!
+==17437== 
+==17437== HEAP SUMMARY:
+==17437==     in use at exit: 0 bytes in 0 blocks
+==17437==   total heap usage: 66 allocs, 66 frees, 20,306 bytes allocated
+==17437== 
+==17437== All heap blocks were freed -- no leaks are possible
+==17437== 
+==17437== For lists of detected and suppressed errors, rerun with: -s
+==17437== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_map_garbage_inside.cub
+Test with './maps/invalid_map_garbage_inside.cub': ERROR
+cub3D output:
+Error!
+Invalid character in map!
+Running valgrind for: ./maps/invalid_map_garbage_inside.cub
+==17459== Memcheck, a memory error detector
+==17459== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17459== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17459== Command: ./cub3D_bonus ./maps/invalid_map_garbage_inside.cub
+==17459== 
+Error!
+Invalid character in map!
+==17459== 
+==17459== HEAP SUMMARY:
+==17459==     in use at exit: 0 bytes in 0 blocks
+==17459==   total heap usage: 54 allocs, 54 frees, 16,112 bytes allocated
+==17459== 
+==17459== All heap blocks were freed -- no leaks are possible
+==17459== 
+==17459== For lists of detected and suppressed errors, rerun with: -s
+==17459== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_map_newlines.cub
+Test with './maps/invalid_map_newlines.cub': ERROR
+cub3D output:
+Error!
+Map is not at the end of the file
+Running valgrind for: ./maps/invalid_map_newlines.cub
+==17474== Memcheck, a memory error detector
+==17474== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17474== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17474== Command: ./cub3D_bonus ./maps/invalid_map_newlines.cub
+==17474== 
+Error!
+Map is not at the end of the file
+==17474== 
+==17474== HEAP SUMMARY:
+==17474==     in use at exit: 0 bytes in 0 blocks
+==17474==   total heap usage: 57 allocs, 57 frees, 17,157 bytes allocated
+==17474== 
+==17474== All heap blocks were freed -- no leaks are possible
+==17474== 
+==17474== For lists of detected and suppressed errors, rerun with: -s
+==17474== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_map_noplayers.cub
+Test with './maps/invalid_map_noplayers.cub': ERROR
+cub3D output:
+Error!
+No player in map!
+Running valgrind for: ./maps/invalid_map_noplayers.cub
+==17489== Memcheck, a memory error detector
+==17489== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17489== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17489== Command: ./cub3D_bonus ./maps/invalid_map_noplayers.cub
+==17489== 
+Error!
+No player in map!
+==17489== 
+==17489== HEAP SUMMARY:
+==17489==     in use at exit: 0 bytes in 0 blocks
+==17489==   total heap usage: 60 allocs, 60 frees, 16,195 bytes allocated
+==17489== 
+==17489== All heap blocks were freed -- no leaks are possible
+==17489== 
+==17489== For lists of detected and suppressed errors, rerun with: -s
+==17489== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_map_notsurrounded.cub
+Test with './maps/invalid_map_notsurrounded.cub': ERROR
+cub3D output:
+Error!
+Invalid wall in map!
+Running valgrind for: ./maps/invalid_map_notsurrounded.cub
+==17504== Memcheck, a memory error detector
+==17504== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17504== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17504== Command: ./cub3D_bonus ./maps/invalid_map_notsurrounded.cub
+==17504== 
+Error!
+Invalid wall in map!
+==17504== 
+==17504== HEAP SUMMARY:
+==17504==     in use at exit: 0 bytes in 0 blocks
+==17504==   total heap usage: 60 allocs, 60 frees, 16,195 bytes allocated
+==17504== 
+==17504== All heap blocks were freed -- no leaks are possible
+==17504== 
+==17504== For lists of detected and suppressed errors, rerun with: -s
+==17504== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_map_space_inside.cub
+Test with './maps/invalid_map_space_inside.cub': ERROR
+cub3D output:
+Error!
+Invalid wall in map!
+Running valgrind for: ./maps/invalid_map_space_inside.cub
+==17519== Memcheck, a memory error detector
+==17519== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17519== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17519== Command: ./cub3D_bonus ./maps/invalid_map_space_inside.cub
+==17519== 
+Error!
+Invalid wall in map!
+==17519== 
+==17519== HEAP SUMMARY:
+==17519==     in use at exit: 0 bytes in 0 blocks
+==17519==   total heap usage: 60 allocs, 60 frees, 16,195 bytes allocated
+==17519== 
+==17519== All heap blocks were freed -- no leaks are possible
+==17519== 
+==17519== For lists of detected and suppressed errors, rerun with: -s
+==17519== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_map_twoplayers.cub
+Test with './maps/invalid_map_twoplayers.cub': ERROR
+cub3D output:
+Error!
+Multiple players in map!
+Running valgrind for: ./maps/invalid_map_twoplayers.cub
+==17545== Memcheck, a memory error detector
+==17545== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17545== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17545== Command: ./cub3D_bonus ./maps/invalid_map_twoplayers.cub
+==17545== 
+Error!
+Multiple players in map!
+==17545== 
+==17545== HEAP SUMMARY:
+==17545==     in use at exit: 0 bytes in 0 blocks
+==17545==   total heap usage: 60 allocs, 60 frees, 16,195 bytes allocated
+==17545== 
+==17545== All heap blocks were freed -- no leaks are possible
+==17545== 
+==17545== For lists of detected and suppressed errors, rerun with: -s
+==17545== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/invalid_map_twoplayersout.cub
+Test with './maps/invalid_map_twoplayersout.cub': ERROR
+cub3D output:
+Error!
+Multiple players in map!
+Running valgrind for: ./maps/invalid_map_twoplayersout.cub
+==17566== Memcheck, a memory error detector
+==17566== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17566== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17566== Command: ./cub3D_bonus ./maps/invalid_map_twoplayersout.cub
+==17566== 
+Error!
+Multiple players in map!
+==17566== 
+==17566== HEAP SUMMARY:
+==17566==     in use at exit: 0 bytes in 0 blocks
+==17566==   total heap usage: 64 allocs, 64 frees, 17,337 bytes allocated
+==17566== 
+==17566== All heap blocks were freed -- no leaks are possible
+==17566== 
+==17566== For lists of detected and suppressed errors, rerun with: -s
+==17566== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/test_empty_png.cub
+Test with './maps/test_empty_png.cub': ERROR
+cub3D output:
+Error!
+Invalid file!./images/E.png
+Running valgrind for: ./maps/test_empty_png.cub
+==17581== Memcheck, a memory error detector
+==17581== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17581== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17581== Command: ./cub3D_bonus ./maps/test_empty_png.cub
+==17581== 
+Error!
+Invalid file!./images/E.png
+==17581== 
+==17581== HEAP SUMMARY:
+==17581==     in use at exit: 0 bytes in 0 blocks
+==17581==   total heap usage: 45 allocs, 45 frees, 16,020 bytes allocated
+==17581== 
+==17581== All heap blocks were freed -- no leaks are possible
+==17581== 
+==17581== For lists of detected and suppressed errors, rerun with: -s
+==17581== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Running test with file: ./maps/valid_elements_disorder.cub
+Test with './maps/valid_elements_disorder.cub': SUCCESS
+Running valgrind for: ./maps/valid_elements_disorder.cub
+==17610== Memcheck, a memory error detector
+==17610== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17610== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17610== Command: ./cub3D_bonus ./maps/valid_elements_disorder.cub
+==17610== 
+==17610== 
+==17610== HEAP SUMMARY:
+==17610==     in use at exit: 302,472 bytes in 2,792 blocks
+==17610==   total heap usage: 62,730 allocs, 59,938 frees, 49,448,763 bytes allocated
+==17610== 
+==17610== LEAK SUMMARY:
+==17610==    definitely lost: 0 bytes in 0 blocks
+==17610==    indirectly lost: 0 bytes in 0 blocks
+==17610==      possibly lost: 0 bytes in 0 blocks
+==17610==    still reachable: 0 bytes in 0 blocks
+==17610==         suppressed: 302,472 bytes in 2,792 blocks
+==17610== 
+==17610== For lists of detected and suppressed errors, rerun with: -s
+==17610== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 3 from 3)
+Running test with file: ./maps/valid_elements_spaces.cub
+Test with './maps/valid_elements_spaces.cub': SUCCESS
+Running valgrind for: ./maps/valid_elements_spaces.cub
+==17731== Memcheck, a memory error detector
+==17731== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17731== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17731== Command: ./cub3D_bonus ./maps/valid_elements_spaces.cub
+==17731== 
+==17731== 
+==17731== HEAP SUMMARY:
+==17731==     in use at exit: 302,472 bytes in 2,792 blocks
+==17731==   total heap usage: 62,243 allocs, 59,451 frees, 49,422,518 bytes allocated
+==17731== 
+==17731== LEAK SUMMARY:
+==17731==    definitely lost: 0 bytes in 0 blocks
+==17731==    indirectly lost: 0 bytes in 0 blocks
+==17731==      possibly lost: 0 bytes in 0 blocks
+==17731==    still reachable: 0 bytes in 0 blocks
+==17731==         suppressed: 302,472 bytes in 2,792 blocks
+==17731== 
+==17731== For lists of detected and suppressed errors, rerun with: -s
+==17731== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 3 from 3)
+Running test with file: ./maps/valid_ideal.cub
+Test with './maps/valid_ideal.cub': SUCCESS
+Running valgrind for: ./maps/valid_ideal.cub
+==17796== Memcheck, a memory error detector
+==17796== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17796== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17796== Command: ./cub3D_bonus ./maps/valid_ideal.cub
+==17796== 
+==17796== 
+==17796== HEAP SUMMARY:
+==17796==     in use at exit: 302,472 bytes in 2,792 blocks
+==17796==   total heap usage: 61,937 allocs, 59,145 frees, 49,395,333 bytes allocated
+==17796== 
+==17796== LEAK SUMMARY:
+==17796==    definitely lost: 0 bytes in 0 blocks
+==17796==    indirectly lost: 0 bytes in 0 blocks
+==17796==      possibly lost: 0 bytes in 0 blocks
+==17796==    still reachable: 0 bytes in 0 blocks
+==17796==         suppressed: 302,472 bytes in 2,792 blocks
+==17796== 
+==17796== For lists of detected and suppressed errors, rerun with: -s
+==17796== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 3 from 3)
+Running test with file: ./maps/valid_newlines.cub
+Test with './maps/valid_newlines.cub': SUCCESS
+Running valgrind for: ./maps/valid_newlines.cub
+==17860== Memcheck, a memory error detector
+==17860== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17860== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17860== Command: ./cub3D_bonus ./maps/valid_newlines.cub
+==17860== 
+==17860== 
+==17860== HEAP SUMMARY:
+==17860==     in use at exit: 302,472 bytes in 2,792 blocks
+==17860==   total heap usage: 62,031 allocs, 59,239 frees, 49,414,186 bytes allocated
+==17860== 
+==17860== LEAK SUMMARY:
+==17860==    definitely lost: 0 bytes in 0 blocks
+==17860==    indirectly lost: 0 bytes in 0 blocks
+==17860==      possibly lost: 0 bytes in 0 blocks
+==17860==    still reachable: 0 bytes in 0 blocks
+==17860==         suppressed: 302,472 bytes in 2,792 blocks
+==17860== 
+==17860== For lists of detected and suppressed errors, rerun with: -s
+==17860== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 3 from 3)
+Total files tested: 29

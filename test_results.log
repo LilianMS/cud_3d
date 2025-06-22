@@ -1,48 +1,134 @@
-Executando teste com o arquivo: maps/invalid_elements_aftermap.cub
-Teste com 'maps/invalid_elements_aftermap.cub': ERRO
-Executando teste com o arquivo: maps/invalid_elements_garbage.cub
-Teste com 'maps/invalid_elements_garbage.cub': ERRO
-Executando teste com o arquivo: maps/invalid_elements_rgb_3commas.cub
-Teste com 'maps/invalid_elements_rgb_3commas.cub': ERRO
-Executando teste com o arquivo: maps/invalid_elements_rgb_len.cub
-Teste com 'maps/invalid_elements_rgb_len.cub': ERRO
-Executando teste com o arquivo: maps/invalid_elements_rgb_nondigit.cub
-Teste com 'maps/invalid_elements_rgb_nondigit.cub': ERRO
-Executando teste com o arquivo: maps/invalid_elements_rgb_range.cub
-Teste com 'maps/invalid_elements_rgb_range.cub': ERRO
-Executando teste com o arquivo: maps/invalid_elements_texture_dne.cub
-Teste com 'maps/invalid_elements_texture_dne.cub': ERRO
-Executando teste com o arquivo: maps/invalid_elements_texture_extension.cub
-Teste com 'maps/invalid_elements_texture_extension.cub': ERRO
-Executando teste com o arquivo: maps/invalid_elements_texture_missing.cub
-Teste com 'maps/invalid_elements_texture_missing.cub': ERRO
-Executando teste com o arquivo: maps/invalid_elements_texture_repeat.cub
-Teste com 'maps/invalid_elements_texture_repeat.cub': ERRO
-Executando teste com o arquivo: maps/invalid_empty.cub
-Teste com 'maps/invalid_empty.cub': ERRO
-Executando teste com o arquivo: maps/invalid_map_garbage_after.cub
-Teste com 'maps/invalid_map_garbage_after.cub': ERRO
-Executando teste com o arquivo: maps/invalid_map_garbage_inside.cub
-Teste com 'maps/invalid_map_garbage_inside.cub': ERRO
-Executando teste com o arquivo: maps/invalid_map_newlines.cub
-Teste com 'maps/invalid_map_newlines.cub': ERRO
-Executando teste com o arquivo: maps/invalid_map_noplayers.cub
-Teste com 'maps/invalid_map_noplayers.cub': ERRO
-Executando teste com o arquivo: maps/invalid_map_notsurrounded.cub
-Teste com 'maps/invalid_map_notsurrounded.cub': ERRO
-Executando teste com o arquivo: maps/invalid_map_space_inside.cub
-Teste com 'maps/invalid_map_space_inside.cub': ERRO
-Executando teste com o arquivo: maps/invalid_map_twoplayers.cub
-Teste com 'maps/invalid_map_twoplayers.cub': ERRO
-Executando teste com o arquivo: maps/invalid_map_twoplayersout.cub
-Teste com 'maps/invalid_map_twoplayersout.cub': ERRO
-Executando teste com o arquivo: maps/test_empty_png.cub
-Teste com 'maps/test_empty_png.cub': ERRO
-Executando teste com o arquivo: maps/valid_elements_disorder.cub
-Teste com 'maps/valid_elements_disorder.cub': SUCESSO
-Executando teste com o arquivo: maps/valid_elements_spaces.cub
-Teste com 'maps/valid_elements_spaces.cub': SUCESSO
-Executando teste com o arquivo: maps/valid_ideal.cub
-Teste com 'maps/valid_ideal.cub': SUCESSO
-Executando teste com o arquivo: maps/valid_newlines.cub
-Teste com 'maps/valid_newlines.cub': SUCESSO
+Running test with file: ./maps/invalid_elements_aftermap.cub
+Test with './maps/invalid_elements_aftermap.cub': ERROR
+cub3D output:
+Error!
+Map is not at the end of the file
+Running test with file: ./maps/invalid_elements_garbage.cub
+Test with './maps/invalid_elements_garbage.cub': ERROR
+cub3D output:
+Error!
+Invalid character in map!
+Running test with file: ./maps/invalid_elements_rgb_3commas.cub
+Test with './maps/invalid_elements_rgb_3commas.cub': ERROR
+cub3D output:
+Error!
+Invalid color data!
+Running test with file: ./maps/invalid_elements_rgb_len.cub
+Test with './maps/invalid_elements_rgb_len.cub': ERROR
+cub3D output:
+Error!
+Invalid color data!
+Running test with file: ./maps/invalid_elements_rgb_nondigit.cub
+Test with './maps/invalid_elements_rgb_nondigit.cub': ERROR
+cub3D output:
+Error!
+Invalid color data!
+Running test with file: ./maps/invalid_elements_rgb_range.cub
+Test with './maps/invalid_elements_rgb_range.cub': ERROR
+cub3D output:
+Error!
+Invalid color data!
+Running test with file: ./maps/invalid_elements_texture_dne.cub
+Test with './maps/invalid_elements_texture_dne.cub': ERROR
+cub3D output:
+Error!
+Invalid file!./images/a.png
+Running test with file: ./maps/invalid_elements_texture_extension.cub
+Test with './maps/invalid_elements_texture_extension.cub': ERROR
+cub3D output:
+Error!
+Invalid file!./t1.pnx
+Running test with file: ./maps/invalid_elements_texture_missing.cub
+Test with './maps/invalid_elements_texture_missing.cub': ERROR
+cub3D output:
+Error!
+Invalid textures!
+Running test with file: ./maps/invalid_elements_texture_repeat.cub
+Test with './maps/invalid_elements_texture_repeat.cub': ERROR
+cub3D output:
+Error!
+Invalid Map!
+Running test with file: ./maps/invalid_empty.cub
+Test with './maps/invalid_empty.cub': ERROR
+cub3D output:
+Error!
+Invalid Map!
+Running test with file: ./maps/invalid_extension
+Test with './maps/invalid_extension': ERROR
+cub3D output:
+Error!
+Incorrect file type. It's not '*.cub'!
+Running test with file: ./maps/invalid_extension.
+Test with './maps/invalid_extension.': ERROR
+cub3D output:
+Error!
+Incorrect file type. It's not '*.cub'!
+Running test with file: ./maps/invalid_extension.car
+Test with './maps/invalid_extension.car': ERROR
+cub3D output:
+Error!
+Incorrect file type. It's not '*.cub'!
+Running test with file: ./maps/invalid_extension.cu
+Test with './maps/invalid_extension.cu': ERROR
+cub3D output:
+Error!
+Incorrect file type. It's not '*.cub'!
+Running test with file: ./maps/invalid_extension.cub3d
+Test with './maps/invalid_extension.cub3d': ERROR
+cub3D output:
+Error!
+Incorrect file type. It's not '*.cub'!
+Running test with file: ./maps/invalid_map_garbage_after.cub
+Test with './maps/invalid_map_garbage_after.cub': ERROR
+cub3D output:
+Error!
+Invalid character in map!
+Running test with file: ./maps/invalid_map_garbage_inside.cub
+Test with './maps/invalid_map_garbage_inside.cub': ERROR
+cub3D output:
+Error!
+Invalid character in map!
+Running test with file: ./maps/invalid_map_newlines.cub
+Test with './maps/invalid_map_newlines.cub': ERROR
+cub3D output:
+Error!
+Map is not at the end of the file
+Running test with file: ./maps/invalid_map_noplayers.cub
+Test with './maps/invalid_map_noplayers.cub': ERROR
+cub3D output:
+Error!
+No player in map!
+Running test with file: ./maps/invalid_map_notsurrounded.cub
+Test with './maps/invalid_map_notsurrounded.cub': ERROR
+cub3D output:
+Error!
+Invalid wall in map!
+Running test with file: ./maps/invalid_map_space_inside.cub
+Test with './maps/invalid_map_space_inside.cub': ERROR
+cub3D output:
+Error!
+Invalid wall in map!
+Running test with file: ./maps/invalid_map_twoplayers.cub
+Test with './maps/invalid_map_twoplayers.cub': ERROR
+cub3D output:
+Error!
+Multiple players in map!
+Running test with file: ./maps/invalid_map_twoplayersout.cub
+Test with './maps/invalid_map_twoplayersout.cub': ERROR
+cub3D output:
+Error!
+Multiple players in map!
+Running test with file: ./maps/test_empty_png.cub
+Test with './maps/test_empty_png.cub': ERROR
+cub3D output:
+Error!
+Invalid file!./images/E.png
+Running test with file: ./maps/valid_elements_disorder.cub
+Test with './maps/valid_elements_disorder.cub': SUCCESS
+Running test with file: ./maps/valid_elements_spaces.cub
+Test with './maps/valid_elements_spaces.cub': SUCCESS
+Running test with file: ./maps/valid_ideal.cub
+Test with './maps/valid_ideal.cub': SUCCESS
+Running test with file: ./maps/valid_newlines.cub
+Test with './maps/valid_newlines.cub': SUCCESS
+Total files tested: 29
