@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:51:13 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/26 23:32:10 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/06/22 15:50:43 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	cub_player_validation(t_cub3d *mdata, t_pos pos)
 		}
 		pos.y++;
 	}
-	if (player_count > 11)
+	if (player_count > 1)
 		cub_error("Multiple players in map!", mdata);
 	if (player_count == 0)
 		cub_error("No player in map!", mdata);

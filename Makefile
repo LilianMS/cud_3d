@@ -6,7 +6,7 @@
 #    By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 22:49:22 by lilmende          #+#    #+#              #
-#    Updated: 2025/06/07 13:05:42 by lilmende         ###   ########.fr        #
+#    Updated: 2025/06/22 16:53:22 by lilmende         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -152,7 +152,7 @@ run: all
 	@./$(NAME) assets/map/minimalist_map.cub
 
 val: all
-	@valgrind --leak-check=full --suppressions=lib/MLX42/mlx42.supp --show-leak-kinds=all ./$(NAME) assets/map/minimalist_map.cub
+	@valgrind --leak-check=full --suppressions=lib/MLX42/mlx42.supp --show-leak-kinds=all ./$(NAME) assets/map/test_crazy.cub
 
 # ****************************************************
 #                     PHONY
