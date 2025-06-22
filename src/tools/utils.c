@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:50:31 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/25 16:50:32 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/06/22 18:49:16 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,6 @@ int	ft_array_len(char **array)
 	while (array[len])
 		len++;
 	return (len);
-}
-
-int	ft_if_surrounded_by_walls(char **area, t_pos pos, char wall)
-{
-	if (area[pos.y + 1][pos.x] == wall \
-		&& area[pos.y][pos.x + 1] == wall \
-		&& area[pos.y - 1][pos.x] == wall \
-		&& area[pos.y][pos.x - 1] == wall)
-		return (1);
-	return (0);
 }
 
 int	ft_check_kind_file(char *str, char *suffix)

@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:50:22 by lilmende          #+#    #+#             */
-/*   Updated: 2025/06/22 16:28:38 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/06/22 18:49:36 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,6 @@ void	ft_remove_spaces(char **str)
 		len--;
 	(*str)[len] = '\0';
 }
-
-// int	ft_str_is_space(const char *str)
-// {
-// 	int	i;
-
-// 	if (!str)
-// 		return (1);
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		if (!ft_isspace(str[i]))
-// 			return (0);
-// 		i++;
-// 	}
-// 	return (1);
-// }
 
 int	ft_tern_op(int condition, int true_value, int false_value)
 {

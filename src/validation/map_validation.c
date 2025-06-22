@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:51:13 by lilmende          #+#    #+#             */
-/*   Updated: 2025/06/22 15:50:43 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/06/22 18:48:29 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,6 @@ static void	is_valid_walls(t_cub3d *mdata, t_pos pos)
 			else if (ft_strchr("NSEW", mdata->map[pos.y][pos.x]))
 			{
 				if_pos_zero(mdata, (t_pos){pos.x, pos.y});
-				if (ft_if_surrounded_by_walls(mdata->map, \
-												(t_pos){pos.x, pos.y}, '1'))
-					cub_error("The player is walled in!!!", mdata);
 			}
 			pos.x++;
 		}

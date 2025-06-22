@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 17:02:23 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/26 23:11:12 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/06/22 19:09:16 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,16 +205,5 @@ void		cub_draw_column_slice(t_cub3d *mdata, int x);
 void		cub_clear_3d_render(t_cub3d *mdata);
 void		cub_capture_texture(t_cub3d *game);
 uint32_t	cub_get_texture_pixel(mlx_texture_t *texture, int x, int y);
-
-// bonus
-// void		cub_render_minimap(t_cub3d *mdata);
-void		draw_minimap(t_cub3d *mdata);
-void		render_player(t_cub3d *mdata);
-void		render_direction(t_cub3d *mdata);
-void		clear_minimap_area(t_cub3d *mdata);
-
-void		cub_load_textures_bonus(t_cub3d *mdata);
-void		open_close_minimap(t_cub3d *mdata);
-void		init_minimap(t_cub3d *mdata);
 
 #endif

@@ -6,11 +6,12 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:48:50 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/27 00:04:13 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/06/22 19:14:29 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "minimap_bonus.h"
 
 void	cub_load_textures_bonus(t_cub3d *mdata)
 {
