@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:48:50 by lilmende          #+#    #+#             */
-/*   Updated: 2025/06/22 19:14:29 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/06/23 22:21:59 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,31 +65,38 @@ int	cub_starts(char **av, t_cub3d *mdata)
 	return (0);
 }
 
+int	valid_argc(int ac)
+{
+	if(ac == 2)
+		return(1);
+	else
+	{
+		if (ac > 2)
+			ft_putstr_fd("Error: Too many arguments.\n", 2);
+		else if (ac == 1)
+			ft_putstr_fd("Error: Missing argument.\n", 2);
+		ft_putstr_fd("Usage: ./cub3d <map.cub>\n", 1);
+		exit(1);
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_cub3d	*mdata;
 
-	if (ac != 2)
+	if (valid_argc(ac))
 	{
-		if (ac > 2)
-			ft_putstr_fd("Error: Too many arguments.\n", 2);
-		else
-		{
-			ft_putstr_fd("Error: Missing argument.\n", 2);
-			ft_putstr_fd("Usage: ./cub3d <map.cub>\n", 1);
-			return (1);
-		}
+		mdata = malloc(sizeof(t_cub3d));
+		cub_starts(av, mdata);
+		initialize_mlx(mdata);
+		cub_load_textures_bonus(mdata);
+		init_minimap(mdata);
+		mlx_loop(mdata->mlx);
+		mdata->passed = 1;
+		cub_clean(mdata);
+		mlx_terminate(mdata->mlx);
+		if (mdata)
+			free(mdata);
 	}
-	mdata = malloc(sizeof(t_cub3d));
-	cub_starts(av, mdata);
-	initialize_mlx(mdata);
-	cub_load_textures_bonus(mdata);
-	init_minimap(mdata);
-	mlx_loop(mdata->mlx);
-	mdata->passed = 1;
-	cub_clean(mdata);
-	mlx_terminate(mdata->mlx);
-	if (mdata)
-		free(mdata);
 	return (0);
 }
