@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map_utils_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emorales <emorales@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 17:04:01 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/25 17:54:27 by emorales         ###   ########.fr       */
+/*   Updated: 2025/06/24 07:38:14 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	draw_helper(mlx_image_t *target, int x_start, int y_start, int size)
 		x = x_start;
 		while (x < x_end)
 		{
-			mlx_put_pixel(target, x, y, 0x000000FF);
+			mlx_put_pixel(target, x, y, 0xA9A9A9FF);
 			x++;
 		}
 		y++;

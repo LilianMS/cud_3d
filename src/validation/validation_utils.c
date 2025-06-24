@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:51:20 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/25 16:51:21 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/06/24 08:15:25 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	cub_search_elements(t_cub3d *mdata, const char *elements)
 	ft_init_table(table, 256);
 	if (!check_duplicate(mdata, table) \
 		|| !check_all_chars(mdata->mapping.area, elements) \
-		|| !cub_textures(mdata) \
+		|| !cub_textures(mdata, 0) \
 		|| !cub_colors(mdata))
 		cub_error("Invalid Map!", mdata);
 	return (1);
@@ -73,4 +73,11 @@ int	check_map_position(t_cub3d *mdata, int end)
 		end++;
 	}
 	return (1);
+}
+
+void	spaces_before_data(t_cub3d *mdata, int i, int *j)
+{
+	*j = 0;
+	while (ft_isspace(mdata->mapping.area[i][*j]))
+		(*j)++;
 }

@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:50:50 by lilmende          #+#    #+#             */
-/*   Updated: 2025/06/22 18:47:34 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/06/24 08:12:27 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,23 +86,23 @@ void	check_file_texture(t_cub3d *mdata)
 	}
 }
 
-int	cub_textures(t_cub3d *mdata)
+int	cub_textures(t_cub3d *mdata, int i)
 {
 	char	**area;
-	int		i;
+	int		j;
 
 	area = mdata->mapping.area;
-	i = 0;
 	while (area[i])
 	{
-		if (ft_strncmp(area[i], "NO", 2) == 0)
-			mdata->texture.no = handle_textures('N', area[i]);
-		else if (ft_strncmp(area[i], "SO", 2) == 0)
-			mdata->texture.so = handle_textures('S', area[i]);
-		else if (ft_strncmp(area[i], "WE", 2) == 0)
-			mdata->texture.we = handle_textures('W', area[i]);
-		else if (ft_strncmp(area[i], "EA", 2) == 0)
-			mdata->texture.ea = handle_textures('E', area[i]);
+		spaces_before_data(mdata, i, &j);
+		if (ft_strncmp(&area[i][j], "NO", 2) == 0)
+			mdata->texture.no = handle_textures('N', &area[i][j]);
+		else if (ft_strncmp(&area[i][j], "SO", 2) == 0)
+			mdata->texture.so = handle_textures('S', &area[i][j]);
+		else if (ft_strncmp(&area[i][j], "WE", 2) == 0)
+			mdata->texture.we = handle_textures('W', &area[i][j]);
+		else if (ft_strncmp(&area[i][j], "EA", 2) == 0)
+			mdata->texture.ea = handle_textures('E', &area[i][j]);
 		i++;
 	}
 	if (!mdata->texture.no || !mdata->texture.so \

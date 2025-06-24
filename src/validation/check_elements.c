@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:50:44 by lilmende          #+#    #+#             */
-/*   Updated: 2025/05/25 16:50:45 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/06/24 08:15:04 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,21 +78,21 @@ static int	*cub_handle_colors(t_cub3d *mdata, int i, int j)
 	return (NULL);
 }
 
-static int	check_color_data(t_cub3d *mdata)
+static int	check_color_data(t_cub3d *mdata, int i)
 {
 	int	*c;
-	int	i;
+	int	j;
 
-	i = 0;
 	while (mdata->mapping.area[i])
 	{
-		if (mdata->mapping.area[i][0] == 'F' \
-			|| mdata->mapping.area[i][0] == 'C')
+		spaces_before_data(mdata, i, &j);
+		if (mdata->mapping.area[i][j] == 'F' \
+			|| mdata->mapping.area[i][j] == 'C')
 		{
-			c = cub_handle_colors(mdata, i, 1);
+			c = cub_handle_colors(mdata, i, j + 1);
 			if (c)
 			{
-				if (mdata->mapping.area[i][0] == 'F')
+				if (mdata->mapping.area[i][j] == 'F')
 					mdata->mapping.f_color = ft_rgb_to_int(c[0], c[1], c[2]);
 				else
 					mdata->mapping.c_color = ft_rgb_to_int(c[0], c[1], c[2]);
@@ -108,7 +108,7 @@ static int	check_color_data(t_cub3d *mdata)
 
 int	cub_colors(t_cub3d *mdata)
 {
-	if (!check_color_data(mdata) \
+	if (!check_color_data(mdata, 0) \
 		|| !mdata->mapping.f_color \
 		|| !mdata->mapping.c_color)
 	{

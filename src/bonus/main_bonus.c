@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:48:50 by lilmende          #+#    #+#             */
-/*   Updated: 2025/06/23 22:21:59 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/06/24 08:17:55 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int	cub_starts(char **av, t_cub3d *mdata)
 
 int	valid_argc(int ac)
 {
-	if(ac == 2)
-		return(1);
+	if (ac == 2)
+		return (1);
 	else
 	{
 		if (ac > 2)

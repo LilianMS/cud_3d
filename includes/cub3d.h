@@ -6,7 +6,7 @@
 /*   By: lilmende <lilmende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 17:02:23 by lilmende          #+#    #+#             */
-/*   Updated: 2025/06/22 19:09:16 by lilmende         ###   ########.fr       */
+/*   Updated: 2025/06/24 08:07:31 by lilmende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,10 +155,11 @@ int			cub_valid(t_cub3d *mdata);
 // validation_utils
 int			cub_search_elements(t_cub3d *mdata, const char *elements);
 int			check_map_position(t_cub3d *mdata, int end);
+void		spaces_before_data(t_cub3d *mdata, int i, int *j);
 
 // check_chars
 int			check_all_chars(char **area, const char *valid_chars);
-int			cub_textures(t_cub3d *mdata);
+int			cub_textures(t_cub3d *mdata, int i);
 
 // check_elements
 int			cub_colors(t_cub3d *mdata);
